@@ -123,17 +123,11 @@
 		80C40BA518EFEEEE00FBF8C7 /* HungryDog */ = {
 			isa = PBXGroup;
 			children = (
+				80C40BDC18EFFCB000FBF8C7 /* UI */,
+				80C40BDF18EFFD2900FBF8C7 /* Resources */,
+				80C40BA618EFEEEE00FBF8C7 /* Supporting Files */,
 				80C40BAE18EFEEEE00FBF8C7 /* AppDelegate.h */,
 				80C40BAF18EFEEEE00FBF8C7 /* AppDelegate.m */,
-				80C40BB118EFEEEE00FBF8C7 /* Main_iPhone.storyboard */,
-				80C40BB418EFEEEE00FBF8C7 /* Main_iPad.storyboard */,
-				80C40BB718EFEEEE00FBF8C7 /* ViewController.h */,
-				80C40BB818EFEEEE00FBF8C7 /* ViewController.m */,
-				80C40BBA18EFEEEE00FBF8C7 /* MyScene.h */,
-				80C40BBB18EFEEEE00FBF8C7 /* MyScene.m */,
-				80C40BBD18EFEEEE00FBF8C7 /* Spaceship.png */,
-				80C40BBF18EFEEEE00FBF8C7 /* Images.xcassets */,
-				80C40BA618EFEEEE00FBF8C7 /* Supporting Files */,
 			);
 			path = HungryDog;
 			sourceTree = "<group>";
@@ -165,6 +159,44 @@
 				80C40BCF18EFEEEE00FBF8C7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80C40BDC18EFFCB000FBF8C7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				80C40BDE18EFFCF500FBF8C7 /* Controllers */,
+				80C40BDD18EFFCEA00FBF8C7 /* Scenes */,
+				80C40BB118EFEEEE00FBF8C7 /* Main_iPhone.storyboard */,
+				80C40BB418EFEEEE00FBF8C7 /* Main_iPad.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		80C40BDD18EFFCEA00FBF8C7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				80C40BBA18EFEEEE00FBF8C7 /* MyScene.h */,
+				80C40BBB18EFEEEE00FBF8C7 /* MyScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		80C40BDE18EFFCF500FBF8C7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				80C40BB718EFEEEE00FBF8C7 /* ViewController.h */,
+				80C40BB818EFEEEE00FBF8C7 /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		80C40BDF18EFFD2900FBF8C7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				80C40BBD18EFEEEE00FBF8C7 /* Spaceship.png */,
+				80C40BBF18EFEEEE00FBF8C7 /* Images.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
