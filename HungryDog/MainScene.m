@@ -19,7 +19,7 @@ const CGFloat PlayLabelCenterOffsetY_iPad = 80;
 const CGFloat PlayLabelFontSize_iPhone = 15;
 const CGFloat PlayLabelFontSize_iPad = 40;
 
-NSString *const PlayTitle = @"Play";
+NSString *const PlayName = @"Play";
 
 @interface MainScene ()
 
@@ -35,6 +35,7 @@ NSString *const PlayTitle = @"Play";
     self.backgroundColor = [SKColor blackColor];
     [self addNameLabel];
     [self addPlayLabel];
+    self.userInteractionEnabled = YES;
   }
   return self;
 }
@@ -56,12 +57,30 @@ NSString *const PlayTitle = @"Play";
   _playLabel = [SKLabelNode labelNodeWithFontNamed:AppFontName
                                           fontSize:fontSize
                                          fontColor:[SKColor greenColor]];
-  _playLabel.text = PlayTitle;
+  _playLabel.text = PlayName;
+  _playLabel.name = PlayName;
   CGFloat centerOffsetY = ValueForDevice(PlayLabelCenterOffsetY_iPhone, PlayLabelCenterOffsetY_iPad);
   _playLabel.position = CGPointMake(self.nameLabel.position.x,
                                     self.nameLabel.position.y - centerOffsetY);
   _playLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   [self addChild:_playLabel];
+}
+
+#pragma mark - Touch events
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  UITouch *touch = [touches anyObject];
+  CGPoint touchLocation = [touch locationInNode:self.scene];
+  SKNode *node = [self nodeAtPoint:touchLocation];
+  if ([node.name isEqualToString:PlayName]) {
+    [self handlePlayAction];
+  }
+}
+
+#pragma mark - User actions
+
+- (void)handlePlayAction {
+  // TODO (YS): Handle play event
 }
 
 @end
