@@ -8,9 +8,20 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@protocol MainSceneDelegate;
+
 /**
  This class represents main scene with menu options.
  */
 @interface MainScene : SKScene
+
+@property (nonatomic, weak) id<MainSceneDelegate> delegate;
+
+@end
+
+
+@protocol MainSceneDelegate <NSObject>
+
+- (void)mainSceneDidSelectPlayOption:(MainScene *)mainScene;
 
 @end

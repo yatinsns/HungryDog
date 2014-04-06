@@ -80,7 +80,7 @@ NSString *const PlayName = @"Play";
 #pragma mark - User actions
 
 - (void)handlePlayAction {
-  // TODO (YS): Handle play event
+  [self.delegate mainSceneDidSelectPlayOption:self];
 }
 
 @end
