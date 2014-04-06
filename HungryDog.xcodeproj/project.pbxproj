@@ -17,7 +17,6 @@
 		80C40BB318EFEEEE00FBF8C7 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C40BB118EFEEEE00FBF8C7 /* Main_iPhone.storyboard */; };
 		80C40BB618EFEEEE00FBF8C7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C40BB418EFEEEE00FBF8C7 /* Main_iPad.storyboard */; };
 		80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BB818EFEEEE00FBF8C7 /* ViewController.m */; };
-		80C40BBC18EFEEEE00FBF8C7 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BBB18EFEEEE00FBF8C7 /* MyScene.m */; };
 		80C40BBE18EFEEEE00FBF8C7 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 80C40BBD18EFEEEE00FBF8C7 /* Spaceship.png */; };
 		80C40BC018EFEEEE00FBF8C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80C40BBF18EFEEEE00FBF8C7 /* Images.xcassets */; };
 		80C40BC718EFEEEE00FBF8C7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40BC618EFEEEE00FBF8C7 /* XCTest.framework */; };
@@ -55,8 +54,6 @@
 		80C40BB518EFEEEE00FBF8C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		80C40BB718EFEEEE00FBF8C7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		80C40BB818EFEEEE00FBF8C7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		80C40BBA18EFEEEE00FBF8C7 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
-		80C40BBB18EFEEEE00FBF8C7 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
 		80C40BBD18EFEEEE00FBF8C7 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		80C40BBF18EFEEEE00FBF8C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		80C40BC518EFEEEE00FBF8C7 /* HungryDogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HungryDogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,8 +182,6 @@
 			children = (
 				80C40BE318F1706D00FBF8C7 /* MainScene.h */,
 				80C40BE418F1706D00FBF8C7 /* MainScene.m */,
-				80C40BBA18EFEEEE00FBF8C7 /* MyScene.h */,
-				80C40BBB18EFEEEE00FBF8C7 /* MyScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -308,7 +303,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C40BBC18EFEEEE00FBF8C7 /* MyScene.m in Sources */,
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
