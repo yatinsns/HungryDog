@@ -26,6 +26,7 @@
 		80C40BD318EFEEEE00FBF8C7 /* VectorUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BD218EFEEEE00FBF8C7 /* VectorUtilsTests.m */; };
 		80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE118F1612B00FBF8C7 /* VectorUtils.m */; };
 		80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE418F1706D00FBF8C7 /* MainScene.m */; };
+		80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE718F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		80C40BE118F1612B00FBF8C7 /* VectorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VectorUtils.m; sourceTree = "<group>"; };
 		80C40BE318F1706D00FBF8C7 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		80C40BE418F1706D00FBF8C7 /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScene.m; sourceTree = "<group>"; };
+		80C40BE618F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKLabelNode+HungryDogAdditions.h"; sourceTree = "<group>"; };
+		80C40BE718F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKLabelNode+HungryDogAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				80C40BA618EFEEEE00FBF8C7 /* Supporting Files */,
 				80C40BAE18EFEEEE00FBF8C7 /* AppDelegate.h */,
 				80C40BAF18EFEEEE00FBF8C7 /* AppDelegate.m */,
+				80C40BE618F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.h */,
+				80C40BE718F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m */,
 				80C40BE018F1612B00FBF8C7 /* VectorUtils.h */,
 				80C40BE118F1612B00FBF8C7 /* VectorUtils.m */,
 			);
@@ -305,6 +310,7 @@
 			files = (
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,
+				80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
