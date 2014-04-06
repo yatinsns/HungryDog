@@ -8,6 +8,11 @@
 
 #import "ViewController.h"
 #import "MainScene.h"
+#import "GameScene.h"
+
+@interface ViewController () <MainSceneDelegate>
+
+@end
 
 @implementation ViewController
 
@@ -15,13 +20,14 @@
   [super viewDidLoad];
   
   // Configure the view.
-  SKView * skView = (SKView *)self.view;
+  SKView *skView = (SKView *)self.view;
   skView.showsFPS = YES;
   skView.showsNodeCount = YES;
   
   // Create and configure the scene.
-  SKScene * scene = [MainScene sceneWithSize:skView.bounds.size];
+  MainScene *scene = [MainScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
+  scene.delegate = self;
   
   // Present the scene.
   [skView presentScene:scene];
@@ -42,6 +48,15 @@
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - MainSceneDelegate methods
+
+- (void)mainSceneDidSelectPlayOption:(MainScene *)mainScene {
+  SKView *skView = (SKView *)self.view;
+  GameScene *gameScene = [GameScene sceneWithSize:skView.bounds.size];
+  gameScene.scaleMode = SKSceneScaleModeAspectFill;
+  [skView presentScene:gameScene];
 }
 
 @end
