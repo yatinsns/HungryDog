@@ -24,7 +24,7 @@
 		80C40BC818EFEEEE00FBF8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */; };
 		80C40BC918EFEEEE00FBF8C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40BA118EFEEEE00FBF8C7 /* UIKit.framework */; };
 		80C40BD118EFEEEE00FBF8C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80C40BCF18EFEEEE00FBF8C7 /* InfoPlist.strings */; };
-		80C40BD318EFEEEE00FBF8C7 /* HungryDogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BD218EFEEEE00FBF8C7 /* HungryDogTests.m */; };
+		80C40BD318EFEEEE00FBF8C7 /* VectorUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BD218EFEEEE00FBF8C7 /* VectorUtilsTests.m */; };
 		80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE118F1612B00FBF8C7 /* VectorUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +62,7 @@
 		80C40BC618EFEEEE00FBF8C7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		80C40BCE18EFEEEE00FBF8C7 /* HungryDogTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HungryDogTests-Info.plist"; sourceTree = "<group>"; };
 		80C40BD018EFEEEE00FBF8C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		80C40BD218EFEEEE00FBF8C7 /* HungryDogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HungryDogTests.m; sourceTree = "<group>"; };
+		80C40BD218EFEEEE00FBF8C7 /* VectorUtilsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VectorUtilsTests.m; sourceTree = "<group>"; };
 		80C40BE018F1612B00FBF8C7 /* VectorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorUtils.h; sourceTree = "<group>"; };
 		80C40BE118F1612B00FBF8C7 /* VectorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VectorUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,7 +151,7 @@
 		80C40BCC18EFEEEE00FBF8C7 /* HungryDogTests */ = {
 			isa = PBXGroup;
 			children = (
-				80C40BD218EFEEEE00FBF8C7 /* HungryDogTests.m */,
+				80C40BD218EFEEEE00FBF8C7 /* VectorUtilsTests.m */,
 				80C40BCD18EFEEEE00FBF8C7 /* Supporting Files */,
 			);
 			path = HungryDogTests;
@@ -315,7 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C40BD318EFEEEE00FBF8C7 /* HungryDogTests.m in Sources */,
+				80C40BD318EFEEEE00FBF8C7 /* VectorUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
