@@ -27,6 +27,8 @@
 		80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE118F1612B00FBF8C7 /* VectorUtils.m */; };
 		80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE418F1706D00FBF8C7 /* MainScene.m */; };
 		80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE718F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m */; };
+		80C40BEB18F17B1900FBF8C7 /* UIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BEA18F17B1900FBF8C7 /* UIConstants.m */; };
+		80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BED18F17C4B00FBF8C7 /* UIUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,10 @@
 		80C40BE418F1706D00FBF8C7 /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScene.m; sourceTree = "<group>"; };
 		80C40BE618F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKLabelNode+HungryDogAdditions.h"; sourceTree = "<group>"; };
 		80C40BE718F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKLabelNode+HungryDogAdditions.m"; sourceTree = "<group>"; };
+		80C40BE918F17B1900FBF8C7 /* UIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
+		80C40BEA18F17B1900FBF8C7 /* UIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIConstants.m; sourceTree = "<group>"; };
+		80C40BEC18F17C4B00FBF8C7 /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
+		80C40BED18F17C4B00FBF8C7 /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +184,10 @@
 				80C40BDD18EFFCEA00FBF8C7 /* Scenes */,
 				80C40BB118EFEEEE00FBF8C7 /* Main_iPhone.storyboard */,
 				80C40BB418EFEEEE00FBF8C7 /* Main_iPad.storyboard */,
+				80C40BE918F17B1900FBF8C7 /* UIConstants.h */,
+				80C40BEA18F17B1900FBF8C7 /* UIConstants.m */,
+				80C40BEC18F17C4B00FBF8C7 /* UIUtils.h */,
+				80C40BED18F17C4B00FBF8C7 /* UIUtils.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -311,6 +321,8 @@
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,
 				80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */,
+				80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */,
+				80C40BEB18F17B1900FBF8C7 /* UIConstants.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
