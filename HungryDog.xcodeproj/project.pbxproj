@@ -29,6 +29,7 @@
 		80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BE718F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m */; };
 		80C40BEB18F17B1900FBF8C7 /* UIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BEA18F17B1900FBF8C7 /* UIConstants.m */; };
 		80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BED18F17C4B00FBF8C7 /* UIUtils.m */; };
+		80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BF018F18AE000FBF8C7 /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		80C40BEA18F17B1900FBF8C7 /* UIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIConstants.m; sourceTree = "<group>"; };
 		80C40BEC18F17C4B00FBF8C7 /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
 		80C40BED18F17C4B00FBF8C7 /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
+		80C40BEF18F18AE000FBF8C7 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		80C40BF018F18AE000FBF8C7 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,8 @@
 		80C40BDD18EFFCEA00FBF8C7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				80C40BEF18F18AE000FBF8C7 /* GameScene.h */,
+				80C40BF018F18AE000FBF8C7 /* GameScene.m */,
 				80C40BE318F1706D00FBF8C7 /* MainScene.h */,
 				80C40BE418F1706D00FBF8C7 /* MainScene.m */,
 			);
@@ -319,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
+				80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */,
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,
 				80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */,
 				80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */,
