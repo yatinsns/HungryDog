@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  // FIXME (YS): Need to move this to another method.
   // Configure the view.
   SKView *skView = (SKView *)self.view;
   skView.showsFPS = YES;
