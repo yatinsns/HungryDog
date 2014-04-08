@@ -8,9 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class GamePlay;
+
 /**
  This class represents scene for presenting game.
  */
 @interface GameScene : SKScene
+
+- (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay;
 
 @end

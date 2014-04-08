@@ -9,8 +9,11 @@
 #import "ViewController.h"
 #import "MainScene.h"
 #import "GameScene.h"
+#import "GamePlay.h"
 
 @interface ViewController () <MainSceneDelegate>
+
+@property (nonatomic) GamePlay *currentGamePlay;
 
 @end
 
@@ -54,8 +57,10 @@
 #pragma mark - MainSceneDelegate methods
 
 - (void)mainSceneDidSelectPlayOption:(MainScene *)mainScene {
+  self.currentGamePlay = [[GamePlay alloc] init];
   SKView *skView = (SKView *)self.view;
-  GameScene *gameScene = [GameScene sceneWithSize:skView.bounds.size];
+  GameScene *gameScene = [[GameScene alloc] initWithSize:skView.bounds.size
+                                                gamePlay:self.currentGamePlay];
   gameScene.scaleMode = SKSceneScaleModeAspectFill;
   [skView presentScene:gameScene];
 }

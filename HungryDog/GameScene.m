@@ -10,6 +10,7 @@
 #import "SKLabelNode+HungryDogAdditions.h"
 #import "UIConstants.h"
 #import "UIUtils.h"
+#import "GamePlay.h"
 
 const CGFloat ScoreLabelFontSize_iPhone = 20;
 const CGFloat ScoreLabelFontSize_iPad = 40;
@@ -24,7 +25,7 @@ const CGFloat ScoreLabelPaddingTop = 10;
 
 @implementation GameScene
 
-- (id)initWithSize:(CGSize)size {
+- (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay {
   if (self = [super initWithSize:size]) {
     self.backgroundColor = [SKColor blackColor];
     [self addScoreLabel];
