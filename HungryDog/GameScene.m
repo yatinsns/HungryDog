@@ -11,6 +11,7 @@
 #import "UIConstants.h"
 #import "UIUtils.h"
 #import "GamePlay.h"
+#import "NSString+ScoreAdditions.h"
 
 const CGFloat ScoreLabelFontSize_iPhone = 20;
 const CGFloat ScoreLabelFontSize_iPad = 40;
@@ -41,7 +42,7 @@ const CGFloat ScoreLabelPaddingTop = 10;
   _scoreLabel = [SKLabelNode labelNodeWithFontNamed:AppFontName
                                           fontSize:fontSize
                                          fontColor:[SKColor whiteColor]];
-  _scoreLabel.text = @"Score: 0";
+  _scoreLabel.text = [NSString stringWithScore:self.gamePlay.scoreHandler.currentScore];
   _scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   _scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
   _scoreLabel.position = CGPointMake(self.size.width - ScoreLabelPaddingRight,
