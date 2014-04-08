@@ -141,6 +141,7 @@
 		80C40BA518EFEEEE00FBF8C7 /* HungryDog */ = {
 			isa = PBXGroup;
 			children = (
+				80C40BFF18F4714C00FBF8C7 /* Model */,
 				80C40BDC18EFFCB000FBF8C7 /* UI */,
 				80C40BDF18EFFD2900FBF8C7 /* Resources */,
 				80C40BA618EFEEEE00FBF8C7 /* Supporting Files */,
@@ -194,8 +195,6 @@
 				80C40BEA18F17B1900FBF8C7 /* UIConstants.m */,
 				80C40BEC18F17C4B00FBF8C7 /* UIUtils.h */,
 				80C40BED18F17C4B00FBF8C7 /* UIUtils.m */,
-				80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */,
-				80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -227,6 +226,15 @@
 				80C40BBF18EFEEEE00FBF8C7 /* Images.xcassets */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		80C40BFF18F4714C00FBF8C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */,
+				80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
