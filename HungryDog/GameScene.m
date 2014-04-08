@@ -20,6 +20,7 @@ const CGFloat ScoreLabelPaddingTop = 10;
 @interface GameScene ()
 
 @property (nonatomic) SKLabelNode *scoreLabel;
+@property (nonatomic) GamePlay *gamePlay;
 
 @end
 
@@ -27,6 +28,8 @@ const CGFloat ScoreLabelPaddingTop = 10;
 
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay {
   if (self = [super initWithSize:size]) {
+    _gamePlay = gamePlay;
+
     self.backgroundColor = [SKColor blackColor];
     [self addScoreLabel];
   }
