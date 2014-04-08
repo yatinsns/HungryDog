@@ -32,6 +32,7 @@
 		80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BF018F18AE000FBF8C7 /* GameScene.m */; };
 		80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */; };
 		80C40C0218F4717C00FBF8C7 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0118F4717C00FBF8C7 /* GamePlay.m */; };
+		80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreHandler.m; sourceTree = "<group>"; };
 		80C40C0018F4717C00FBF8C7 /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
 		80C40C0118F4717C00FBF8C7 /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
+		80C40C0318F47C5200FBF8C7 /* NSString+ScoreAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ScoreAdditions.h"; sourceTree = "<group>"; };
+		80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ScoreAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				80C40BE718F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m */,
 				80C40BE018F1612B00FBF8C7 /* VectorUtils.h */,
 				80C40BE118F1612B00FBF8C7 /* VectorUtils.m */,
+				80C40C0318F47C5200FBF8C7 /* NSString+ScoreAdditions.h */,
+				80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */,
 			);
 			path = HungryDog;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 			files = (
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
 				80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */,
+				80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */,
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,
 				80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */,
 				80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */,
