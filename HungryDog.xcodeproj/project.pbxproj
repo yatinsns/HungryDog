@@ -30,6 +30,7 @@
 		80C40BEB18F17B1900FBF8C7 /* UIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BEA18F17B1900FBF8C7 /* UIConstants.m */; };
 		80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BED18F17C4B00FBF8C7 /* UIUtils.m */; };
 		80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BF018F18AE000FBF8C7 /* GameScene.m */; };
+		80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		80C40BED18F17C4B00FBF8C7 /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
 		80C40BEF18F18AE000FBF8C7 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		80C40BF018F18AE000FBF8C7 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreHandler.h; sourceTree = "<group>"; };
+		80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +194,8 @@
 				80C40BEA18F17B1900FBF8C7 /* UIConstants.m */,
 				80C40BEC18F17C4B00FBF8C7 /* UIUtils.h */,
 				80C40BED18F17C4B00FBF8C7 /* UIUtils.m */,
+				80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */,
+				80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
+				80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
