@@ -12,16 +12,29 @@
 #import "UIUtils.h"
 #import "GamePlay.h"
 #import "NSString+ScoreAdditions.h"
+#import "GameSceneSpritesProvider.h"
 
 const CGFloat ScoreLabelFontSize_iPhone = 20;
 const CGFloat ScoreLabelFontSize_iPad = 40;
 const CGFloat ScoreLabelPaddingRight = 10;
 const CGFloat ScoreLabelPaddingTop = 10;
 
+const CGFloat EnergyBarSizeWidth_iPhone = 30;
+const CGFloat EnergyBarSizeWidth_iPad = 50;
+
+const CGFloat EnergyBarPaddingRight_iPhone = 30;
+const CGFloat EnergyBarPaddingRight_iPad = 15;
+
+const CGFloat EnergyBarPaddingTop_iPhone = 50;
+const CGFloat EnergyBarPaddingTop_iPad = 80;
+const CGFloat EnergyBarStrokeWidth_iPhone = 1;
+const CGFloat EnergyBarStrokeWidth_iPad = 3;
+
 @interface GameScene ()
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) GamePlay *gamePlay;
+@property (nonatomic) GameSceneSpritesProvider *spritesProvider;
 
 @end
 
@@ -32,7 +45,9 @@ const CGFloat ScoreLabelPaddingTop = 10;
     _gamePlay = gamePlay;
 
     self.backgroundColor = [SKColor blackColor];
+    _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     [self addScoreLabel];
+    [self addEnergyBar];
   }
   return self;
 }
@@ -48,6 +63,22 @@ const CGFloat ScoreLabelPaddingTop = 10;
   _scoreLabel.position = CGPointMake(self.size.width - ScoreLabelPaddingRight,
                                      self.size.height - _scoreLabel.frame.size.height - ScoreLabelPaddingTop);
   [self addChild:_scoreLabel];
+}
+
+- (void)addEnergyBar {
+  CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
+  CGFloat borderWidth = ValueForDevice(EnergyBarStrokeWidth_iPhone, EnergyBarStrokeWidth_iPad);
+  CGFloat paddingTop = ValueForDevice(EnergyBarPaddingTop_iPhone, EnergyBarPaddingTop_iPad);
+  CGFloat paddingRight = ValueForDevice(EnergyBarPaddingRight_iPhone, EnergyBarPaddingRight_iPad);
+  
+  CGPoint bottomLeftPoint = CGPointMake(self.size.width - energyBarWidth - paddingRight,
+                                        paddingTop);
+  CGPoint topRightPoint = CGPointMake(self.size.width - paddingRight,
+                                      self.size.height - paddingTop);
+  SKSpriteNode *sprite = [self.spritesProvider energyBarWithBorderWidth:borderWidth
+                                                        bottomLeftPoint:bottomLeftPoint
+                                                          topRightPoint:topRightPoint];
+  [self addChild:sprite];
 }
 
 @end
