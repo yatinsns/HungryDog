@@ -31,6 +31,7 @@
 		80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BED18F17C4B00FBF8C7 /* UIUtils.m */; };
 		80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BF018F18AE000FBF8C7 /* GameScene.m */; };
 		80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */; };
+		80C40C0218F4717C00FBF8C7 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0118F4717C00FBF8C7 /* GamePlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		80C40BF018F18AE000FBF8C7 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreHandler.h; sourceTree = "<group>"; };
 		80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreHandler.m; sourceTree = "<group>"; };
+		80C40C0018F4717C00FBF8C7 /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
+		80C40C0118F4717C00FBF8C7 /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +234,8 @@
 		80C40BFF18F4714C00FBF8C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80C40C0018F4717C00FBF8C7 /* GamePlay.h */,
+				80C40C0118F4717C00FBF8C7 /* GamePlay.m */,
 				80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */,
 				80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */,
 			);
@@ -341,6 +346,7 @@
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,
 				80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */,
 				80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */,
+				80C40C0218F4717C00FBF8C7 /* GamePlay.m in Sources */,
 				80C40BEB18F17B1900FBF8C7 /* UIConstants.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
