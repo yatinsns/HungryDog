@@ -116,7 +116,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 #pragma mark - Game events
 
 - (void)endGame {
-  // FIXME (YS): Handle game end.
+  [self.delegate gameSceneDidEndGame:self];
 }
 
 @end

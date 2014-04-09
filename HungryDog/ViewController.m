@@ -11,7 +11,7 @@
 #import "GameScene.h"
 #import "GamePlay.h"
 
-@interface ViewController () <MainSceneDelegate>
+@interface ViewController () <MainSceneDelegate, GameSceneDelegate>
 
 @property (nonatomic) GamePlay *currentGamePlay;
 
@@ -61,8 +61,19 @@
   SKView *skView = (SKView *)self.view;
   GameScene *gameScene = [[GameScene alloc] initWithSize:skView.bounds.size
                                                 gamePlay:self.currentGamePlay];
+  gameScene.delegate = self;
   gameScene.scaleMode = SKSceneScaleModeAspectFill;
   [skView presentScene:gameScene];
+}
+
+#pragma mark - GameSceneDelegate methods
+
+- (void)gameSceneDidEndGame:(GameScene *)gameScene {
+  SKView * skView = (SKView *)self.view;
+  MainScene *scene = [MainScene sceneWithSize:skView.bounds.size];
+  scene.delegate = self;
+  SKTransition *reveal = [SKTransition fadeWithDuration:0.5];
+  [skView presentScene:scene transition:reveal];
 }
 
 @end

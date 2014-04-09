@@ -10,11 +10,21 @@
 
 @class GamePlay;
 
+@protocol GameSceneDelegate;
+
 /**
  This class represents scene for presenting game.
  */
 @interface GameScene : SKScene
 
+@property (nonatomic, weak) id<GameSceneDelegate> delegate;
+
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay;
+
+@end
+
+@protocol GameSceneDelegate <NSObject>
+
+- (void)gameSceneDidEndGame:(GameScene *)gameScene;
 
 @end
