@@ -36,6 +36,9 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 @property (nonatomic) GamePlay *gamePlay;
 @property (nonatomic) GameSceneSpritesProvider *spritesProvider;
 
+@property (nonatomic) NSTimeInterval lastUpdateTime;
+@property (nonatomic) NSTimeInterval dt;
+
 @end
 
 @implementation GameScene
@@ -79,6 +82,15 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
                                                         bottomLeftPoint:bottomLeftPoint
                                                           topRightPoint:topRightPoint];
   [self addChild:sprite];
+}
+
+- (void)update:(NSTimeInterval)currentTime {
+  if (self.lastUpdateTime) {
+    self.dt = currentTime - self.lastUpdateTime;
+  } else {
+    self.dt = 0;
+  }
+  self.lastUpdateTime = currentTime;
 }
 
 @end
