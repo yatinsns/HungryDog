@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ScoreHandler.h"
+#import "EnergyBarHandler.h"
 
 /**
  This class represents a game play within the app.
@@ -15,5 +16,6 @@
 @interface GamePlay : NSObject
 
 @property (nonatomic, readonly) ScoreHandler *scoreHandler;
+@property (nonatomic, readonly) EnergyBarHandler *energyBarHandler;
 
 @end

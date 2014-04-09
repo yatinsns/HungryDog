@@ -91,6 +91,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
     self.dt = 0;
   }
   self.lastUpdateTime = currentTime;
+
+  [self.gamePlay.energyBarHandler update:currentTime];
 }
 
 @end

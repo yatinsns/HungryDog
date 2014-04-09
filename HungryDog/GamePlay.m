@@ -8,9 +8,12 @@
 
 #import "GamePlay.h"
 
+static const CGFloat DepletionRateDefault = 0.00001;
+
 @interface GamePlay ()
 
 @property (nonatomic, readwrite) ScoreHandler *scoreHandler;
+@property (nonatomic, readwrite) EnergyBarHandler *energyBarHandler;
 
 @end
 
@@ -20,6 +23,7 @@
   self = [super init];
   if (self) {
     _scoreHandler = [[ScoreHandler alloc] init];
+    _energyBarHandler = [[EnergyBarHandler alloc] initWithDepletionRate:DepletionRateDefault];
   }
   return self;
 }
