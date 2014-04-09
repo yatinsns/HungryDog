@@ -30,7 +30,7 @@ const CGFloat EnergyBarPaddingTop_iPad = 80;
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
-@interface GameScene ()
+@interface GameScene () <EnergyBarHandlerDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) GamePlay *gamePlay;
@@ -46,6 +46,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay {
   if (self = [super initWithSize:size]) {
     _gamePlay = gamePlay;
+    _gamePlay.energyBarHandler.delegate = self;
 
     self.backgroundColor = [SKColor blackColor];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
@@ -93,6 +94,12 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   self.lastUpdateTime = currentTime;
 
   [self.gamePlay.energyBarHandler update:currentTime];
+}
+
+#pragma mark - EnergyBarHandlerDelegate
+
+- (void)energyBarHandlerDidUpdateStatus:(EnergyBarHandler *)energyBarHandler {
+  // FIXME (YS): Need to update energy bar sprite.
 }
 
 @end

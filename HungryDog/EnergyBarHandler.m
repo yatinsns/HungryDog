@@ -37,7 +37,12 @@
 
 - (void)updateStatusWithChangeInTime:(NSTimeInterval)timeDifference {
   NSTimeInterval numberOfMilliseconds = timeDifference * 1000;
+  NSUInteger oldValue = ceil(self.statusValue);
   self.statusValue = (self.statusValue - numberOfMilliseconds * self.depletionRate);
+  NSUInteger newValue = ceil(self.statusValue);
+  if (oldValue != newValue) {
+    [self.delegate energyBarHandlerDidUpdateStatus:self];
+  }
 }
 
 - (NSUInteger)status {

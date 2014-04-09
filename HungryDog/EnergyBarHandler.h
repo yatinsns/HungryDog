@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol EnergyBarHandlerDelegate;
+
 /**
  This class handles energy bar depletion for a single gameplay.
  */
@@ -17,6 +19,8 @@
  This denotes energy depletion rate per millisecond.
  */
 @property (nonatomic) CGFloat depletionRate;
+
+@property (nonatomic, weak) id<EnergyBarHandlerDelegate> delegate;
 
 /**
  Designated initializer.
@@ -34,5 +38,11 @@
  Updates status according to `currentTime`.
  */
 - (void)update:(NSTimeInterval)currentTime;
+
+@end
+
+@protocol EnergyBarHandlerDelegate <NSObject>
+
+- (void)energyBarHandlerDidUpdateStatus:(EnergyBarHandler *)energyBarHandler;
 
 @end
