@@ -108,6 +108,15 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 - (void)energyBarHandlerDidUpdateStatus:(EnergyBarHandler *)energyBarHandler {
   [self addEnergyBarWithStatus:energyBarHandler.status];
+  if (energyBarHandler.status == 0) {
+    [self endGame];
+  }
+}
+
+#pragma mark - Game events
+
+- (void)endGame {
+  // FIXME (YS): Handle game end.
 }
 
 @end
