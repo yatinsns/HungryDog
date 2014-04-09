@@ -13,6 +13,7 @@
 
 - (SKSpriteNode *)energyBarWithBorderWidth:(CGFloat)borderWidth
                            bottomLeftPoint:(CGPoint)bottomLeftPoint
-                             topRightPoint:(CGPoint)topRightPoint;
+                             topRightPoint:(CGPoint)topRightPoint
+                                    status:(NSUInteger)status;
 
 @end

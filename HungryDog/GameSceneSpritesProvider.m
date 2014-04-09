@@ -12,7 +12,8 @@
 
 - (SKSpriteNode *)energyBarWithBorderWidth:(CGFloat)borderWidth
                            bottomLeftPoint:(CGPoint)bottomLeftPoint
-                             topRightPoint:(CGPoint)topRightPoint {
+                             topRightPoint:(CGPoint)topRightPoint
+                                    status:(NSUInteger)status {
   SKSpriteNode *node = [SKSpriteNode node];
   SKShapeNode *topLeft = [SKShapeNode node];
   UIBezierPath *topLeftBezierPath = [[UIBezierPath alloc] init];
@@ -40,7 +41,7 @@
   
   CGPoint bottomLeftMaskPoint = bottomLeftBarNodePoint;
   CGPoint topRightMaskPoint = CGPointMake(bottomLeftMaskPoint.x + barNodeWidth,
-                                          bottomLeftMaskPoint.y + barNodeHeight - 50);
+                                          bottomLeftMaskPoint.y + ((barNodeHeight * status) / 100));
   [maskBezierPath moveToPoint:CGPointMake(bottomLeftMaskPoint.x, bottomLeftMaskPoint.y)];
   [maskBezierPath addLineToPoint:CGPointMake(topRightMaskPoint.x, bottomLeftMaskPoint.y)];
   [maskBezierPath addLineToPoint:CGPointMake(topRightMaskPoint.x, topRightMaskPoint.y)];

@@ -39,6 +39,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 @property (nonatomic) NSTimeInterval lastUpdateTime;
 @property (nonatomic) NSTimeInterval dt;
 
+@property (nonatomic) SKSpriteNode *eneryBarSprite;
+
 @end
 
 @implementation GameScene
@@ -51,7 +53,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
     self.backgroundColor = [SKColor blackColor];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     [self addScoreLabel];
-    [self addEnergyBar];
+    [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
   }
   return self;
 }
@@ -69,7 +71,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   [self addChild:_scoreLabel];
 }
 
-- (void)addEnergyBar {
+- (void)addEnergyBarWithStatus:(NSUInteger)status {
   CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
   CGFloat borderWidth = ValueForDevice(EnergyBarStrokeWidth_iPhone, EnergyBarStrokeWidth_iPad);
   CGFloat paddingTop = ValueForDevice(EnergyBarPaddingTop_iPhone, EnergyBarPaddingTop_iPad);
@@ -79,10 +81,16 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
                                         paddingTop);
   CGPoint topRightPoint = CGPointMake(self.size.width - paddingRight,
                                       self.size.height - paddingTop);
-  SKSpriteNode *sprite = [self.spritesProvider energyBarWithBorderWidth:borderWidth
-                                                        bottomLeftPoint:bottomLeftPoint
-                                                          topRightPoint:topRightPoint];
-  [self addChild:sprite];
+  self.eneryBarSprite = [self.spritesProvider energyBarWithBorderWidth:borderWidth
+                                                       bottomLeftPoint:bottomLeftPoint
+                                                         topRightPoint:topRightPoint
+                                                                status:status];
+}
+
+- (void)setEneryBarSprite:(SKSpriteNode *)eneryBarSprite {
+  [_eneryBarSprite removeFromParent];
+  _eneryBarSprite = eneryBarSprite;
+  [self addChild:_eneryBarSprite];
 }
 
 - (void)update:(NSTimeInterval)currentTime {
@@ -99,7 +107,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 #pragma mark - EnergyBarHandlerDelegate
 
 - (void)energyBarHandlerDidUpdateStatus:(EnergyBarHandler *)energyBarHandler {
-  // FIXME (YS): Need to update energy bar sprite.
+  [self addEnergyBarWithStatus:energyBarHandler.status];
 }
 
 @end
