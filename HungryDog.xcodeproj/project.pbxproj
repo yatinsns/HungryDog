@@ -35,6 +35,7 @@
 		80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */; };
 		80C40C0218F4717C00FBF8C7 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0118F4717C00FBF8C7 /* GamePlay.m */; };
 		80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */; };
+		80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		80C40C0118F4717C00FBF8C7 /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
 		80C40C0318F47C5200FBF8C7 /* NSString+ScoreAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ScoreAdditions.h"; sourceTree = "<group>"; };
 		80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ScoreAdditions.m"; sourceTree = "<group>"; };
+		80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneGenerator.h; sourceTree = "<group>"; };
+		80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,8 @@
 				80C40C0118F4717C00FBF8C7 /* GamePlay.m */,
 				80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */,
 				80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */,
+				80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */,
+				80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				80C40BEE18F17C4B00FBF8C7 /* UIUtils.m in Sources */,
 				80C40C0218F4717C00FBF8C7 /* GamePlay.m in Sources */,
 				80C40BEB18F17B1900FBF8C7 /* UIConstants.m in Sources */,
+				80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,

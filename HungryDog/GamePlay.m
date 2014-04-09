@@ -14,6 +14,7 @@ static const CGFloat DepletionRateDefault = 0.00001;
 
 @property (nonatomic, readwrite) ScoreHandler *scoreHandler;
 @property (nonatomic, readwrite) EnergyBarHandler *energyBarHandler;
+@property (nonatomic, readwrite) BoneGenerator *boneGenerator;
 
 @end
 
@@ -24,6 +25,7 @@ static const CGFloat DepletionRateDefault = 0.00001;
   if (self) {
     _scoreHandler = [[ScoreHandler alloc] init];
     _energyBarHandler = [[EnergyBarHandler alloc] initWithDepletionRate:DepletionRateDefault];
+    _boneGenerator = [[BoneGenerator alloc] init];
   }
   return self;
 }

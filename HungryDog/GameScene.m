@@ -30,7 +30,7 @@ const CGFloat EnergyBarPaddingTop_iPad = 80;
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
-@interface GameScene () <EnergyBarHandlerDelegate>
+@interface GameScene () <EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic, readwrite) GamePlay *gamePlay;
@@ -49,6 +49,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   if (self = [super initWithSize:size]) {
     _gamePlay = gamePlay;
     _gamePlay.energyBarHandler.delegate = self;
+    _gamePlay.boneGenerator.delegate = self;
 
     self.backgroundColor = [SKColor blackColor];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
@@ -117,6 +118,12 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 - (void)endGame {
   [self.delegate gameSceneDidEndGame:self];
+}
+
+#pragma mark - BoneGeneratorDelegate
+
+- (void)boneGeneratorDidGenerateNewBone:(BoneGenerator *)boneGenerator {
+  // FIXME (YS): Generate new bone.
 }
 
 @end
