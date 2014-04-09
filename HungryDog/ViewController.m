@@ -13,8 +13,6 @@
 
 @interface ViewController () <MainSceneDelegate, GameSceneDelegate>
 
-@property (nonatomic) GamePlay *currentGamePlay;
-
 @end
 
 @implementation ViewController
@@ -57,10 +55,10 @@
 #pragma mark - MainSceneDelegate methods
 
 - (void)mainSceneDidSelectPlayOption:(MainScene *)mainScene {
-  self.currentGamePlay = [[GamePlay alloc] init];
+  GamePlay *gamePlay = [[GamePlay alloc] init];
   SKView *skView = (SKView *)self.view;
   GameScene *gameScene = [[GameScene alloc] initWithSize:skView.bounds.size
-                                                gamePlay:self.currentGamePlay];
+                                                gamePlay:gamePlay];
   gameScene.delegate = self;
   gameScene.scaleMode = SKSceneScaleModeAspectFill;
   [skView presentScene:gameScene];
@@ -70,7 +68,8 @@
 
 - (void)gameSceneDidEndGame:(GameScene *)gameScene {
   SKView * skView = (SKView *)self.view;
-  MainScene *scene = [MainScene sceneWithSize:skView.bounds.size];
+  MainScene *scene = [[MainScene  alloc] initWithSize:skView.bounds.size
+                                            lastScore:gameScene.gamePlay.scoreHandler.currentScore];
   scene.delegate = self;
   SKTransition *reveal = [SKTransition fadeWithDuration:0.5];
   [skView presentScene:scene transition:reveal];

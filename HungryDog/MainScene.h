@@ -17,6 +17,8 @@
 
 @property (nonatomic, weak) id<MainSceneDelegate> delegate;
 
+- (id)initWithSize:(CGSize)size lastScore:(NSUInteger)lastScore;
+
 @end
 
 

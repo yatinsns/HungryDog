@@ -33,7 +33,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 @interface GameScene () <EnergyBarHandlerDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
-@property (nonatomic) GamePlay *gamePlay;
+@property (nonatomic, readwrite) GamePlay *gamePlay;
 @property (nonatomic) GameSceneSpritesProvider *spritesProvider;
 
 @property (nonatomic) NSTimeInterval lastUpdateTime;

@@ -18,6 +18,7 @@
 @interface GameScene : SKScene
 
 @property (nonatomic, weak) id<GameSceneDelegate> delegate;
+@property (nonatomic, readonly) GamePlay *gamePlay;
 
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay;
 

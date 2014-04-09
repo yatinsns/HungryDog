@@ -31,14 +31,23 @@ NSString *const PlayName = @"Play";
 @implementation MainScene
 
 - (id)initWithSize:(CGSize)size {
+  return [self initWithSize:size suffix:nil];
+}
+
+- (id)initWithSize:(CGSize)size lastScore:(NSUInteger)lastScore {
+  return [self initWithSize:size suffix:[NSString stringWithFormat:@"%ld", lastScore]];
+}
+
+- (id)initWithSize:(CGSize)size suffix:(NSString *)suffix {
   if (self = [super initWithSize:size]) {
     self.backgroundColor = [SKColor blackColor];
     [self addNameLabel];
-    [self addPlayLabel];
+    [self addPlayLabelWithSuffix:suffix];
     self.userInteractionEnabled = YES;
   }
   return self;
 }
+
 
 - (void)addNameLabel {
   CGFloat fontSize = ValueForDevice(NameLabelFontSize_iPhone, NameLabelFontSize_iPad);
@@ -52,12 +61,16 @@ NSString *const PlayName = @"Play";
   [self addChild:_nameLabel];
 }
 
-- (void)addPlayLabel {
+- (void)addPlayLabelWithSuffix:(NSString *)suffix {
   CGFloat fontSize = ValueForDevice(PlayLabelFontSize_iPhone, PlayLabelFontSize_iPad);
   _playLabel = [SKLabelNode labelNodeWithFontNamed:AppFontName
                                           fontSize:fontSize
                                          fontColor:[SKColor greenColor]];
-  _playLabel.text = PlayName;
+  NSString *text = PlayName;
+  if (suffix) {
+    text = [text stringByAppendingString:[NSString stringWithFormat:@" (Last score: %@)", suffix]];
+  }
+  _playLabel.text = text;
   _playLabel.name = PlayName;
   CGFloat centerOffsetY = ValueForDevice(PlayLabelCenterOffsetY_iPhone, PlayLabelCenterOffsetY_iPad);
   _playLabel.position = CGPointMake(self.nameLabel.position.x,
