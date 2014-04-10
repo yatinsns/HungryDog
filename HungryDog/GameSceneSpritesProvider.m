@@ -8,13 +8,28 @@
 
 #import "GameSceneSpritesProvider.h"
 #import "UIUtils.h"
+#import "UIConstants.h"
+#import "SKLabelNode+HungryDogAdditions.h"
 
 const CGFloat BoneWidth_iPhone = 50;
 const CGFloat BoneWidth_iPad = 100;
 const CGFloat BoneHeight_iPhone = 28;
 const CGFloat BoneHeight_iPad = 56;
 
+const CGFloat ScoreLabelFontSize_iPhone = 20;
+const CGFloat ScoreLabelFontSize_iPad = 40;
+
 @implementation GameSceneSpritesProvider
+
+- (SKLabelNode *)score {
+  CGFloat fontSize = ValueForDevice(ScoreLabelFontSize_iPhone, ScoreLabelFontSize_iPad);
+  SKLabelNode *node = [SKLabelNode labelNodeWithFontNamed:AppFontName
+                                                 fontSize:fontSize
+                                                fontColor:[SKColor whiteColor]];
+  node.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  node.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+  return node;
+}
 
 - (SKSpriteNode *)energyBarWithBorderWidth:(CGFloat)borderWidth
                            bottomLeftPoint:(CGPoint)bottomLeftPoint

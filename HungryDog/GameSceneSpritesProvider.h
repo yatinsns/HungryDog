@@ -11,6 +11,8 @@
 
 @interface GameSceneSpritesProvider : NSObject
 
+- (SKLabelNode *)score;
+
 - (SKSpriteNode *)energyBarWithBorderWidth:(CGFloat)borderWidth
                            bottomLeftPoint:(CGPoint)bottomLeftPoint
                              topRightPoint:(CGPoint)topRightPoint

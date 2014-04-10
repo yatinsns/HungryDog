@@ -16,8 +16,6 @@
 #import "GameSceneSpritesOrganizer.h"
 #import "SKAction+BoneAdditions.h"
 
-const CGFloat ScoreLabelFontSize_iPhone = 20;
-const CGFloat ScoreLabelFontSize_iPad = 40;
 const CGFloat ScoreLabelPaddingRight = 10;
 const CGFloat ScoreLabelPaddingTop = 10;
 
@@ -66,13 +64,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 }
 
 - (void)addScoreLabel {
-  CGFloat fontSize = ValueForDevice(ScoreLabelFontSize_iPhone, ScoreLabelFontSize_iPad);
-  _scoreLabel = [SKLabelNode labelNodeWithFontNamed:AppFontName
-                                          fontSize:fontSize
-                                         fontColor:[SKColor whiteColor]];
+  _scoreLabel = [self.spritesProvider score];
   _scoreLabel.text = [NSString stringWithScore:self.gamePlay.scoreHandler.currentScore];
-  _scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-  _scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
   _scoreLabel.position = CGPointMake(self.size.width - ScoreLabelPaddingRight,
                                      self.size.height - _scoreLabel.frame.size.height - ScoreLabelPaddingTop);
   [self addChild:_scoreLabel];
