@@ -8,13 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ScoreHandlerDelegate;
+
 /**
  This class handles score related to single gameplay.
  */
 @interface ScoreHandler : NSObject
 
+@property (nonatomic, weak) id<ScoreHandlerDelegate> delegate;
+
 - (void)incrementScoreByValue:(NSUInteger)value;
 
 - (NSUInteger)currentScore;
+
+@end
+
+
+@protocol ScoreHandlerDelegate <NSObject>
+
+- (void)scoreHandlerDidUpdateScore:(ScoreHandler *)scoreHandler;
 
 @end

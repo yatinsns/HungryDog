@@ -24,7 +24,7 @@ const NSTimeInterval BoneAppearanceTimeInterval = 10;
 
 static NSString *const BoneName = @"Bone";
 
-@interface GameScene () <EnergyBarHandlerDelegate, BoneGeneratorDelegate>
+@interface GameScene () <ScoreHandlerDelegate, EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) SKSpriteNode *dog;
@@ -45,6 +45,7 @@ static NSString *const BoneName = @"Bone";
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay {
   if (self = [super initWithSize:size]) {
     _gamePlay = gamePlay;
+    _gamePlay.scoreHandler.delegate = self;
     _gamePlay.energyBarHandler.delegate = self;
     _gamePlay.boneGenerator.delegate = self;
 
@@ -52,7 +53,7 @@ static NSString *const BoneName = @"Bone";
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] initWithSize:size];
     
-    [self addScoreLabel];
+    [self addScoreLabelWithScore:_gamePlay.scoreHandler.currentScore];
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
     [self addDog];
@@ -65,11 +66,10 @@ static NSString *const BoneName = @"Bone";
 
 #pragma mark - Sprites
 
-- (void)addScoreLabel {
-  _scoreLabel = [self.spritesProvider score];
-  _scoreLabel.text = [NSString stringWithScore:self.gamePlay.scoreHandler.currentScore];
-  _scoreLabel.position = [self.spritesOrganizer positionForScoreLabel:_scoreLabel];
-  [self addChild:_scoreLabel];
+- (void)addScoreLabelWithScore:(NSUInteger)score {
+  self.scoreLabel = [self.spritesProvider score];
+  self.scoreLabel.text = [NSString stringWithScore:score];
+  self.scoreLabel.position = [self.spritesOrganizer positionForScoreLabel:_scoreLabel];
 }
 
 - (void)addEnergyBarWithStatus:(NSUInteger)status {
@@ -93,6 +93,12 @@ static NSString *const BoneName = @"Bone";
   }];
 }
 
+- (void)setScoreLabel:(SKLabelNode *)scoreLabel {
+  [_scoreLabel removeFromParent];
+  _scoreLabel = scoreLabel;
+  [self addChild:_scoreLabel];
+}
+
 - (void)setEneryBarSprite:(SKSpriteNode *)eneryBarSprite {
   [_eneryBarSprite removeFromParent];
   _eneryBarSprite = eneryBarSprite;
@@ -111,6 +117,7 @@ static NSString *const BoneName = @"Bone";
     SKSpriteNode *bone = (SKSpriteNode *)node;
     if (CGRectIntersectsRect(bone.frame, self.dog.frame)) {
       [bone removeFromParent];
+      [self.gamePlay.scoreHandler incrementScoreByValue:1];
       [self generateBone];
     }
   }];
@@ -165,6 +172,12 @@ static NSString *const BoneName = @"Bone";
 
 - (void)boneGeneratorDidGenerateNewBone:(BoneGenerator *)boneGenerator {
   [self addBone];
+}
+
+#pragma mark - ScoreHandlerDelegate
+
+- (void)scoreHandlerDidUpdateScore:(ScoreHandler *)scoreHandler {
+  [self addScoreLabelWithScore:scoreHandler.currentScore];
 }
 
 #pragma mark - Gestures

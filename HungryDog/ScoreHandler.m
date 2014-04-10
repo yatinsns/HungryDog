@@ -26,6 +26,7 @@
 
 - (void)incrementScoreByValue:(NSUInteger)value {
   _currentScore += value;
+  [self.delegate scoreHandlerDidUpdateScore:self];
 }
 
 @end
