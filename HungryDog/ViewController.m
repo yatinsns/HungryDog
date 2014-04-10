@@ -17,22 +17,23 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
+- (void)viewWillLayoutSubviews {
+  [super viewWillLayoutSubviews];
   
-  // FIXME (YS): Need to move this to another method.
   // Configure the view.
-  SKView *skView = (SKView *)self.view;
-  skView.showsFPS = YES;
-  skView.showsNodeCount = YES;
-  
-  // Create and configure the scene.
-  MainScene *scene = [MainScene sceneWithSize:skView.bounds.size];
-  scene.scaleMode = SKSceneScaleModeAspectFill;
-  scene.delegate = self;
-  
-  // Present the scene.
-  [skView presentScene:scene];
+  SKView * skView = (SKView *)self.view;
+  if (!skView.scene) {
+    skView.showsFPS = YES;
+    skView.showsNodeCount = YES;
+
+    // Create and configure the scene.
+    MainScene *scene = [MainScene sceneWithSize:skView.bounds.size];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.delegate = self;
+
+    // Present the scene.
+    [skView presentScene:scene];
+  }
 }
 
 - (BOOL)shouldAutorotate {
