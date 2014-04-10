@@ -20,6 +20,8 @@
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
+const NSTimeInterval BoneAppearanceTimeInterval = 10;
+
 @interface GameScene () <EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
@@ -82,7 +84,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   node.position = [self.spritesOrganizer randomPositionForBone];
   [self addChild:node];
   __block typeof (self) weakSelf = self;
-  [node runAction:[SKAction boneActionForTimeInterval:5] completion:^{
+  [node runAction:[SKAction boneActionForTimeInterval:BoneAppearanceTimeInterval] completion:^{
     [weakSelf generateBone];
   }];
 }
