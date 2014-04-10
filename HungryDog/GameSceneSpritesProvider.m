@@ -7,6 +7,12 @@
 //
 
 #import "GameSceneSpritesProvider.h"
+#import "UIUtils.h"
+
+const CGFloat BoneWidth_iPhone = 50;
+const CGFloat BoneWidth_iPad = 100;
+const CGFloat BoneHeight_iPhone = 28;
+const CGFloat BoneHeight_iPad = 56;
 
 @implementation GameSceneSpritesProvider
 
@@ -62,7 +68,9 @@
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Bone.png"];
   node.xScale = 0.0;
   node.yScale = 0.0;
-  node.size = CGSizeMake(100, 56);
+  CGFloat width = ValueForDevice(BoneWidth_iPhone, BoneWidth_iPad);
+  CGFloat height = ValueForDevice(BoneHeight_iPhone, BoneHeight_iPad);
+  node.size = CGSizeMake(width, height);
   node.zRotation = -M_PI / 16;
   return node;
 }
