@@ -18,4 +18,8 @@
 
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel;
 
+- (CGSize)sizeForEnergyBar;
+
+- (CGPoint)positionForEnergyBar;
+
 @end

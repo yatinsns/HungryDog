@@ -31,28 +31,29 @@ const CGFloat ScoreLabelFontSize_iPad = 40;
   return node;
 }
 
-- (SKSpriteNode *)energyBarWithBorderWidth:(CGFloat)borderWidth
-                           bottomLeftPoint:(CGPoint)bottomLeftPoint
-                             topRightPoint:(CGPoint)topRightPoint
-                                    status:(NSUInteger)status {
+- (SKSpriteNode *)energyBarWithSize:(CGSize)size
+                             border:(CGFloat)border
+                             status:(NSUInteger)status {
   SKSpriteNode *node = [SKSpriteNode node];
   SKShapeNode *topLeft = [SKShapeNode node];
   UIBezierPath *topLeftBezierPath = [[UIBezierPath alloc] init];
+  CGPoint bottomLeftPoint = CGPointZero;
+  CGPoint topRightPoint = CGPointMake(size.width, size.height);
   [topLeftBezierPath moveToPoint:CGPointMake(bottomLeftPoint.x, bottomLeftPoint.y)];
   [topLeftBezierPath addLineToPoint:CGPointMake(topRightPoint.x, bottomLeftPoint.y)];
   [topLeftBezierPath addLineToPoint:CGPointMake(topRightPoint.x, topRightPoint.y)];
   [topLeftBezierPath addLineToPoint:CGPointMake(bottomLeftPoint.x, topRightPoint.y)];
   [topLeftBezierPath addLineToPoint:CGPointMake(bottomLeftPoint.x, bottomLeftPoint.y)];
   topLeft.path = topLeftBezierPath.CGPath;
-  topLeft.lineWidth = borderWidth;
+  topLeft.lineWidth = border;
   topLeft.strokeColor = [UIColor whiteColor];
   [node addChild:topLeft];
   
-  CGFloat barNodeWidth = (topRightPoint.x - bottomLeftPoint.x) - (2 * borderWidth);
-  CGFloat barNodeHeight = (topRightPoint.y - bottomLeftPoint.y) - (2 * borderWidth);
+  CGFloat barNodeWidth = (topRightPoint.x - bottomLeftPoint.x) - (2 * border);
+  CGFloat barNodeHeight = (topRightPoint.y - bottomLeftPoint.y) - (2 * border);
   SKSpriteNode *barNode = [SKSpriteNode spriteNodeWithImageNamed:@"EnergyBar.png"];
   barNode.anchorPoint = CGPointZero;
-  CGPoint bottomLeftBarNodePoint = CGPointMake(bottomLeftPoint.x + borderWidth, bottomLeftPoint.y + borderWidth);
+  CGPoint bottomLeftBarNodePoint = CGPointMake(bottomLeftPoint.x + border, bottomLeftPoint.y + border);
   barNode.position = bottomLeftBarNodePoint;
   barNode.size = CGSizeMake(barNodeWidth,
                             barNodeHeight);

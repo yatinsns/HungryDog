@@ -16,14 +16,6 @@
 #import "GameSceneSpritesOrganizer.h"
 #import "SKAction+BoneAdditions.h"
 
-const CGFloat EnergyBarSizeWidth_iPhone = 30;
-const CGFloat EnergyBarSizeWidth_iPad = 50;
-
-const CGFloat EnergyBarPaddingRight_iPhone = 30;
-const CGFloat EnergyBarPaddingRight_iPad = 15;
-
-const CGFloat EnergyBarPaddingTop_iPhone = 50;
-const CGFloat EnergyBarPaddingTop_iPad = 80;
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
@@ -60,6 +52,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   return self;
 }
 
+#pragma mark - Sprites
+
 - (void)addScoreLabel {
   _scoreLabel = [self.spritesProvider score];
   _scoreLabel.text = [NSString stringWithScore:self.gamePlay.scoreHandler.currentScore];
@@ -68,19 +62,12 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 }
 
 - (void)addEnergyBarWithStatus:(NSUInteger)status {
-  CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
-  CGFloat borderWidth = ValueForDevice(EnergyBarStrokeWidth_iPhone, EnergyBarStrokeWidth_iPad);
-  CGFloat paddingTop = ValueForDevice(EnergyBarPaddingTop_iPhone, EnergyBarPaddingTop_iPad);
-  CGFloat paddingRight = ValueForDevice(EnergyBarPaddingRight_iPhone, EnergyBarPaddingRight_iPad);
-  
-  CGPoint bottomLeftPoint = CGPointMake(self.size.width - energyBarWidth - paddingRight,
-                                        paddingTop);
-  CGPoint topRightPoint = CGPointMake(self.size.width - paddingRight,
-                                      self.size.height - paddingTop);
-  self.eneryBarSprite = [self.spritesProvider energyBarWithBorderWidth:borderWidth
-                                                       bottomLeftPoint:bottomLeftPoint
-                                                         topRightPoint:topRightPoint
-                                                                status:status];
+  CGFloat border = ValueForDevice(EnergyBarStrokeWidth_iPhone, EnergyBarStrokeWidth_iPad);
+  self.eneryBarSprite = [self.spritesProvider energyBarWithSize:[self.spritesOrganizer sizeForEnergyBar]
+                                                         border:border
+                                                         status:status];
+  self.eneryBarSprite.anchorPoint = CGPointZero;
+  self.eneryBarSprite.position = [self.spritesOrganizer positionForEnergyBar];
 }
 
 - (void)addBone {
@@ -98,6 +85,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   _eneryBarSprite = eneryBarSprite;
   [self addChild:_eneryBarSprite];
 }
+
+#pragma mark - Overridden methods
 
 - (void)update:(NSTimeInterval)currentTime {
   if (self.lastUpdateTime) {

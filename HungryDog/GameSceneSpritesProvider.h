@@ -13,10 +13,9 @@
 
 - (SKLabelNode *)score;
 
-- (SKSpriteNode *)energyBarWithBorderWidth:(CGFloat)borderWidth
-                           bottomLeftPoint:(CGPoint)bottomLeftPoint
-                             topRightPoint:(CGPoint)topRightPoint
-                                    status:(NSUInteger)status;
+- (SKSpriteNode *)energyBarWithSize:(CGSize)size
+                             border:(CGFloat)border
+                             status:(NSUInteger)status;
 
 - (SKSpriteNode *)bone;
 

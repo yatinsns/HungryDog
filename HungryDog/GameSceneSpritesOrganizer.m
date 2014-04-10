@@ -8,9 +8,19 @@
 
 #import "GameSceneSpritesOrganizer.h"
 #import <SpriteKit/SpriteKit.h>
+#import "UIUtils.h"
 
 const CGFloat ScoreLabelPaddingRight = 10;
 const CGFloat ScoreLabelPaddingTop = 10;
+
+const CGFloat EnergyBarSizeWidth_iPhone = 30;
+const CGFloat EnergyBarSizeWidth_iPad = 50;
+
+const CGFloat EnergyBarPaddingRight_iPhone = 30;
+const CGFloat EnergyBarPaddingRight_iPad = 15;
+
+const CGFloat EnergyBarPaddingTop_iPhone = 50;
+const CGFloat EnergyBarPaddingTop_iPad = 80;
 
 @interface GameSceneSpritesOrganizer ()
 
@@ -36,6 +46,20 @@ const CGFloat ScoreLabelPaddingTop = 10;
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel {
   return CGPointMake(self.size.width - ScoreLabelPaddingRight,
                      self.size.height - scoreLabel.frame.size.height - ScoreLabelPaddingTop);
+}
+
+- (CGSize)sizeForEnergyBar {
+  CGFloat paddingTop = ValueForDevice(EnergyBarPaddingTop_iPhone, EnergyBarPaddingTop_iPad);
+  CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
+  CGFloat energyBarHeight = self.size.height - 2 * paddingTop;
+  return CGSizeMake(energyBarWidth, energyBarHeight);
+}
+
+- (CGPoint)positionForEnergyBar {
+  CGFloat paddingTop = ValueForDevice(EnergyBarPaddingTop_iPhone, EnergyBarPaddingTop_iPad);
+  CGFloat paddingRight = ValueForDevice(EnergyBarPaddingRight_iPhone, EnergyBarPaddingRight_iPad);
+  CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
+  return CGPointMake(self.size.width - energyBarWidth - paddingRight, paddingTop);
 }
 
 @end
