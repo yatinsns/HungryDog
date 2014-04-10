@@ -37,7 +37,7 @@
 #pragma mark - Timer methods
 
 - (void)createTimer {
-  self.timer = [NSTimer scheduledTimerWithTimeInterval:10
+  self.timer = [NSTimer scheduledTimerWithTimeInterval:15
                                                 target:self
                                               selector:@selector(__generateBone)
                                               userInfo:nil
