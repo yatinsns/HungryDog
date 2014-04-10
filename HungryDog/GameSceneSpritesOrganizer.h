@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class SKLabelNode;
+
 @interface GameSceneSpritesOrganizer : NSObject
 
 - (CGPoint)randomPositionForBone;
+
+- (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel;
 
 @end
