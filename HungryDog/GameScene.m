@@ -13,6 +13,7 @@
 #import "GamePlay.h"
 #import "NSString+ScoreAdditions.h"
 #import "GameSceneSpritesProvider.h"
+#import "GameSceneSpritesOrganizer.h"
 #import "SKAction+BoneAdditions.h"
 
 const CGFloat ScoreLabelFontSize_iPhone = 20;
@@ -36,6 +37,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic, readwrite) GamePlay *gamePlay;
 @property (nonatomic) GameSceneSpritesProvider *spritesProvider;
+@property (nonatomic) GameSceneSpritesOrganizer *spritesOrganizer;
 
 @property (nonatomic) NSTimeInterval lastUpdateTime;
 @property (nonatomic) NSTimeInterval dt;
@@ -54,6 +56,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
     self.backgroundColor = [SKColor blackColor];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
+    _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] init];
+    
     [self addScoreLabel];
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
@@ -91,10 +95,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 }
 
 - (void)addBone {
-  // FIXME (YS): Create a random point
-  CGPoint randomPoint = CGPointMake(300, 300);
   SKSpriteNode *node = [self.spritesProvider bone];
-  node.position = randomPoint;
+  node.position = [self.spritesOrganizer randomPositionForBone];
   [self addChild:node];
   [node runAction:[SKAction boneAction]];
 }

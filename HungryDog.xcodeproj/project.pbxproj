@@ -37,6 +37,7 @@
 		80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */; };
 		80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */; };
 		80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */; };
+		80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E318F676A700E6DB97 /* GameSceneSpritesOrganizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneGenerator.m; sourceTree = "<group>"; };
 		80DE58DF18F6697700E6DB97 /* SKAction+BoneAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+BoneAdditions.h"; sourceTree = "<group>"; };
 		80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+BoneAdditions.m"; sourceTree = "<group>"; };
+		80DE58E218F676A700E6DB97 /* GameSceneSpritesOrganizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneSpritesOrganizer.h; sourceTree = "<group>"; };
+		80DE58E318F676A700E6DB97 /* GameSceneSpritesOrganizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneSpritesOrganizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,8 @@
 				80C40BED18F17C4B00FBF8C7 /* UIUtils.m */,
 				80A7CD6B18F49473006357D7 /* GameSceneSpritesProvider.h */,
 				80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */,
+				80DE58E218F676A700E6DB97 /* GameSceneSpritesOrganizer.h */,
+				80DE58E318F676A700E6DB97 /* GameSceneSpritesOrganizer.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
+				80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
 				80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */,
 				80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */,
