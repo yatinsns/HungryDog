@@ -7,10 +7,12 @@
 //
 
 #import "GamePlay.h"
+#import "UIUtils.h"
 
-static const CGFloat DepletionRateDefault = 0.0025;
+static const CGFloat DepletionRateDefault = 0.004;
 
-static const CGFloat DogSpeed = 150;
+static const CGFloat DogSpeed_iPhone = 150;
+static const CGFloat DogSpeed_iPad = 250;
 static const CGFloat DogRotationSpeed = 4 * M_PI;
 
 @interface GamePlay ()
@@ -30,7 +32,9 @@ static const CGFloat DogRotationSpeed = 4 * M_PI;
     _scoreHandler = [[ScoreHandler alloc] init];
     _energyBarHandler = [[EnergyBarHandler alloc] initWithDepletionRate:DepletionRateDefault];
     _boneGenerator = [[BoneGenerator alloc] init];
-    _dogHandler = [[DogHandler alloc] initWithSpeed:DogSpeed
+
+    CGFloat dogSpeed = ValueForDevice(DogSpeed_iPhone, DogSpeed_iPad);
+    _dogHandler = [[DogHandler alloc] initWithSpeed:dogSpeed
                                       rotationSpeed:DogRotationSpeed];
   }
   return self;

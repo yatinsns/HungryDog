@@ -8,6 +8,9 @@
 
 #import "EnergyBarHandler.h"
 
+static const CGFloat StatusValueMax = 100;
+static const CGFloat StatusValueBoost = 15;
+
 @interface EnergyBarHandler ()
 
 @property (nonatomic) CGFloat statusValue;
@@ -20,16 +23,16 @@
 - (instancetype)initWithDepletionRate:(CGFloat)depletionRate {
   self = [super init];
   if (self) {
-    _statusValue = 100;
+    _statusValue = StatusValueMax;
     _depletionRate = depletionRate;
   }
   return self;
 }
 
 - (void)boost {
-  self.statusValue = (self.statusValue + 10);
-  if (self.statusValue > 100) {
-    self.statusValue = 100;
+  self.statusValue = (self.statusValue + StatusValueBoost);
+  if (self.statusValue > StatusValueMax) {
+    self.statusValue = StatusValueMax;
   }
   [self.delegate energyBarHandlerDidUpdateStatus:self];
 }
