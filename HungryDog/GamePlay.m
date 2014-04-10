@@ -8,7 +8,7 @@
 
 #import "GamePlay.h"
 
-static const CGFloat DepletionRateDefault = 0.000005;
+static const CGFloat DepletionRateDefault = 0.0025;
 
 @interface GamePlay ()
 

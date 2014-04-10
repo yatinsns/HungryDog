@@ -39,7 +39,7 @@
   if (self.statusValue != 0) {
     NSTimeInterval numberOfMilliseconds = timeDifference * 1000;
     NSUInteger oldValue = ceil(self.statusValue);
-    self.statusValue = (self.statusValue - numberOfMilliseconds * self.depletionRate);
+    self.statusValue = (100 - numberOfMilliseconds * self.depletionRate);
     NSUInteger newValue = ceil(self.statusValue);
     if (newValue == 0) {
       self.statusValue = 0;
