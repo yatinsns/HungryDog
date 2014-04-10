@@ -22,6 +22,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 const NSTimeInterval BoneAppearanceTimeInterval = 10;
 
+static NSString *const BoneName = @"Bone";
+
 @interface GameScene () <EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
@@ -83,6 +85,7 @@ const NSTimeInterval BoneAppearanceTimeInterval = 10;
 - (void)addBone {
   SKSpriteNode *node = [self.spritesProvider bone];
   node.position = [self.spritesOrganizer randomPositionForBone];
+  node.name = BoneName;
   [self addChild:node];
   __block typeof (self) weakSelf = self;
   [node runAction:[SKAction boneActionForTimeInterval:BoneAppearanceTimeInterval] completion:^{
@@ -101,6 +104,16 @@ const NSTimeInterval BoneAppearanceTimeInterval = 10;
   node.position = [self.spritesOrganizer initialPositionForDog];
   [self addChild:node];
   [node runAction:[SKAction dogTextureAction]];
+}
+
+- (void)checkCollisions {
+  [self enumerateChildNodesWithName:BoneName usingBlock:^(SKNode *node, BOOL *stop){
+    SKSpriteNode *bone = (SKSpriteNode *)node;
+    if (CGRectIntersectsRect(bone.frame, self.dog.frame)) {
+      [bone removeFromParent];
+      [self generateBone];
+    }
+  }];
 }
 
 #pragma mark - Overridden methods
@@ -123,6 +136,10 @@ const NSTimeInterval BoneAppearanceTimeInterval = 10;
     [child removeAllActions];
   }];
   [self removeAllChildren];
+}
+
+- (void)didEvaluateActions {
+  [self checkCollisions];
 }
 
 #pragma mark - EnergyBarHandlerDelegate
