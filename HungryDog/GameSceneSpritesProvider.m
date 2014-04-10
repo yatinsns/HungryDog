@@ -60,6 +60,8 @@
 
 - (SKSpriteNode *)bone {
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Bone.png"];
+  node.xScale = 0.0;
+  node.yScale = 0.0;
   node.size = CGSizeMake(100, 56);
   node.zRotation = -M_PI / 16;
   return node;
