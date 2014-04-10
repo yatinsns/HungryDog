@@ -48,6 +48,13 @@ NSString *const PlayName = @"Play";
   return self;
 }
 
+- (void)willMoveFromView:(SKView *)view {
+  [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    SKNode* child = obj;
+    [child removeAllActions];
+  }];
+  [self removeAllChildren];
+}
 
 - (void)addNameLabel {
   CGFloat fontSize = ValueForDevice(NameLabelFontSize_iPhone, NameLabelFontSize_iPad);

@@ -98,7 +98,10 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   SKSpriteNode *node = [self.spritesProvider bone];
   node.position = [self.spritesOrganizer randomPositionForBone];
   [self addChild:node];
-  [node runAction:[SKAction boneActionForTimeInterval:5]];
+  __block typeof (self) weakSelf = self;
+  [node runAction:[SKAction boneActionForTimeInterval:5] completion:^{
+    [weakSelf generateBone];
+  }];
 }
 
 - (void)setEneryBarSprite:(SKSpriteNode *)eneryBarSprite {
@@ -118,6 +121,14 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   [self.gamePlay.energyBarHandler update:currentTime];
 }
 
+- (void)willMoveFromView:(SKView *)view {
+  [self.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    SKNode* child = obj;
+    [child removeAllActions];
+  }];
+  [self removeAllChildren];
+}
+
 #pragma mark - EnergyBarHandlerDelegate
 
 - (void)energyBarHandlerDidUpdateStatus:(EnergyBarHandler *)energyBarHandler {
@@ -131,6 +142,10 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 - (void)endGame {
   [self.delegate gameSceneDidEndGame:self];
+}
+
+- (void)generateBone {
+  [self.gamePlay.boneGenerator generateBone];
 }
 
 #pragma mark - BoneGeneratorDelegate
