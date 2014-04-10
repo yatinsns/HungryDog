@@ -13,6 +13,7 @@
 #import "GamePlay.h"
 #import "NSString+ScoreAdditions.h"
 #import "GameSceneSpritesProvider.h"
+#import "SKAction+BoneAdditions.h"
 
 const CGFloat ScoreLabelFontSize_iPhone = 20;
 const CGFloat ScoreLabelFontSize_iPad = 40;
@@ -55,6 +56,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     [self addScoreLabel];
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
+    [self addBone];
   }
   return self;
 }
@@ -86,6 +88,15 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
                                                        bottomLeftPoint:bottomLeftPoint
                                                          topRightPoint:topRightPoint
                                                                 status:status];
+}
+
+- (void)addBone {
+  // FIXME (YS): Create a random point
+  CGPoint randomPoint = CGPointMake(300, 300);
+  SKSpriteNode *node = [self.spritesProvider bone];
+  node.position = randomPoint;
+  [self addChild:node];
+  [node runAction:[SKAction boneAction]];
 }
 
 - (void)setEneryBarSprite:(SKSpriteNode *)eneryBarSprite {
@@ -123,7 +134,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 #pragma mark - BoneGeneratorDelegate
 
 - (void)boneGeneratorDidGenerateNewBone:(BoneGenerator *)boneGenerator {
-  // FIXME (YS): Generate new bone.
+  [self addBone];
 }
 
 @end

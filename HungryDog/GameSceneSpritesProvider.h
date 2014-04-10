@@ -16,4 +16,6 @@
                              topRightPoint:(CGPoint)topRightPoint
                                     status:(NSUInteger)status;
 
+- (SKSpriteNode *)bone;
+
 @end

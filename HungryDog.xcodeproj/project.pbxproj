@@ -36,6 +36,7 @@
 		80C40C0218F4717C00FBF8C7 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0118F4717C00FBF8C7 /* GamePlay.m */; };
 		80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */; };
 		80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */; };
+		80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ScoreAdditions.m"; sourceTree = "<group>"; };
 		80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneGenerator.h; sourceTree = "<group>"; };
 		80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneGenerator.m; sourceTree = "<group>"; };
+		80DE58DF18F6697700E6DB97 /* SKAction+BoneAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+BoneAdditions.h"; sourceTree = "<group>"; };
+		80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+BoneAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,7 @@
 		80C40BDC18EFFCB000FBF8C7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				80DE58DE18F6693200E6DB97 /* Actions */,
 				80C40BDE18EFFCF500FBF8C7 /* Controllers */,
 				80C40BDD18EFFCEA00FBF8C7 /* Scenes */,
 				80C40BB118EFEEEE00FBF8C7 /* Main_iPhone.storyboard */,
@@ -260,6 +264,15 @@
 				80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		80DE58DE18F6693200E6DB97 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				80DE58DF18F6697700E6DB97 /* SKAction+BoneAdditions.h */,
+				80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +387,7 @@
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
+				80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */,
 				80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */,
 				80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */,
 			);
