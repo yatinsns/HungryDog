@@ -11,7 +11,7 @@
 @interface EnergyBarHandler ()
 
 @property (nonatomic) CGFloat statusValue;
-@property (nonatomic) NSTimeInterval markerTime;
+@property (nonatomic) NSTimeInterval lastUpdatedTime;
 
 @end
 
@@ -26,20 +26,27 @@
   return self;
 }
 
-- (void)update:(NSTimeInterval)currentTime {
-  if (self.markerTime) {
-    NSTimeInterval difference = currentTime - self.markerTime;
-    [self updateStatusWithChangeInTime:difference];
-  } else {
-    self.markerTime = currentTime;
+- (void)boost {
+  self.statusValue = (self.statusValue + 10);
+  if (self.statusValue > 100) {
+    self.statusValue = 100;
   }
+  [self.delegate energyBarHandlerDidUpdateStatus:self];
+}
+
+- (void)update:(NSTimeInterval)currentTime {
+  if (self.lastUpdatedTime) {
+    NSTimeInterval difference = currentTime - self.lastUpdatedTime;
+    [self updateStatusWithChangeInTime:difference];
+  }
+  self.lastUpdatedTime = currentTime;
 }
 
 - (void)updateStatusWithChangeInTime:(NSTimeInterval)timeDifference {
   if (self.statusValue != 0) {
     NSTimeInterval numberOfMilliseconds = timeDifference * 1000;
     NSUInteger oldValue = ceil(self.statusValue);
-    self.statusValue = (100 - numberOfMilliseconds * self.depletionRate);
+    self.statusValue = (self.statusValue - numberOfMilliseconds * self.depletionRate);
     NSUInteger newValue = ceil(self.statusValue);
     if (newValue == 0) {
       self.statusValue = 0;

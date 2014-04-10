@@ -118,6 +118,7 @@ static NSString *const BoneName = @"Bone";
     if (CGRectIntersectsRect(bone.frame, self.dog.frame)) {
       [bone removeFromParent];
       [self.gamePlay.scoreHandler incrementScoreByValue:1];
+      [self.gamePlay.energyBarHandler boost];
       [self generateBone];
     }
   }];

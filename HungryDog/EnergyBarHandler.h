@@ -39,6 +39,11 @@
  */
 - (void)update:(NSTimeInterval)currentTime;
 
+/**
+ Boosts energy by a fixed amount.
+ */
+- (void)boost;
+
 @end
 
 @protocol EnergyBarHandlerDelegate <NSObject>
