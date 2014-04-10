@@ -10,6 +10,6 @@
 
 @interface SKAction (BoneAdditions)
 
-+ (SKAction *)boneAction;
++ (SKAction *)boneActionForTimeInterval:(NSTimeInterval)timeInterval;
 
 @end

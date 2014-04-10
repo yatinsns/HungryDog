@@ -98,7 +98,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   SKSpriteNode *node = [self.spritesProvider bone];
   node.position = [self.spritesOrganizer randomPositionForBone];
   [self addChild:node];
-  [node runAction:[SKAction boneAction]];
+  [node runAction:[SKAction boneActionForTimeInterval:5]];
 }
 
 - (void)setEneryBarSprite:(SKSpriteNode *)eneryBarSprite {
