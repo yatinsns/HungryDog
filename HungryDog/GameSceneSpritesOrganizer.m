@@ -12,18 +12,30 @@
 const CGFloat ScoreLabelPaddingRight = 10;
 const CGFloat ScoreLabelPaddingTop = 10;
 
+@interface GameSceneSpritesOrganizer ()
+
+@property (nonatomic) CGSize size;
+
+@end
+
 @implementation GameSceneSpritesOrganizer
 
+- (instancetype)initWithSize:(CGSize)size {
+  self = [super init];
+  if (self) {
+    _size = size;
+  }
+  return self;
+}
+
 - (CGPoint)randomPositionForBone {
-  CGRect screenRect = [[UIScreen mainScreen] bounds];
-  return CGPointMake(arc4random_uniform(screenRect.size.height),
-                     arc4random_uniform(screenRect.size.width));
+  return CGPointMake(arc4random_uniform(self.size.width),
+                     arc4random_uniform(self.size.height));
 }
 
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel {
-  CGRect screenRect = [[UIScreen mainScreen] bounds];
-  return CGPointMake(screenRect.size.height - ScoreLabelPaddingRight,
-                     screenRect.size.width - scoreLabel.frame.size.height - ScoreLabelPaddingTop);
+  return CGPointMake(self.size.width - ScoreLabelPaddingRight,
+                     self.size.height - scoreLabel.frame.size.height - ScoreLabelPaddingTop);
 }
 
 @end

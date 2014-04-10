@@ -45,13 +45,14 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay {
   if (self = [super initWithSize:size]) {
+    NSLog(@"<<< %@", NSStringFromCGSize(size));
     _gamePlay = gamePlay;
     _gamePlay.energyBarHandler.delegate = self;
     _gamePlay.boneGenerator.delegate = self;
 
     self.backgroundColor = [SKColor blackColor];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
-    _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] init];
+    _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] initWithSize:size];
     
     [self addScoreLabel];
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];

@@ -12,6 +12,8 @@
 
 @interface GameSceneSpritesOrganizer : NSObject
 
+- (instancetype)initWithSize:(CGSize)size;
+
 - (CGPoint)randomPositionForBone;
 
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel;
