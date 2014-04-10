@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */; };
 		80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80686F0518F5C9B000DB415E /* EnergyBarHandler.m */; };
 		80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */; };
 		80C40B9E18EFEEEE00FBF8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8018857218F71F9A00F64A0B /* SKAction+DogAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+DogAdditions.h"; sourceTree = "<group>"; };
+		8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+DogAdditions.m"; sourceTree = "<group>"; };
 		80686F0418F5C9B000DB415E /* EnergyBarHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyBarHandler.h; sourceTree = "<group>"; };
 		80686F0518F5C9B000DB415E /* EnergyBarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyBarHandler.m; sourceTree = "<group>"; };
 		80A7CD6B18F49473006357D7 /* GameSceneSpritesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneSpritesProvider.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 			children = (
 				80DE58DF18F6697700E6DB97 /* SKAction+BoneAdditions.h */,
 				80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */,
+				8018857218F71F9A00F64A0B /* SKAction+DogAdditions.h */,
+				8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
 				80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
+				8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */,
 				80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */,
 				80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */,
 				80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */,

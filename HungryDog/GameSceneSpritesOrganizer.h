@@ -22,4 +22,6 @@
 
 - (CGPoint)positionForEnergyBar;
 
+- (CGPoint)initialPositionForDog;
+
 @end

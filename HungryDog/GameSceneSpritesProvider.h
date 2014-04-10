@@ -19,4 +19,6 @@
 
 - (SKSpriteNode *)bone;
 
+- (SKSpriteNode *)dog;
+
 @end

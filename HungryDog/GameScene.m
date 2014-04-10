@@ -15,6 +15,7 @@
 #import "GameSceneSpritesProvider.h"
 #import "GameSceneSpritesOrganizer.h"
 #import "SKAction+BoneAdditions.h"
+#import "SKAction+DogAdditions.h"
 
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
@@ -48,6 +49,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
     [self addScoreLabel];
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
+    [self addDog];
   }
   return self;
 }
@@ -84,6 +86,13 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   [_eneryBarSprite removeFromParent];
   _eneryBarSprite = eneryBarSprite;
   [self addChild:_eneryBarSprite];
+}
+
+- (void)addDog {
+  SKSpriteNode *node = [self.spritesProvider dog];
+  node.position = [self.spritesOrganizer initialPositionForDog];
+  [self addChild:node];
+  [node runAction:[SKAction dogTextureAction]];
 }
 
 #pragma mark - Overridden methods

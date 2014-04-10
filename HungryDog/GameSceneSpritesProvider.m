@@ -19,6 +19,11 @@ const CGFloat BoneHeight_iPad = 56;
 const CGFloat ScoreLabelFontSize_iPhone = 20;
 const CGFloat ScoreLabelFontSize_iPad = 40;
 
+const CGFloat DogWidth_iPhone = 75;
+const CGFloat DogWidth_iPad = 150;
+const CGFloat DogHeight_iPhone = 37;
+const CGFloat DogHeight_iPad = 74;
+
 @implementation GameSceneSpritesProvider
 
 - (SKLabelNode *)score {
@@ -88,6 +93,13 @@ const CGFloat ScoreLabelFontSize_iPad = 40;
   CGFloat height = ValueForDevice(BoneHeight_iPhone, BoneHeight_iPad);
   node.size = CGSizeMake(width, height);
   node.zRotation = -M_PI / 16;
+  return node;
+}
+
+- (SKSpriteNode *)dog {
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Dog-main.png"];
+  node.size = CGSizeMake(ValueForDevice(DogWidth_iPhone, DogWidth_iPad),
+                         ValueForDevice(DogHeight_iPhone, DogHeight_iPad));
   return node;
 }
 

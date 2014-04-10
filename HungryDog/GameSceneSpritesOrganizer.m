@@ -22,6 +22,7 @@ const CGFloat EnergyBarPaddingRight_iPad = 15;
 const CGFloat EnergyBarPaddingTop_iPhone = 50;
 const CGFloat EnergyBarPaddingTop_iPad = 80;
 
+
 @interface GameSceneSpritesOrganizer ()
 
 @property (nonatomic) CGSize size;
@@ -60,6 +61,10 @@ const CGFloat EnergyBarPaddingTop_iPad = 80;
   CGFloat paddingRight = ValueForDevice(EnergyBarPaddingRight_iPhone, EnergyBarPaddingRight_iPad);
   CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
   return CGPointMake(self.size.width - energyBarWidth - paddingRight, paddingTop);
+}
+
+- (CGPoint)initialPositionForDog {
+  return CGPointMake(200, 80);
 }
 
 @end
