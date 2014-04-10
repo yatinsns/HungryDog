@@ -23,6 +23,8 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 @interface GameScene () <EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
+@property (nonatomic) SKSpriteNode *dog;
+
 @property (nonatomic, readwrite) GamePlay *gamePlay;
 @property (nonatomic) GameSceneSpritesProvider *spritesProvider;
 @property (nonatomic) GameSceneSpritesOrganizer *spritesOrganizer;
@@ -50,6 +52,9 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
     [self addDog];
+    
+    _gamePlay.dogHandler.dog = _dog;
+    self.userInteractionEnabled = YES;
   }
   return self;
 }
@@ -89,7 +94,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 }
 
 - (void)addDog {
-  SKSpriteNode *node = [self.spritesProvider dog];
+  SKSpriteNode *node = self.dog = [self.spritesProvider dog];
   node.position = [self.spritesOrganizer initialPositionForDog];
   [self addChild:node];
   [node runAction:[SKAction dogTextureAction]];
@@ -106,6 +111,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
   self.lastUpdateTime = currentTime;
 
   [self.gamePlay.energyBarHandler update:currentTime];
+  [self.gamePlay.dogHandler update:currentTime];  
 }
 
 - (void)willMoveFromView:(SKView *)view {
@@ -139,6 +145,26 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 - (void)boneGeneratorDidGenerateNewBone:(BoneGenerator *)boneGenerator {
   [self addBone];
+}
+
+#pragma mark - Gestures
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  [self handleTouches:touches];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  [self handleTouches:touches];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  [self handleTouches:touches];
+}
+
+- (void)handleTouches:(NSSet *)touches {
+  UITouch *touch = [touches anyObject];
+  CGPoint touchLocation = [touch locationInNode:self.scene];
+  [self.gamePlay.dogHandler moveTowardsLocation:touchLocation];
 }
 
 @end

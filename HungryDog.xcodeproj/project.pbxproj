@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */; };
+		802F9C0718F7295300747E7C /* DogHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 802F9C0618F7295300747E7C /* DogHandler.m */; };
 		80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80686F0518F5C9B000DB415E /* EnergyBarHandler.m */; };
 		80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */; };
 		80C40B9E18EFEEEE00FBF8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		8018857218F71F9A00F64A0B /* SKAction+DogAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+DogAdditions.h"; sourceTree = "<group>"; };
 		8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+DogAdditions.m"; sourceTree = "<group>"; };
+		802F9C0518F7295300747E7C /* DogHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogHandler.h; sourceTree = "<group>"; };
+		802F9C0618F7295300747E7C /* DogHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogHandler.m; sourceTree = "<group>"; };
 		80686F0418F5C9B000DB415E /* EnergyBarHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyBarHandler.h; sourceTree = "<group>"; };
 		80686F0518F5C9B000DB415E /* EnergyBarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyBarHandler.m; sourceTree = "<group>"; };
 		80A7CD6B18F49473006357D7 /* GameSceneSpritesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneSpritesProvider.h; sourceTree = "<group>"; };
@@ -262,14 +265,16 @@
 		80C40BFF18F4714C00FBF8C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				802F9C0518F7295300747E7C /* DogHandler.h */,
+				802F9C0618F7295300747E7C /* DogHandler.m */,
+				80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */,
+				80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */,
 				80686F0418F5C9B000DB415E /* EnergyBarHandler.h */,
 				80686F0518F5C9B000DB415E /* EnergyBarHandler.m */,
 				80C40C0018F4717C00FBF8C7 /* GamePlay.h */,
 				80C40C0118F4717C00FBF8C7 /* GamePlay.m */,
 				80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */,
 				80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */,
-				80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */,
-				80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */,
+				802F9C0718F7295300747E7C /* DogHandler.m in Sources */,
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
 				80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */,
 				80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */,

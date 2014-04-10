@@ -10,6 +10,7 @@
 #import "ScoreHandler.h"
 #import "EnergyBarHandler.h"
 #import "BoneGenerator.h"
+#import "DogHandler.h"
 
 /**
  This class represents a game play within the app.
@@ -19,5 +20,6 @@
 @property (nonatomic, readonly) ScoreHandler *scoreHandler;
 @property (nonatomic, readonly) EnergyBarHandler *energyBarHandler;
 @property (nonatomic, readonly) BoneGenerator *boneGenerator;
+@property (nonatomic, readonly) DogHandler *dogHandler;
 
 @end
