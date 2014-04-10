@@ -20,8 +20,8 @@ const CGFloat PlayLabelFontSize_iPhone = 15;
 const CGFloat PlayLabelFontSize_iPad = 40;
 
 const CGFloat DogSizeWidth_iPhone = 157;
-const CGFloat DogSizeWidth_iPad = 353;
-const CGFloat DogSizeHeight_iPhone = 294;
+const CGFloat DogSizeWidth_iPad = 294;
+const CGFloat DogSizeHeight_iPhone = 160;
 const CGFloat DogSizeHeight_iPad = 300;
 const CGFloat DogOriginX = 10;
 const CGFloat DogOriginY = 10;
