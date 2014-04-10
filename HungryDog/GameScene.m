@@ -45,7 +45,6 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay {
   if (self = [super initWithSize:size]) {
-    NSLog(@"<<< %@", NSStringFromCGSize(size));
     _gamePlay = gamePlay;
     _gamePlay.energyBarHandler.delegate = self;
     _gamePlay.boneGenerator.delegate = self;
