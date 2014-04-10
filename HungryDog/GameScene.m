@@ -77,6 +77,7 @@ const NSTimeInterval BoneAppearanceTimeInterval = 10;
                                                          status:status];
   self.eneryBarSprite.anchorPoint = CGPointZero;
   self.eneryBarSprite.position = [self.spritesOrganizer positionForEnergyBar];
+  self.eneryBarSprite.zPosition = -1;
 }
 
 - (void)addBone {
