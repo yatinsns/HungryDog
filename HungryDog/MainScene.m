@@ -19,6 +19,13 @@ const CGFloat PlayLabelCenterOffsetY_iPad = 80;
 const CGFloat PlayLabelFontSize_iPhone = 15;
 const CGFloat PlayLabelFontSize_iPad = 40;
 
+const CGFloat DogSizeWidth_iPhone = 157;
+const CGFloat DogSizeWidth_iPad = 353;
+const CGFloat DogSizeHeight_iPhone = 294;
+const CGFloat DogSizeHeight_iPad = 300;
+const CGFloat DogOriginX = 10;
+const CGFloat DogOriginY = 10;
+
 NSString *const PlayName = @"Play";
 
 @interface MainScene ()
@@ -43,6 +50,7 @@ NSString *const PlayName = @"Play";
     self.backgroundColor = [SKColor blackColor];
     [self addNameLabel];
     [self addPlayLabelWithSuffix:suffix];
+    [self addDog];
     self.userInteractionEnabled = YES;
   }
   return self;
@@ -84,6 +92,15 @@ NSString *const PlayName = @"Play";
                                     self.nameLabel.position.y - centerOffsetY);
   _playLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   [self addChild:_playLabel];
+}
+
+- (void)addDog {
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"HungryDog1.png"];
+  node.anchorPoint = CGPointZero;
+  node.size = CGSizeMake(ValueForDevice(DogSizeWidth_iPhone, DogSizeWidth_iPad),
+                         ValueForDevice(DogSizeHeight_iPhone, DogSizeHeight_iPad));
+  node.position = CGPointMake(DogOriginX, DogOriginY);
+  [self addChild:node];
 }
 
 #pragma mark - Touch events
