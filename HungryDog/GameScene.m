@@ -70,6 +70,7 @@ static NSString *const BoneName = @"Bone";
   self.scoreLabel = [self.spritesProvider score];
   self.scoreLabel.text = [NSString stringWithScore:score];
   self.scoreLabel.position = [self.spritesOrganizer positionForScoreLabel:_scoreLabel];
+  self.scoreLabel.zPosition = -1;
 }
 
 - (void)addEnergyBarWithStatus:(NSUInteger)status {
