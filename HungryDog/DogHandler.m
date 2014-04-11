@@ -42,15 +42,22 @@
   }
   
   self.lastUpdateTime = currentTime;
-  CGPoint offset = CGPointSubtract(self.lastTouchLocation, self.dog.position);
-  CGFloat length = CGPointLength(offset);
-  if (length >= (self.speed * self.dt)) {
-    [self moveSprite:self.dog velocity:self.velocity];
+  if (![self isLastTouchLocationNil]) {
+    CGPoint offset = CGPointSubtract(self.lastTouchLocation, self.dog.position);
+    CGFloat length = CGPointLength(offset);
+    if (length >= (self.speed * self.dt)) {
+      [self moveSprite:self.dog velocity:self.velocity];
+      [self rotateSprite:self.dog
+                  toFace:self.velocity
+     rotateRadiansPerSec:self.rotationSpeed];
+    } else {
+      self.velocity = CGPointZero;
+    }
+  } else {
+    // No need to stop as it won't be rotated if shortestAngle is zero.
     [self rotateSprite:self.dog
                 toFace:self.velocity
    rotateRadiansPerSec:self.rotationSpeed];
-  } else {
-    self.velocity = CGPointZero;
   }
 }
 
@@ -78,6 +85,22 @@
     rotationAngle = ABS(shortestAngle);
   }
   sprite.zRotation += ScalarSign(shortestAngle) * rotationAngle;
+}
+
+- (void)stop {
+  self.lastTouchLocation = [self lastTouchLocationNilValue];
+}
+
+- (CGPoint)lastTouchLocationNilValue {
+  return CGPointMake(NSNotFound, NSNotFound);
+}
+
+- (BOOL)isLastTouchLocationNil {
+  if (self.lastTouchLocation.x == NSNotFound
+      && self.lastTouchLocation.y == NSNotFound) {
+    return YES;
+  }
+  return NO;
 }
 
 @end

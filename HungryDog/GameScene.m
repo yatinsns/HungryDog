@@ -193,13 +193,21 @@ static NSString *const BoneName = @"Bone";
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  [self handleTouches:touches];
+  [self cancelTouches];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+  [self cancelTouches];
 }
 
 - (void)handleTouches:(NSSet *)touches {
   UITouch *touch = [touches anyObject];
   CGPoint touchLocation = [touch locationInNode:self.scene];
   [self.gamePlay.dogHandler moveTowardsLocation:touchLocation];
+}
+
+- (void)cancelTouches {
+  [self.gamePlay.dogHandler stop];
 }
 
 @end

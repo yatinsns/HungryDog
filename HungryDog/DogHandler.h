@@ -21,4 +21,6 @@
 
 - (void)moveTowardsLocation:(CGPoint)location;
 
+- (void)stop;
+
 @end
