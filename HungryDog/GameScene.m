@@ -85,7 +85,7 @@ static NSString *const BoneName = @"Bone";
 
 - (void)addBone {
   SKSpriteNode *node = [self.spritesProvider bone];
-  node.position = [self.spritesOrganizer randomPositionForBone];
+  node.position = [self.spritesOrganizer randomPositionForBoneAwayFromLocation:self.dog.position];
   node.name = BoneName;
   [self addChild:node];
   __block typeof (self) weakSelf = self;

@@ -9,6 +9,7 @@
 #import "GameSceneSpritesOrganizer.h"
 #import <SpriteKit/SpriteKit.h>
 #import "UIUtils.h"
+#import "VectorUtils.h"
 
 const CGFloat ScoreLabelPaddingRight = 10;
 const CGFloat ScoreLabelPaddingTop = 10;
@@ -22,6 +23,7 @@ const CGFloat EnergyBarPaddingRight_iPad = 15;
 const CGFloat EnergyBarPaddingTop_iPhone = 50;
 const CGFloat EnergyBarPaddingTop_iPad = 80;
 
+const CGFloat MinimumDistanceForBone = 100;
 
 @interface GameSceneSpritesOrganizer ()
 
@@ -39,9 +41,13 @@ const CGFloat EnergyBarPaddingTop_iPad = 80;
   return self;
 }
 
-- (CGPoint)randomPositionForBone {
-  return CGPointMake(arc4random_uniform(self.size.width),
-                     arc4random_uniform(self.size.height));
+- (CGPoint)randomPositionForBoneAwayFromLocation:(CGPoint)location {
+  CGPoint randomPoint;
+  do {
+    randomPoint = CGPointMake(arc4random_uniform(self.size.width),
+                              arc4random_uniform(self.size.height));
+  } while (CGPointLength(CGPointSubtract(randomPoint, location)) < MinimumDistanceForBone);
+  return randomPoint;
 }
 
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel {

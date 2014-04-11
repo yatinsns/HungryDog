@@ -14,7 +14,7 @@
 
 - (instancetype)initWithSize:(CGSize)size;
 
-- (CGPoint)randomPositionForBone;
+- (CGPoint)randomPositionForBoneAwayFromLocation:(CGPoint)location;
 
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel;
 
