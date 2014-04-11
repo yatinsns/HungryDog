@@ -10,17 +10,35 @@
 
 @class SKSpriteNode;
 
+/**
+ This class handles movement of dog.
+ */
 @interface DogHandler : NSObject
 
+/**
+ This property represents the dog to be moved.
+ */
 @property (nonatomic) SKSpriteNode *dog;
 
+/**
+ Designated initializer.
+ */
 - (instancetype)initWithSpeed:(CGFloat)speed
                 rotationSpeed:(CGFloat)rotationSpeed;
 
+/**
+ Update movement of dog.
+ */
 - (void)update:(NSTimeInterval)currentTime;
 
+/**
+ Move dog towards `location`.
+ */
 - (void)moveTowardsLocation:(CGPoint)location;
 
+/**
+ Stop the dog.
+ */
 - (void)stop;
 
 @end

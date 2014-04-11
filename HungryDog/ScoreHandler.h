@@ -17,8 +17,14 @@
 
 @property (nonatomic, weak) id<ScoreHandlerDelegate> delegate;
 
+/**
+ Increments `currentScore` by `value`.
+ */
 - (void)incrementScoreByValue:(NSUInteger)value;
 
+/**
+ @return Current score.
+ */
 - (NSUInteger)currentScore;
 
 @end
@@ -26,6 +32,9 @@
 
 @protocol ScoreHandlerDelegate <NSObject>
 
+/**
+ Informs the delegate when score is updated.
+ */
 - (void)scoreHandlerDidUpdateScore:(ScoreHandler *)scoreHandler;
 
 @end

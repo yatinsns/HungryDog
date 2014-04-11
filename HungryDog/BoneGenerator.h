@@ -26,6 +26,9 @@
 
 @protocol BoneGeneratorDelegate <NSObject>
 
+/**
+ Informs the delegate when new bone is generated.
+ */
 - (void)boneGeneratorDidGenerateNewBone:(BoneGenerator *)boneGenerator;
 
 @end
