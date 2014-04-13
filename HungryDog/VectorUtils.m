@@ -21,6 +21,8 @@ CGFloat ScalarShortestAngleBetween(const CGFloat a, const CGFloat b) {
   CGFloat angle = fmodf(difference, M_PI * 2);
   if (angle >= M_PI) {
     angle -= M_PI * 2;
+  } else if (angle <= -M_PI) {
+    angle += M_PI * 2;
   }
   return angle;
 }
