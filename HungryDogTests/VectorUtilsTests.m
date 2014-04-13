@@ -72,9 +72,17 @@
 
 - (void)testItShouldReturnShortestAngleResult {
   CGFloat first = 0;
-  CGFloat second = 3.14/2;
+  CGFloat second = M_PI / 2;
   CGFloat result = ScalarShortestAngleBetween(first, second);
   XCTAssertTrue(fabsf(result - second) < 0.0000001, @"");
+}
+
+- (void)testItShouldReturnShortestAngleResultHandleErrata {
+  CGFloat first = 3 * M_PI / 4;
+  CGFloat second = - 3 * M_PI / 4;
+  CGFloat result = ScalarShortestAngleBetween(first, second);
+  NSLog(@"<<< %f %f", result, (M_PI / 2));
+  XCTAssertTrue(fabsf(result - (M_PI / 2)) < 0.000001, @"");
 }
 
 @end
