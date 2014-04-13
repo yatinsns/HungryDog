@@ -25,6 +25,8 @@ const NSTimeInterval BoneAppearanceTimeInterval = 10;
 
 static NSString *const BoneName = @"Bone";
 static NSString *const HoleName = @"Hole";
+static NSString *const TunnelName1 = @"Tunnel1";
+static NSString *const TunnelName2 = @"Tunnel2";
 
 @interface GameScene () <ScoreHandlerDelegate, EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
@@ -40,6 +42,9 @@ static NSString *const HoleName = @"Hole";
 
 @property (nonatomic) SKSpriteNode *eneryBarSprite;
 @property (nonatomic) BOOL shouldEndGame;
+
+@property (nonatomic) SKSpriteNode *tunnel1;
+@property (nonatomic) SKSpriteNode *tunnel2;
 
 @end
 
@@ -61,6 +66,7 @@ static NSString *const HoleName = @"Hole";
     [self addBone];
     [self addDog];
     [self addHole];
+    [self addTunnel];
     
     _gamePlay.dogHandler.dog = _dog;
     self.userInteractionEnabled = YES;
@@ -137,6 +143,20 @@ static NSString *const HoleName = @"Hole";
   if (self.shouldEndGame) {
     [self endGame];
   }
+
+  [self enumerateChildNodesWithName:TunnelName1 usingBlock:^(SKNode *node, BOOL *stop) {
+    SKSpriteNode *tunnel = (SKSpriteNode *)node;
+    if (CGPointLength(CGPointSubtract(tunnel.position, self.dog.position)) < 40) {
+      [self moveDogToPosition:self.tunnel2.position];
+    }
+  }];
+
+  [self enumerateChildNodesWithName:TunnelName2 usingBlock:^(SKNode *node, BOOL *stop) {
+    SKSpriteNode *tunnel = (SKSpriteNode *)node;
+    if (CGPointLength(CGPointSubtract(tunnel.position, self.dog.position)) < 40) {
+      [self moveDogToPosition:self.tunnel1.position];
+    }
+  }];
 }
 
 - (void)addHole {
@@ -145,6 +165,26 @@ static NSString *const HoleName = @"Hole";
   node.position = [self.spritesOrganizer positionForHole];
   node.zPosition = -1;
   [self addChild:node];
+}
+
+- (void)addTunnel {
+  SKSpriteNode *node1 = self.tunnel1 = [self.spritesProvider tunnel];
+  node1.name = TunnelName1;
+  node1.position = CGPointMake(node1.size.width / 2, node1.size.height / 2);
+  node1.zPosition = -1;
+  [self addChild:node1];
+
+  SKSpriteNode *node2 = self.tunnel2 = [self.spritesProvider tunnel];
+  node2.name = TunnelName2;
+  node2.position = CGPointMake(node2.size.width / 2, self.size.height - node2.size.height);
+  node2.zPosition = -1;
+  [self addChild:node2];
+}
+
+- (void)moveDogToPosition:(CGPoint)position {
+  [self.gamePlay.dogHandler stop];
+  position.x += 50;
+  self.dog.position = position;
 }
 
 #pragma mark - Overridden methods

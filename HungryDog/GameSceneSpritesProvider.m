@@ -29,6 +29,11 @@ const CGFloat HoleWidth_iPad = 150;
 const CGFloat HoleHeight_iPhone = 69;
 const CGFloat HoleHeight_iPad = 138;
 
+const CGFloat TunnelWidth_iPhone = 50;
+const CGFloat TunnelWidth_iPad = 100;
+const CGFloat TunnelHeight_iPhone = 50;
+const CGFloat TunnelHeight_iPad = 100;
+
 @implementation GameSceneSpritesProvider
 
 - (SKLabelNode *)score {
@@ -112,6 +117,13 @@ const CGFloat HoleHeight_iPad = 138;
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Hole.png"];
   node.size = CGSizeMake(ValueForDevice(HoleWidth_iPhone, HoleWidth_iPad),
                          ValueForDevice(HoleHeight_iPhone, HoleHeight_iPad));
+  return node;
+}
+
+- (SKSpriteNode *)tunnel {
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Tunnel"];
+  node.size = CGSizeMake(ValueForDevice(TunnelWidth_iPhone, TunnelWidth_iPad),
+                         ValueForDevice(TunnelHeight_iPhone, TunnelHeight_iPad));
   return node;
 }
 

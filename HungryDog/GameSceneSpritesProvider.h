@@ -23,4 +23,6 @@
 
 - (SKSpriteNode *)hole;
 
+- (SKSpriteNode *)tunnel;
+
 @end
