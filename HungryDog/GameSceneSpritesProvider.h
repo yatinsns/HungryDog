@@ -21,4 +21,6 @@
 
 - (SKSpriteNode *)dog;
 
+- (SKSpriteNode *)hole;
+
 @end

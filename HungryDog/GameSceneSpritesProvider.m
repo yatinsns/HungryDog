@@ -24,6 +24,11 @@ const CGFloat DogWidth_iPad = 150;
 const CGFloat DogHeight_iPhone = 37;
 const CGFloat DogHeight_iPad = 74;
 
+const CGFloat HoleWidth_iPhone = 75;
+const CGFloat HoleWidth_iPad = 150;
+const CGFloat HoleHeight_iPhone = 69;
+const CGFloat HoleHeight_iPad = 138;
+
 @implementation GameSceneSpritesProvider
 
 - (SKLabelNode *)score {
@@ -100,6 +105,13 @@ const CGFloat DogHeight_iPad = 74;
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Dog-main.png"];
   node.size = CGSizeMake(ValueForDevice(DogWidth_iPhone, DogWidth_iPad),
                          ValueForDevice(DogHeight_iPhone, DogHeight_iPad));
+  return node;
+}
+
+- (SKSpriteNode *)hole {
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Hole.png"];
+  node.size = CGSizeMake(ValueForDevice(HoleWidth_iPhone, HoleWidth_iPad),
+                         ValueForDevice(HoleHeight_iPhone, HoleHeight_iPad));
   return node;
 }
 

@@ -16,6 +16,7 @@
 #import "GameSceneSpritesOrganizer.h"
 #import "SKAction+BoneAdditions.h"
 #import "SKAction+DogAdditions.h"
+#import "VectorUtils.h"
 
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
@@ -23,6 +24,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 const NSTimeInterval BoneAppearanceTimeInterval = 10;
 
 static NSString *const BoneName = @"Bone";
+static NSString *const HoleName = @"Hole";
 
 @interface GameScene () <ScoreHandlerDelegate, EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
@@ -37,6 +39,7 @@ static NSString *const BoneName = @"Bone";
 @property (nonatomic) NSTimeInterval dt;
 
 @property (nonatomic) SKSpriteNode *eneryBarSprite;
+@property (nonatomic) BOOL shouldEndGame;
 
 @end
 
@@ -57,6 +60,7 @@ static NSString *const BoneName = @"Bone";
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
     [self addDog];
+    [self addHole];
     
     _gamePlay.dogHandler.dog = _dog;
     self.userInteractionEnabled = YES;
@@ -123,6 +127,24 @@ static NSString *const BoneName = @"Bone";
       [self generateBone];
     }
   }];
+
+  [self enumerateChildNodesWithName:HoleName usingBlock:^(SKNode *node, BOOL *stop) {
+    SKSpriteNode *hole = (SKSpriteNode *)node;
+    if (CGPointLength(CGPointSubtract(hole.position, self.dog.position)) < 40) {
+      self.shouldEndGame = YES;
+    }
+  }];
+  if (self.shouldEndGame) {
+    [self endGame];
+  }
+}
+
+- (void)addHole {
+  SKSpriteNode *node = [self.spritesProvider hole];
+  node.name = HoleName;
+  node.position = [self.spritesOrganizer positionForHole];
+  node.zPosition = -1;
+  [self addChild:node];
 }
 
 #pragma mark - Overridden methods
@@ -148,7 +170,9 @@ static NSString *const BoneName = @"Bone";
 }
 
 - (void)didEvaluateActions {
-  [self checkCollisions];
+  if (!self.shouldEndGame) {
+    [self checkCollisions];
+  }
 }
 
 #pragma mark - EnergyBarHandlerDelegate

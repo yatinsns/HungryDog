@@ -24,4 +24,6 @@
 
 - (CGPoint)initialPositionForDog;
 
+- (CGPoint)positionForHole;
+
 @end
