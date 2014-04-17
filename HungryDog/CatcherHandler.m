@@ -24,10 +24,6 @@
 @property (nonatomic) CGSize size;
 @property (nonatomic) NSUInteger count;
 
-@property (nonatomic) NSTimeInterval markerTime;
-@property (nonatomic) int lastIncrement;
-
-@property (nonatomic) NSTimer *timer;
 @property (nonatomic) CGPoint dogLocation;
 
 @end
@@ -48,40 +44,18 @@
 }
 
 - (void)update:(NSTimeInterval)currentTime {
-  if (self.markerTime == 0) {
-    self.markerTime = currentTime;
-  }
   if (self.lastUpdateTime) {
     self.dt = currentTime - self.lastUpdateTime;
   } else {
     self.dt = 0;
   }
   self.lastUpdateTime = currentTime;
-  
-  int increment = (currentTime - self.markerTime)/ 5;
-  if (self.lastIncrement != increment && self.lastIncrement < 7) {
-    self.lastIncrement = increment;
-    self.speed += increment * 3;
-  }
-  if (self.lastIncrement == 7) {
-    if (self.timer == nil) {
-      self.timer = [NSTimer scheduledTimerWithTimeInterval:5
-                                                    target:self
-                                                  selector:@selector(randomizeSpeed)
-                                                  userInfo:nil
-                                                   repeats:YES];
-    }
-  }
 
   [self moveSprite:self.catcher velocity:self.velocity];
   [self boundsCheckPlayer];
   [self rotateSprite:self.catcher
               toFace:self.velocity
  rotateRadiansPerSec:self.rotationSpeed];
-}
-
-- (void)randomizeSpeed {
-  self.speed = arc4random_uniform(50) + (self.initialSpeed);
 }
 
 - (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)velocity {
@@ -92,7 +66,7 @@
 
 - (void)moveTowardsLocation:(CGPoint)location {
   CGPoint offset = CGPointSubtract(location, self.catcher.position);
-  if (self.count == 0 || (self.lastIncrement == 7 && CGPointLength(offset) < 100 && (self.speed = self.initialSpeed))) {
+  if (self.count == 0 || CGPointLength(offset) < 100) {
     self.lastTouchLocation = location;
     CGPoint offset = CGPointSubtract(location, self.catcher.position);
     CGPoint direction = CGPointNormalize(offset);
