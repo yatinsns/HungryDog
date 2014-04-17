@@ -16,7 +16,10 @@
 #import "GameSceneSpritesOrganizer.h"
 #import "SKAction+BoneAdditions.h"
 #import "SKAction+DogAdditions.h"
+#import "SKAction+CatcherAdditions.h"
 #import "VectorUtils.h"
+
+@import AVFoundation;
 
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
@@ -27,11 +30,13 @@ static NSString *const BoneName = @"Bone";
 static NSString *const HoleName = @"Hole";
 static NSString *const TunnelName1 = @"Tunnel1";
 static NSString *const TunnelName2 = @"Tunnel2";
+static NSString *const CatcherName = @"Catcher";
 
 @interface GameScene () <ScoreHandlerDelegate, EnergyBarHandlerDelegate, BoneGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) SKSpriteNode *dog;
+@property (nonatomic) NSArray *catchers;
 
 @property (nonatomic, readwrite) GamePlay *gamePlay;
 @property (nonatomic) GameSceneSpritesProvider *spritesProvider;
@@ -45,6 +50,8 @@ static NSString *const TunnelName2 = @"Tunnel2";
 
 @property (nonatomic) SKSpriteNode *tunnel1;
 @property (nonatomic) SKSpriteNode *tunnel2;
+
+@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 
 @end
 
@@ -67,9 +74,13 @@ static NSString *const TunnelName2 = @"Tunnel2";
     [self addDog];
     [self addHole];
     [self addTunnel];
+    [self addCatchers];
     
     _gamePlay.dogHandler.dog = _dog;
+    [_gamePlay.strategyMaker setCatchers:_catchers withSize:self.size];
     self.userInteractionEnabled = YES;
+
+    [self playBackgroundMusic:@"bgMusic.mp3"];
   }
   return self;
 }
@@ -123,6 +134,28 @@ static NSString *const TunnelName2 = @"Tunnel2";
   [node runAction:[SKAction dogTextureAction]];
 }
 
+- (void)addCatchers {
+  NSMutableArray *array = [NSMutableArray array];
+  for (int i = 0; i < 4; i++) {
+    SKSpriteNode *node = [self.spritesProvider catcher];
+    if (i == 0) {
+    node.position = CGPointMake(0, 0);
+    } else if (i == 1) {
+      node.position = CGPointMake(self.size.width, 0);
+    } else if (i == 2) {
+      node.position = CGPointMake(0, self.size.height);
+    } else {
+      node.position = CGPointMake(self.size.width, self.size.height);
+    }
+
+    node.name = CatcherName;
+    [self addChild:node];
+    [node runAction:[SKAction catcherTextureAction]];
+    [array addObject:node];
+  }
+  _catchers = array;
+}
+
 - (void)checkCollisions {
   [self enumerateChildNodesWithName:BoneName usingBlock:^(SKNode *node, BOOL *stop){
     SKSpriteNode *bone = (SKSpriteNode *)node;
@@ -137,6 +170,16 @@ static NSString *const TunnelName2 = @"Tunnel2";
   [self enumerateChildNodesWithName:HoleName usingBlock:^(SKNode *node, BOOL *stop) {
     SKSpriteNode *hole = (SKSpriteNode *)node;
     if (CGPointLength(CGPointSubtract(hole.position, self.dog.position)) < 40) {
+      self.shouldEndGame = YES;
+    }
+  }];
+  if (self.shouldEndGame) {
+    [self endGame];
+  }
+
+  [self enumerateChildNodesWithName:CatcherName usingBlock:^(SKNode *node, BOOL *stop) {
+    SKSpriteNode *catcher = (SKSpriteNode *)node;
+    if (CGPointLength(CGPointSubtract(catcher.position, self.dog.position)) < 40) {
       self.shouldEndGame = YES;
     }
   }];
@@ -198,7 +241,11 @@ static NSString *const TunnelName2 = @"Tunnel2";
   self.lastUpdateTime = currentTime;
 
   [self.gamePlay.energyBarHandler update:currentTime];
-  [self.gamePlay.dogHandler update:currentTime];  
+  [self.gamePlay.dogHandler update:currentTime];
+
+  [self.gamePlay.strategyMaker updateDogLocation:self.dog.position
+                                            size:self.size];
+  [self.gamePlay.strategyMaker update:currentTime];
 }
 
 - (void)willMoveFromView:(SKView *)view {
@@ -272,6 +319,19 @@ static NSString *const TunnelName2 = @"Tunnel2";
 
 - (void)cancelTouches {
   [self.gamePlay.dogHandler stop];
+}
+
+#pragma mark - Music
+
+- (void)playBackgroundMusic:(NSString *)filename {
+  NSError *error;
+  NSURL *backgroundMusicURL =
+  [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+  _backgroundMusicPlayer = [[AVAudioPlayer alloc]
+                            initWithContentsOfURL:backgroundMusicURL error:&error];
+  _backgroundMusicPlayer.numberOfLoops = -1;
+  [_backgroundMusicPlayer prepareToPlay];
+  [_backgroundMusicPlayer play];
 }
 
 @end

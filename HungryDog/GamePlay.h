@@ -11,6 +11,7 @@
 #import "EnergyBarHandler.h"
 #import "BoneGenerator.h"
 #import "DogHandler.h"
+#import "StrategyMaker.h"
 
 /**
  This class represents a game play within the app.
@@ -21,5 +22,6 @@
 @property (nonatomic, readonly) EnergyBarHandler *energyBarHandler;
 @property (nonatomic, readonly) BoneGenerator *boneGenerator;
 @property (nonatomic, readonly) DogHandler *dogHandler;
+@property (nonatomic, readonly) StrategyMaker *strategyMaker;
 
 @end

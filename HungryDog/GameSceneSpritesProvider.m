@@ -113,6 +113,13 @@ const CGFloat TunnelHeight_iPad = 100;
   return node;
 }
 
+- (SKSpriteNode *)catcher {
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"zombie1.png"];
+  node.size = CGSizeMake(ValueForDevice(DogWidth_iPhone, DogWidth_iPad),
+                         ValueForDevice(DogHeight_iPhone, DogHeight_iPad));
+  return node;
+}
+
 - (SKSpriteNode *)hole {
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Hole.png"];
   node.size = CGSizeMake(ValueForDevice(HoleWidth_iPhone, HoleWidth_iPad),

@@ -21,6 +21,8 @@
 
 - (SKSpriteNode *)dog;
 
+- (SKSpriteNode *)catcher;
+
 - (SKSpriteNode *)hole;
 
 - (SKSpriteNode *)tunnel;

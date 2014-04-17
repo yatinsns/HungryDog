@@ -12,7 +12,7 @@
 static const CGFloat DepletionRateDefault = 0.004;
 
 static const CGFloat DogSpeed_iPhone = 150;
-static const CGFloat DogSpeed_iPad = 250;
+static const CGFloat DogSpeed_iPad = 350;
 static const CGFloat DogRotationSpeed = 4 * M_PI;
 
 @interface GamePlay ()
@@ -21,6 +21,7 @@ static const CGFloat DogRotationSpeed = 4 * M_PI;
 @property (nonatomic, readwrite) EnergyBarHandler *energyBarHandler;
 @property (nonatomic, readwrite) BoneGenerator *boneGenerator;
 @property (nonatomic, readwrite) DogHandler *dogHandler;
+@property (nonatomic, readwrite) StrategyMaker *strategyMaker;
 
 @end
 
@@ -36,6 +37,8 @@ static const CGFloat DogRotationSpeed = 4 * M_PI;
     CGFloat dogSpeed = ValueForDevice(DogSpeed_iPhone, DogSpeed_iPad);
     _dogHandler = [[DogHandler alloc] initWithSpeed:dogSpeed
                                       rotationSpeed:DogRotationSpeed];
+
+    _strategyMaker = [[StrategyMaker alloc] init];
   }
   return self;
 }
