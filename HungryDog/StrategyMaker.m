@@ -57,4 +57,9 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
   }
 }
 
+- (StrategyPattern *)randomStrategyPattern {
+  NSUInteger index = arc4random_uniform((u_int32_t)[self.strategyPatternCreator.strategyPatterns count]);
+  return [self.strategyPatternCreator.strategyPatterns objectAtIndex:index];
+}
+
 @end
