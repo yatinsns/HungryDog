@@ -40,6 +40,7 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
                                                              rotationSpeed:CatcherRotationSpeed
                                                                       size:size];
     catcherHandler.catcher = catcher;
+    catcherHandler.mode = CatcherModePattern;
     [self.array addObject:catcherHandler];
   }
 }

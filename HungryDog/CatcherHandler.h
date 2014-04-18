@@ -24,7 +24,7 @@
 /**
  This property represents the mode of the catcher.
  */
-@property (nonatomic) CatcherMode *mode;
+@property (nonatomic) CatcherMode mode;
 
 /**
  This property represents the radius of radar to follow dog.

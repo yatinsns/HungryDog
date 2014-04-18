@@ -41,12 +41,16 @@
 }
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
-  [self moveSprite:self.catcher velocity:self.velocity timeInterval:timeInterval];
-  [self boundsCheckPlayer];
-  [self rotateSprite:self.catcher
-              toFace:self.velocity
- rotateRadiansPerSec:self.rotationSpeed
-        timeInterval:timeInterval];
+  if (self.mode != CatcherModePattern) {
+    [self moveSprite:self.catcher velocity:self.velocity timeInterval:timeInterval];
+    [self boundsCheckPlayer];
+    [self rotateSprite:self.catcher
+                toFace:self.velocity
+   rotateRadiansPerSec:self.rotationSpeed
+          timeInterval:timeInterval];
+  } else {
+    // FIXME (YS): Handle Pattern mode.
+  }
 }
 
 - (void)moveSprite:(SKSpriteNode *)sprite
