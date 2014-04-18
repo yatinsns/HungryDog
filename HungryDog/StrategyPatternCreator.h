@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StrategyPattern.h"
 
 /**
  This class created predefined set of strategy patterns.

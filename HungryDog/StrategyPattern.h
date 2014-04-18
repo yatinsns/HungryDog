@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CatcherMovementPattern.h"
 
 /**
  This class represents set of movement patters used in strategy of a catcher.
