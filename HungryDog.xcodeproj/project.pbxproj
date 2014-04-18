@@ -13,6 +13,7 @@
 		80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */; };
 		80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699519014FD900CBAC55 /* CatcherMovementPattern.m */; };
 		80B269991901572C00CBAC55 /* StrategyPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B269981901572C00CBAC55 /* StrategyPattern.m */; };
+		80B2699C1901586B00CBAC55 /* StrategyPatternCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */; };
 		80C40B9E18EFEEEE00FBF8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */; };
 		80C40BA018EFEEEE00FBF8C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */; };
 		80C40BA218EFEEEE00FBF8C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40BA118EFEEEE00FBF8C7 /* UIKit.framework */; };
@@ -72,6 +73,8 @@
 		80B2699519014FD900CBAC55 /* CatcherMovementPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatcherMovementPattern.m; sourceTree = "<group>"; };
 		80B269971901572C00CBAC55 /* StrategyPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyPattern.h; sourceTree = "<group>"; };
 		80B269981901572C00CBAC55 /* StrategyPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyPattern.m; sourceTree = "<group>"; };
+		80B2699A1901586B00CBAC55 /* StrategyPatternCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyPatternCreator.h; sourceTree = "<group>"; };
+		80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyPatternCreator.m; sourceTree = "<group>"; };
 		80C40B9A18EFEEEE00FBF8C7 /* HungryDog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryDog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -303,6 +306,8 @@
 				80C9935E18FCEF90001E9D44 /* StrategyMaker.m */,
 				80B269971901572C00CBAC55 /* StrategyPattern.h */,
 				80B269981901572C00CBAC55 /* StrategyPattern.m */,
+				80B2699A1901586B00CBAC55 /* StrategyPatternCreator.h */,
+				80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				80C9935918FC4236001E9D44 /* CatcherHandler.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
+				80B2699C1901586B00CBAC55 /* StrategyPatternCreator.m in Sources */,
 				80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */,
 				80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
