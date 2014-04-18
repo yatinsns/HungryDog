@@ -13,10 +13,10 @@
  */
 @interface CatcherMovementPattern : NSObject
 
-@property (nonatomic, readonly) CGPoint point1;
-@property (nonatomic, readonly) CGPoint point2;
+@property (nonatomic, readonly) CGPoint startPosition;
+@property (nonatomic, readonly) CGPoint endPosition;
 
-- (instancetype)initWithPoint1:(CGPoint)point1
-                        point2:(CGPoint)point2;
+- (instancetype)initWithStartPosition:(CGPoint)startPosition
+                          endPosition:(CGPoint)endPosition;
 
 @end

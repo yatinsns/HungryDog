@@ -10,12 +10,12 @@
 
 @implementation CatcherMovementPattern
 
-- (instancetype)initWithPoint1:(CGPoint)point1
-                        point2:(CGPoint)point2 {
+- (instancetype)initWithStartPosition:(CGPoint)startPosition
+                          endPosition:(CGPoint)endPosition {
   self = [super init];
   if (self) {
-    _point1 = point1;
-    _point2 = point2;
+    _startPosition = startPosition;
+    _endPosition = endPosition;
   }
   return self;
 }
