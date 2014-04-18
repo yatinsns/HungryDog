@@ -65,6 +65,7 @@
 		80686F0518F5C9B000DB415E /* EnergyBarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyBarHandler.m; sourceTree = "<group>"; };
 		80A7CD6B18F49473006357D7 /* GameSceneSpritesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneSpritesProvider.h; sourceTree = "<group>"; };
 		80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneSpritesProvider.m; sourceTree = "<group>"; };
+		80B2699319014F4A00CBAC55 /* CatcherMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatcherMode.h; sourceTree = "<group>"; };
 		80C40B9A18EFEEEE00FBF8C7 /* HungryDog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryDog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -291,6 +292,7 @@
 				80C9935818FC4236001E9D44 /* CatcherHandler.m */,
 				80C9935D18FCEF90001E9D44 /* StrategyMaker.h */,
 				80C9935E18FCEF90001E9D44 /* StrategyMaker.m */,
+				80B2699319014F4A00CBAC55 /* CatcherMode.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
