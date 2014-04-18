@@ -22,6 +22,8 @@
 
 - (id)initWithSize:(CGSize)size gamePlay:(GamePlay *)gamePlay;
 
+- (void)pauseScene:(BOOL)pause;
+
 @end
 
 @protocol GameSceneDelegate <NSObject>

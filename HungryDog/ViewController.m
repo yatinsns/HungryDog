@@ -17,6 +17,21 @@
 
 @implementation ViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+  }
+  return self;
+}
+
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   
@@ -75,6 +90,23 @@
   scene.delegate = self;
   SKTransition *reveal = [SKTransition fadeWithDuration:0.5];
   [skView presentScene:scene transition:reveal];
+}
+
+#pragma mark - UIApplication notifications
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+  [self pauseGameScene:NO];
+}
+
+- (void)applicationWillResignActive:(NSNotification *)notification {
+  [self pauseGameScene:YES];
+}
+
+- (void)pauseGameScene:(BOOL)pause {
+  SKView *skView = (SKView *)self.view;
+  if ([skView.scene isKindOfClass:[GameScene class]]) {
+    [(GameScene *)skView.scene pauseScene:pause];
+  }
 }
 
 @end

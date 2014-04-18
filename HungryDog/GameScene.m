@@ -49,6 +49,7 @@ static NSString *const CatcherName = @"Catcher";
 @property (nonatomic) BOOL shouldEndGame;
 
 @property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
+@property (nonatomic) BOOL isResumed;
 
 @end
 
@@ -80,6 +81,16 @@ static NSString *const CatcherName = @"Catcher";
     [self playBackgroundMusic:@"bgMusic.mp3"];
   }
   return self;
+}
+
+- (void)pauseScene:(BOOL)pause {
+  self.paused = pause;
+  if (pause) {
+    [self.backgroundMusicPlayer pause];
+  } else {
+    [self.backgroundMusicPlayer play];
+    self.isResumed = YES;
+  }
 }
 
 #pragma mark - Sprites
@@ -237,12 +248,16 @@ static NSString *const CatcherName = @"Catcher";
   }
   self.lastUpdateTime = currentTime;
 
-  [self.gamePlay.energyBarHandler updateForTimeInterval:self.dt];
-  [self.gamePlay.dogHandler updateForTimeInterval:self.dt];
+  if (!self.isPaused && !self.isResumed) {
+    [self.gamePlay.energyBarHandler updateForTimeInterval:self.dt];
+    [self.gamePlay.dogHandler updateForTimeInterval:self.dt];
 
-  [self.gamePlay.strategyMaker updateDogLocation:self.dog.position
-                                            size:self.size];
-  [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
+    [self.gamePlay.strategyMaker updateDogLocation:self.dog.position
+                                              size:self.size];
+    [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
+  } else if (self.isResumed) {
+    self.isResumed = NO;
+  }
 }
 
 - (void)willMoveFromView:(SKView *)view {
