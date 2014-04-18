@@ -15,7 +15,7 @@ static const CGFloat CatcherSpeed_iPhone = 75;
 static const CGFloat CatcherSpeed_iPad = 200;
 static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 
-static const NSTimeInterval PatternMovementInterval = 2.5;
+static const NSTimeInterval PatternMovementInterval = 3;
 static const NSTimeInterval PatternRotationInterval = 1;
 
 @interface StrategyMaker ()
