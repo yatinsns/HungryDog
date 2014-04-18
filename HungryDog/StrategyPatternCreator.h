@@ -16,4 +16,6 @@
 
 @property (nonatomic, readonly) NSArray *strategyPatterns;
 
+- (void)createForSize:(CGSize)size;
+
 @end

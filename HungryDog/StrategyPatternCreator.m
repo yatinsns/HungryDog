@@ -8,14 +8,18 @@
 
 #import "StrategyPatternCreator.h"
 
+@interface StrategyPatternCreator ()
+
+@property (nonatomic, readwrite) NSArray *strategyPatterns;
+@property (nonatomic) CGSize size;
+
+@end
+
 @implementation StrategyPatternCreator
 
-- (instancetype)init {
-  self = [super init];
-  if (self) {
-    [self createPatterns];
-  }
-  return self;
+- (void)createForSize:(CGSize)size {
+  self.size = size;
+  [self createPatterns];
 }
 
 - (void)createPatterns {
@@ -24,21 +28,37 @@
   for (NSArray *positionArray in arrayOfPositionsArray) {
     [patterns addObject:[self strategyPatternWithPositions:positionArray]];
   }
-  _strategyPatterns = patterns;
+  self.strategyPatterns = patterns;
 }
 
 - (NSArray *)arrayOfPositionsArray {
+  CGFloat width = self.size.width;
+  CGFloat height = self.size.height;
+  CGFloat midWidth = width / 2;
+  CGFloat midHeight = height / 2;
   return @[
-           @[[NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero]],
-           @[[NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero]],
-           @[[NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero]],
-           @[[NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero], [NSValue valueWithCGPoint:CGPointZero]]
+           @[[NSValue valueWithCGPoint:CGPointMake(0, midHeight + 50)], [NSValue valueWithCGPoint:CGPointMake(width, midHeight + 50)],
+             [NSValue valueWithCGPoint:CGPointMake(width, midHeight - 50)], [NSValue valueWithCGPoint:CGPointMake(0, midHeight - 50)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, height)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, 0)]],
+           @[[NSValue valueWithCGPoint:CGPointMake(0, midHeight - 50)], [NSValue valueWithCGPoint:CGPointMake(width, midHeight - 50)],
+             [NSValue valueWithCGPoint:CGPointMake(width, midHeight + 50)], [NSValue valueWithCGPoint:CGPointMake(0, midHeight + 50)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, height)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, 0)]],
+           @[[NSValue valueWithCGPoint:CGPointMake(midWidth - 50, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, height)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, 0)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, height)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, 0)]],
+           @[[NSValue valueWithCGPoint:CGPointMake(midWidth - 50, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, height)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, height)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, height)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, height)]]
            ];
 }
 
 - (StrategyPattern *)strategyPatternWithPositions:(NSArray *)positions {
   NSMutableArray *movementPatterns = [NSMutableArray array];
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 4; i++) {
     CGPoint position1 = [(NSValue *)[positions objectAtIndex:2 * i] CGPointValue];
     CGPoint position2 = [(NSValue *)[positions objectAtIndex:(2 * i + 1)] CGPointValue];
     CatcherMovementPattern *movementPattern = [[CatcherMovementPattern alloc] initWithStartPosition:position1
