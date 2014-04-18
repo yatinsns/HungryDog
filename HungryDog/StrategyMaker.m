@@ -9,6 +9,7 @@
 #import "StrategyMaker.h"
 #import "CatcherHandler.h"
 #import "UIUtils.h"
+#import "StrategyPatternCreator.h"
 
 static const CGFloat CatcherSpeed_iPhone = 75;
 static const CGFloat CatcherSpeed_iPad = 200;
@@ -17,6 +18,7 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 @interface StrategyMaker ()
 
 @property (nonatomic) NSMutableArray *array;
+@property (nonatomic) StrategyPatternCreator *strategyPatternCreator;
 
 @end
 
@@ -26,6 +28,7 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
   self = [super init];
   if (self) {
     _array = [NSMutableArray array];
+    _strategyPatternCreator = [[StrategyPatternCreator alloc] init];
   }
   return self;
 }
