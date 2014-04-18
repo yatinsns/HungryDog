@@ -265,8 +265,9 @@ static NSString *const CatcherName = @"Catcher";
 #pragma mark - EnergyBarHandlerDelegate
 
 - (void)energyBarHandlerDidUpdateStatus:(EnergyBarHandler *)energyBarHandler {
-  [self addEnergyBarWithStatus:energyBarHandler.status];
-  if (energyBarHandler.status == 0) {
+  NSUInteger status = energyBarHandler.status;
+  [self addEnergyBarWithStatus:status];
+  if (status == 0) {
     [self endGame];
   }
 }
