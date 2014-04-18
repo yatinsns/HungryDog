@@ -15,13 +15,16 @@ static const CGFloat CatcherSpeed_iPhone = 75;
 static const CGFloat CatcherSpeed_iPad = 200;
 static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 
-static const NSTimeInterval PatternMovementInterval = 3;
+static const NSTimeInterval PatternMovementInterval = 2.5;
 static const NSTimeInterval PatternRotationInterval = 1;
 
 @interface StrategyMaker ()
 
 @property (nonatomic) NSMutableArray *array;
 @property (nonatomic) StrategyPatternCreator *strategyPatternCreator;
+
+@property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSUInteger currentPatternIndex;
 
 @end
 
@@ -34,6 +37,10 @@ static const NSTimeInterval PatternRotationInterval = 1;
     _strategyPatternCreator = [[StrategyPatternCreator alloc] init];
   }
   return self;
+}
+
+- (void)dealloc {
+  [_timer invalidate];
 }
 
 - (void)setCatchers:(NSArray *)catchers withSize:(CGSize)size {
@@ -53,6 +60,21 @@ static const NSTimeInterval PatternRotationInterval = 1;
     [self.array addObject:catcherHandler];
     index ++;
   }
+
+  self.timer = [NSTimer scheduledTimerWithTimeInterval:20
+                                                target:self
+                                              selector:@selector(changePattern)
+                                              userInfo:nil
+                                               repeats:YES];
+}
+
+- (void)changePattern {
+  StrategyPattern *pattern = [self randomStrategyPattern];
+  NSUInteger index = 0;
+  for (CatcherHandler *catcherHandler in self.array) {
+    catcherHandler.movementPattern = [pattern.movementPatterns objectAtIndex:index];
+    index ++;
+  }
 }
 
 - (void)updateDogLocation:(CGPoint)location size:(CGSize)size {
@@ -68,8 +90,12 @@ static const NSTimeInterval PatternRotationInterval = 1;
 }
 
 - (StrategyPattern *)randomStrategyPattern {
-  NSUInteger index = arc4random_uniform((u_int32_t)[self.strategyPatternCreator.strategyPatterns count]);
-  return [self.strategyPatternCreator.strategyPatterns objectAtIndex:index];
+  NSUInteger index = 0;
+  do {
+    index = arc4random_uniform((u_int32_t)[self.strategyPatternCreator.strategyPatterns count]);
+  } while (self.currentPatternIndex == index);
+  self.currentPatternIndex = index;
+  return [self.strategyPatternCreator.strategyPatterns objectAtIndex:self.currentPatternIndex];
 }
 
 @end

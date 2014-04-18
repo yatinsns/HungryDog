@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "VectorUtils.h"
 #import "CatcherMovementPattern.h"
+#import "SKAction+CatcherAdditions.h"
 
 @interface CatcherHandler ()
 
@@ -125,7 +126,14 @@
 
 #pragma mark - Pattern
 
+- (void)setMovementPattern:(CatcherMovementPattern *)movementPattern {
+  _movementPattern = movementPattern;
+  self.isPatternInitiated = NO;
+}
+
 - (void)initiatePatternMovement {
+  [self.catcher removeAllActions];
+  [self.catcher runAction:[SKAction catcherTextureAction]];
   CGPoint initialOffset = CGPointSubtract(self.movementPattern.startPosition,
                                           self.catcher.position);
   CGFloat rotation = ScalarShortestAngleBetween(self.catcher.zRotation,
