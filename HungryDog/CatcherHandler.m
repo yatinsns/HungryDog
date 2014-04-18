@@ -9,6 +9,7 @@
 #import "CatcherHandler.h"
 #import <SpriteKit/SpriteKit.h>
 #import "VectorUtils.h"
+#import "CatcherMovementPattern.h"
 
 @interface CatcherHandler ()
 
@@ -21,6 +22,7 @@
 
 @property (nonatomic) CGSize size;
 @property (nonatomic) BOOL shouldUpdateLastTouchLocation;
+@property (nonatomic) BOOL isPatternInitiated;
 
 @end
 
@@ -49,7 +51,10 @@
    rotateRadiansPerSec:self.rotationSpeed
           timeInterval:timeInterval];
   } else {
-    // FIXME (YS): Handle Pattern mode.
+    if (!self.isPatternInitiated) {
+      [self initiatePatternMovement];
+      self.isPatternInitiated = YES;
+    }
   }
 }
 
@@ -116,6 +121,39 @@
     [self moveTowardsLocation:CGPointMake(arc4random_uniform(self.size.width),
                                           arc4random_uniform(self.size.height))];
   }
+}
+
+#pragma mark - Pattern
+
+- (void)initiatePatternMovement {
+  CGPoint initialOffset = CGPointSubtract(self.movementPattern.startPosition,
+                                          self.catcher.position);
+  CGFloat rotation = ScalarShortestAngleBetween(self.catcher.zRotation,
+                                                  CGPointToAngle(initialOffset));
+  SKAction *rotateAction = [SKAction rotateByAngle:rotation
+                                          duration:self.patternRotationInterval];
+  SKAction *initialMoveAction = [SKAction moveTo:self.movementPattern.startPosition
+                                        duration:self.patternMovementInterval];
+
+  [self.catcher runAction:[SKAction sequence:@[rotateAction, initialMoveAction]] completion:^{
+    CGPoint offset = CGPointSubtract(self.movementPattern.endPosition, self.movementPattern.startPosition);
+    CGFloat rotation = ScalarShortestAngleBetween(self.catcher.zRotation, CGPointToAngle(offset));
+    SKAction *rotateAction = [SKAction rotateByAngle:rotation duration:self.patternRotationInterval];
+    [self.catcher runAction:rotateAction completion:^{
+      SKAction *actionMove = [SKAction moveTo:self.movementPattern.endPosition
+                                     duration:self.patternMovementInterval];
+      CGPoint offset = CGPointSubtract(self.movementPattern.startPosition, self.movementPattern.endPosition);
+      CGFloat rotation = ScalarShortestAngleBetween(CGPointToAngle(offset), self.catcher.zRotation);
+      SKAction *rotateAction = [SKAction rotateByAngle:rotation
+                                              duration:self.patternRotationInterval];
+      SKAction *reverseActionMove = [SKAction moveTo:self.movementPattern.startPosition
+                                            duration:self.patternMovementInterval];
+      SKAction *reverseRotateAction = [rotateAction reversedAction];
+      SKAction *sequence = [SKAction sequence:@[actionMove, rotateAction, reverseActionMove, reverseRotateAction]];
+      SKAction *finalAction = [SKAction repeatActionForever:sequence];
+      [self.catcher runAction:finalAction];
+    }];
+  }];
 }
 
 @end

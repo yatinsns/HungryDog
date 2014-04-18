@@ -15,6 +15,9 @@ static const CGFloat CatcherSpeed_iPhone = 75;
 static const CGFloat CatcherSpeed_iPad = 200;
 static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 
+static const NSTimeInterval PatternMovementInterval = 3;
+static const NSTimeInterval PatternRotationInterval = 1;
+
 @interface StrategyMaker ()
 
 @property (nonatomic) NSMutableArray *array;
@@ -34,14 +37,21 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 }
 
 - (void)setCatchers:(NSArray *)catchers withSize:(CGSize)size {
+  [self.strategyPatternCreator createForSize:size];
+  StrategyPattern *pattern = [self randomStrategyPattern];
   CGFloat catcherSpeed = ValueForDevice(CatcherSpeed_iPhone, CatcherSpeed_iPad);
+  NSUInteger index = 0;
   for (SKSpriteNode *catcher in catchers) {
     CatcherHandler *catcherHandler = [[CatcherHandler alloc] initWithSpeed:catcherSpeed
                                                              rotationSpeed:CatcherRotationSpeed
                                                                       size:size];
     catcherHandler.catcher = catcher;
     catcherHandler.mode = CatcherModePattern;
+    catcherHandler.movementPattern = [pattern.movementPatterns objectAtIndex:index];
+    catcherHandler.patternRotationInterval = PatternRotationInterval;
+    catcherHandler.patternMovementInterval = PatternMovementInterval;
     [self.array addObject:catcherHandler];
+    index ++;
   }
 }
 

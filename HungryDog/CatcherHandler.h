@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "CatcherMode.h"
 
+@class CatcherMovementPattern;
+
 @class SKSpriteNode;
 
 /**
@@ -30,6 +32,21 @@
  This property represents the radius of radar to follow dog.
  */
 @property (nonatomic) CGFloat radarRadius;
+
+/**
+ This property represents pattern of movement.
+ */
+@property (nonatomic) CatcherMovementPattern *movementPattern;
+
+/**
+ This property represents rotation interval within pattern of movement.
+ */
+@property (nonatomic) NSTimeInterval patternRotationInterval;
+
+/**
+ This property represents movement interval within pattern of movement.
+ */
+@property (nonatomic) NSTimeInterval patternMovementInterval;
 
 /**
  Designated initializer.
