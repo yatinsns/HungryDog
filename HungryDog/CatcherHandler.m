@@ -20,9 +20,7 @@
 @property (nonatomic) CGPoint velocity;
 
 @property (nonatomic) CGSize size;
-@property (nonatomic) NSUInteger count;
-
-@property (nonatomic) CGPoint dogLocation;
+@property (nonatomic) BOOL shouldUpdateLastTouchLocation;
 
 @end
 
@@ -37,6 +35,7 @@
     _speed = speed;
     _rotationSpeed = rotationSpeed;
     _size = size;
+    _shouldUpdateLastTouchLocation = YES;
   }
   return self;
 }
@@ -60,13 +59,13 @@
 
 - (void)moveTowardsLocation:(CGPoint)location {
   CGPoint offset = CGPointSubtract(location, self.catcher.position);
-  if (self.count == 0 || CGPointLength(offset) < 100) {
+  if (self.shouldUpdateLastTouchLocation || CGPointLength(offset) < self.radarRadius) {
     self.lastTouchLocation = location;
     CGPoint offset = CGPointSubtract(location, self.catcher.position);
     CGPoint direction = CGPointNormalize(offset);
     self.velocity = CGPointMultiplyScalar(direction, self.speed);
+    self.shouldUpdateLastTouchLocation = NO;
   }
-  self.count++;
 }
 
 - (void)rotateSprite:(SKSpriteNode *)sprite
@@ -109,12 +108,9 @@
 
   if (isOnCorner) {
     self.catcher.position = newPosition;
-    self.count = 0;
-    if (arc4random_uniform(2) % 2 == 0) {
-      [self moveTowardsLocation:CGPointMake(arc4random_uniform(self.size.width), arc4random_uniform(self.size.height))];
-    } else {
-      [self moveTowardsLocation:self.dogLocation];
-    }
+    self.shouldUpdateLastTouchLocation = YES;
+    [self moveTowardsLocation:CGPointMake(arc4random_uniform(self.size.width),
+                                          arc4random_uniform(self.size.height))];
   }
 }
 

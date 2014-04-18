@@ -46,7 +46,6 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 
 - (void)updateDogLocation:(CGPoint)location size:(CGSize)size {
   for (CatcherHandler *catcherHandler in self.array) {
-    [catcherHandler setDogLocation:location];
     [catcherHandler moveTowardsLocation:location];
   }
 }

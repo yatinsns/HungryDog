@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CatcherMode.h"
 
 @class SKSpriteNode;
 
@@ -19,6 +20,16 @@
  This property represents the catcher to be moved.
  */
 @property (nonatomic) SKSpriteNode *catcher;
+
+/**
+ This property represents the mode of the catcher.
+ */
+@property (nonatomic) CatcherMode *mode;
+
+/**
+ This property represents the radius of radar to follow dog.
+ */
+@property (nonatomic) CGFloat radarRadius;
 
 /**
  Designated initializer.
@@ -36,10 +47,5 @@
  Move catcher towards `location`.
  */
 - (void)moveTowardsLocation:(CGPoint)location;
-
-/**
- Updates dog's location.
- */
-- (void)setDogLocation:(CGPoint)dogLocation;
 
 @end
