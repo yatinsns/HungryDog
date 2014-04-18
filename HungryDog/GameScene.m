@@ -48,9 +48,6 @@ static NSString *const CatcherName = @"Catcher";
 @property (nonatomic) SKSpriteNode *eneryBarSprite;
 @property (nonatomic) BOOL shouldEndGame;
 
-@property (nonatomic) SKSpriteNode *tunnel1;
-@property (nonatomic) SKSpriteNode *tunnel2;
-
 @property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 
 @end
@@ -73,7 +70,7 @@ static NSString *const CatcherName = @"Catcher";
     [self addBone];
     [self addDog];
     [self addHole];
-    [self addTunnel];
+    [self addTunnels];
     [self addCatchers];
     
     _gamePlay.dogHandler.dog = _dog;
@@ -186,20 +183,6 @@ static NSString *const CatcherName = @"Catcher";
   if (self.shouldEndGame) {
     [self endGame];
   }
-
-  [self enumerateChildNodesWithName:TunnelName1 usingBlock:^(SKNode *node, BOOL *stop) {
-    SKSpriteNode *tunnel = (SKSpriteNode *)node;
-    if (CGPointLength(CGPointSubtract(tunnel.position, self.dog.position)) < 40) {
-      [self moveDogToPosition:self.tunnel2.position];
-    }
-  }];
-
-  [self enumerateChildNodesWithName:TunnelName2 usingBlock:^(SKNode *node, BOOL *stop) {
-    SKSpriteNode *tunnel = (SKSpriteNode *)node;
-    if (CGPointLength(CGPointSubtract(tunnel.position, self.dog.position)) < 40) {
-      [self moveDogToPosition:self.tunnel1.position];
-    }
-  }];
 }
 
 - (void)addHole {
@@ -210,18 +193,32 @@ static NSString *const CatcherName = @"Catcher";
   [self addChild:node];
 }
 
-- (void)addTunnel {
-  SKSpriteNode *node1 = self.tunnel1 = [self.spritesProvider tunnel];
+- (void)addTunnels {
+  SKSpriteNode *node1 = [self.spritesProvider tunnel];
   node1.name = TunnelName1;
   node1.position = CGPointMake(node1.size.width / 2, node1.size.height / 2);
   node1.zPosition = -1;
   [self addChild:node1];
 
-  SKSpriteNode *node2 = self.tunnel2 = [self.spritesProvider tunnel];
+  SKSpriteNode *node2 = [self.spritesProvider tunnel];
   node2.name = TunnelName2;
-  node2.position = CGPointMake(node2.size.width / 2, self.size.height - node2.size.height);
+  node2.position = CGPointMake(node2.size.width / 2, self.size.height - node2.size.height / 2);
   node2.zPosition = -1;
   [self addChild:node2];
+
+  SKSpriteNode *node3 = [self.spritesProvider tunnel];
+  node3.name = TunnelName1;
+  node3.position = CGPointMake(self.size.width - node3.size.width / 2, node3.size.height / 2);
+  node3.zPosition = -1;
+  node3.zRotation = M_PI;
+  [self addChild:node3];
+
+  SKSpriteNode *node4 = [self.spritesProvider tunnel];
+  node4.name = TunnelName2;
+  node4.position = CGPointMake(self.size.width - node4.size.width / 2, self.size.height - node4.size.height / 2);
+  node4.zPosition = -1;
+  node4.zRotation = M_PI;
+  [self addChild:node4];
 }
 
 - (void)moveDogToPosition:(CGPoint)position {
