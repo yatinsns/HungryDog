@@ -11,16 +11,15 @@
 #import "UIUtils.h"
 #import "VectorUtils.h"
 
-const CGFloat ScoreLabelPaddingRight = 10;
-const CGFloat ScoreLabelPaddingTop = 10;
+const CGFloat ScoreLabelPaddingRight = 80;
 
-const CGFloat EnergyBarSizeWidth_iPhone = 30;
+const CGFloat EnergyBarSizeWidth_iPhone = 20;
 const CGFloat EnergyBarSizeWidth_iPad = 50;
 
-const CGFloat EnergyBarPaddingRight_iPhone = 30;
+const CGFloat EnergyBarPaddingRight_iPhone = 15;
 const CGFloat EnergyBarPaddingRight_iPad = 15;
 
-const CGFloat EnergyBarPaddingTop_iPhone = 50;
+const CGFloat EnergyBarPaddingTop_iPhone = 70;
 const CGFloat EnergyBarPaddingTop_iPad = 80;
 
 const CGFloat MinimumDistanceForBone = 100;
@@ -52,7 +51,7 @@ const CGFloat MinimumDistanceForBone = 100;
 
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel {
   return CGPointMake(self.size.width - ScoreLabelPaddingRight,
-                     self.size.height - scoreLabel.frame.size.height - ScoreLabelPaddingTop);
+                     scoreLabel.frame.size.height);
 }
 
 - (CGSize)sizeForEnergyBar {
