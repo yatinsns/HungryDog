@@ -27,9 +27,9 @@
                 rotationSpeed:(CGFloat)rotationSpeed;
 
 /**
- Update movement of dog.
+ Update movement of dog for `timeInterval`.
  */
-- (void)update:(NSTimeInterval)currentTime;
+- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 /**
  Move dog towards `location`.

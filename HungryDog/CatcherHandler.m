@@ -12,8 +12,6 @@
 
 @interface CatcherHandler ()
 
-@property (nonatomic) NSTimeInterval lastUpdateTime;
-@property (nonatomic) NSTimeInterval dt;
 @property (nonatomic) CGPoint lastTouchLocation;
 
 @property (nonatomic) CGFloat speed;
@@ -43,24 +41,20 @@
   return self;
 }
 
-- (void)update:(NSTimeInterval)currentTime {
-  if (self.lastUpdateTime) {
-    self.dt = currentTime - self.lastUpdateTime;
-  } else {
-    self.dt = 0;
-  }
-  self.lastUpdateTime = currentTime;
-
-  [self moveSprite:self.catcher velocity:self.velocity];
+- (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
+  [self moveSprite:self.catcher velocity:self.velocity timeInterval:timeInterval];
   [self boundsCheckPlayer];
   [self rotateSprite:self.catcher
               toFace:self.velocity
- rotateRadiansPerSec:self.rotationSpeed];
+ rotateRadiansPerSec:self.rotationSpeed
+        timeInterval:timeInterval];
 }
 
-- (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)velocity {
-  CGPoint amountToMove = CGPointMake(velocity.x * self.dt,
-                                     velocity.y * self.dt);
+- (void)moveSprite:(SKSpriteNode *)sprite
+          velocity:(CGPoint)velocity
+      timeInterval:(NSTimeInterval)timeInterval {
+  CGPoint amountToMove = CGPointMake(velocity.x * timeInterval,
+                                     velocity.y * timeInterval);
   sprite.position = CGPointAdd(sprite.position, amountToMove);
 }
 
@@ -77,10 +71,11 @@
 
 - (void)rotateSprite:(SKSpriteNode *)sprite
               toFace:(CGPoint)velocity
- rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec {
+ rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec
+        timeInterval:(NSTimeInterval)timeInterval {
   CGFloat targetAngle = CGPointToAngle(velocity);
   CGFloat shortestAngle = ScalarShortestAngleBetween(sprite.zRotation, targetAngle);
-  CGFloat amountToRotate = rotateRadiansPerSec * _dt;
+  CGFloat amountToRotate = rotateRadiansPerSec * timeInterval;
   CGFloat rotationAngle = amountToRotate;
   if (ABS(shortestAngle) < amountToRotate) {
     rotationAngle = ABS(shortestAngle);

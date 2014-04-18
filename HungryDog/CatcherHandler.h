@@ -28,9 +28,9 @@
                          size:(CGSize)size;
 
 /**
- Update movement of catcher.
+ Update movement of catcher for `timeInterval`.
  */
-- (void)update:(NSTimeInterval)currentTime;
+- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 /**
  Move catcher towards `location`.

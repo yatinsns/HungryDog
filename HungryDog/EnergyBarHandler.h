@@ -35,9 +35,9 @@
 - (NSUInteger)status;
 
 /**
- Updates status according to `currentTime`.
+ Updates status for `timeInterval`.
  */
-- (void)update:(NSTimeInterval)currentTime;
+- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 /**
  Boosts energy by a fixed amount.

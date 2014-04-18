@@ -48,9 +48,9 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
   }
 }
 
-- (void)update:(NSTimeInterval)currentTime {
+- (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
   for (CatcherHandler *catcherHandler in self.array) {
-    [catcherHandler update:currentTime];
+    [catcherHandler updateForTimeInterval:timeInterval];
   }
 }
 

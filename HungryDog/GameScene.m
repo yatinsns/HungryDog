@@ -240,12 +240,12 @@ static NSString *const CatcherName = @"Catcher";
   }
   self.lastUpdateTime = currentTime;
 
-  [self.gamePlay.energyBarHandler update:currentTime];
-  [self.gamePlay.dogHandler update:currentTime];
+  [self.gamePlay.energyBarHandler updateForTimeInterval:self.dt];
+  [self.gamePlay.dogHandler updateForTimeInterval:self.dt];
 
   [self.gamePlay.strategyMaker updateDogLocation:self.dog.position
                                             size:self.size];
-  [self.gamePlay.strategyMaker update:currentTime];
+  [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
 }
 
 - (void)willMoveFromView:(SKView *)view {

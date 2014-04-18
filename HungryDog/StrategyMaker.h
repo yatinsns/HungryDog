@@ -17,6 +17,6 @@
 
 - (void)updateDogLocation:(CGPoint)location size:(CGSize)size;
 
-- (void)update:(NSTimeInterval)currentTime;
+- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 @end

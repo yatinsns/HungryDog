@@ -12,8 +12,6 @@
 
 @interface DogHandler ()
 
-@property (nonatomic) NSTimeInterval lastUpdateTime;
-@property (nonatomic) NSTimeInterval dt;
 @property (nonatomic) CGPoint lastTouchLocation;
 
 @property (nonatomic) CGFloat speed;
@@ -34,22 +32,19 @@
   return self;
 }
 
-- (void)update:(NSTimeInterval)currentTime {
-  if (self.lastUpdateTime) {
-    self.dt = currentTime - self.lastUpdateTime;
-  } else {
-    self.dt = 0;
+- (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
+  if (timeInterval == 0) {
+    return;
   }
-  
-  self.lastUpdateTime = currentTime;
   if (![self isLastTouchLocationNil]) {
     CGPoint offset = CGPointSubtract(self.lastTouchLocation, self.dog.position);
     CGFloat length = CGPointLength(offset);
-    if (length >= (self.speed * self.dt)) {
-      [self moveSprite:self.dog velocity:self.velocity];
+    if (length >= (self.speed * timeInterval)) {
+      [self moveSprite:self.dog velocity:self.velocity timeInterval:timeInterval];
       [self rotateSprite:self.dog
                   toFace:self.velocity
-     rotateRadiansPerSec:self.rotationSpeed];
+     rotateRadiansPerSec:self.rotationSpeed
+            timeInterval:timeInterval];
     } else {
       self.velocity = CGPointZero;
     }
@@ -57,13 +52,16 @@
     // No need to stop as it won't be rotated if shortestAngle is zero.
     [self rotateSprite:self.dog
                 toFace:self.velocity
-   rotateRadiansPerSec:self.rotationSpeed];
+   rotateRadiansPerSec:self.rotationSpeed
+          timeInterval:timeInterval];
   }
 }
 
-- (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)velocity {
-  CGPoint amountToMove = CGPointMake(velocity.x * self.dt,
-                                     velocity.y * self.dt);
+- (void)moveSprite:(SKSpriteNode *)sprite
+          velocity:(CGPoint)velocity
+      timeInterval:(NSTimeInterval)timeInterval {
+  CGPoint amountToMove = CGPointMake(velocity.x * timeInterval,
+                                     velocity.y * timeInterval);
   sprite.position = CGPointAdd(sprite.position, amountToMove);
 }
 
@@ -76,10 +74,11 @@
 
 - (void)rotateSprite:(SKSpriteNode *)sprite
               toFace:(CGPoint)velocity
- rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec {
+ rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec
+        timeInterval:(NSTimeInterval)timeInterval {
   CGFloat targetAngle = CGPointToAngle(velocity);
   CGFloat shortestAngle = ScalarShortestAngleBetween(sprite.zRotation, targetAngle);
-  CGFloat amountToRotate = rotateRadiansPerSec * _dt;
+  CGFloat amountToRotate = rotateRadiansPerSec * timeInterval;
   CGFloat rotationAngle = amountToRotate;
   if (ABS(shortestAngle) < amountToRotate) {
     rotationAngle = ABS(shortestAngle);
