@@ -45,7 +45,7 @@ static NSString *const CatcherName = @"Catcher";
 @property (nonatomic) NSTimeInterval lastUpdateTime;
 @property (nonatomic) NSTimeInterval dt;
 
-@property (nonatomic) SKSpriteNode *eneryBarSprite;
+@property (nonatomic) SKSpriteNode *energyBarSprite;
 @property (nonatomic) BOOL shouldEndGame;
 
 @property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
@@ -104,12 +104,12 @@ static NSString *const CatcherName = @"Catcher";
 
 - (void)addEnergyBarWithStatus:(NSUInteger)status {
   CGFloat border = ValueForDevice(EnergyBarStrokeWidth_iPhone, EnergyBarStrokeWidth_iPad);
-  self.eneryBarSprite = [self.spritesProvider energyBarWithSize:[self.spritesOrganizer sizeForEnergyBar]
-                                                         border:border
-                                                         status:status];
-  self.eneryBarSprite.anchorPoint = CGPointZero;
-  self.eneryBarSprite.position = [self.spritesOrganizer positionForEnergyBar];
-  self.eneryBarSprite.zPosition = -1;
+  self.energyBarSprite = [self.spritesProvider energyBarWithSize:[self.spritesOrganizer sizeForEnergyBar]
+                                                          border:border
+                                                          status:status];
+  self.energyBarSprite.anchorPoint = CGPointZero;
+  self.energyBarSprite.position = [self.spritesOrganizer positionForEnergyBar];
+  self.energyBarSprite.zPosition = -1;
 }
 
 - (void)addBone {
@@ -129,10 +129,11 @@ static NSString *const CatcherName = @"Catcher";
   [self addChild:_scoreLabel];
 }
 
-- (void)setEneryBarSprite:(SKSpriteNode *)eneryBarSprite {
-  [_eneryBarSprite removeFromParent];
-  _eneryBarSprite = eneryBarSprite;
-  [self addChild:_eneryBarSprite];
+- (void)setEnergyBarSprite:(SKSpriteNode *)energyBarSprite {
+  SKSpriteNode *node = _energyBarSprite;
+  _energyBarSprite = energyBarSprite;
+  [node removeFromParent];
+  [self addChild:_energyBarSprite];
 }
 
 - (void)addDog {
