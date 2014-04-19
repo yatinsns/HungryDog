@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */; };
 		802F9C0718F7295300747E7C /* DogHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 802F9C0618F7295300747E7C /* DogHandler.m */; };
+		80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80502A621901CF1000FBAAF9 /* bgMusic.mp3 */; };
 		80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80686F0518F5C9B000DB415E /* EnergyBarHandler.m */; };
 		80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */; };
 		80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699519014FD900CBAC55 /* CatcherMovementPattern.m */; };
@@ -43,7 +44,6 @@
 		80C9935918FC4236001E9D44 /* CatcherHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C9935818FC4236001E9D44 /* CatcherHandler.m */; };
 		80C9935C18FC4EDD001E9D44 /* SKAction+CatcherAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C9935B18FC4EDD001E9D44 /* SKAction+CatcherAdditions.m */; };
 		80C9935F18FCEF90001E9D44 /* StrategyMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C9935E18FCEF90001E9D44 /* StrategyMaker.m */; };
-		80C9936318FFCB86001E9D44 /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80C9936218FFCB86001E9D44 /* bgMusic.mp3 */; };
 		80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */; };
 		80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */; };
 		80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E318F676A700E6DB97 /* GameSceneSpritesOrganizer.m */; };
@@ -64,6 +64,7 @@
 		8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+DogAdditions.m"; sourceTree = "<group>"; };
 		802F9C0518F7295300747E7C /* DogHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogHandler.h; sourceTree = "<group>"; };
 		802F9C0618F7295300747E7C /* DogHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogHandler.m; sourceTree = "<group>"; };
+		80502A621901CF1000FBAAF9 /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		80686F0418F5C9B000DB415E /* EnergyBarHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyBarHandler.h; sourceTree = "<group>"; };
 		80686F0518F5C9B000DB415E /* EnergyBarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyBarHandler.m; sourceTree = "<group>"; };
 		80A7CD6B18F49473006357D7 /* GameSceneSpritesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneSpritesProvider.h; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		80C9935B18FC4EDD001E9D44 /* SKAction+CatcherAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+CatcherAdditions.m"; sourceTree = "<group>"; };
 		80C9935D18FCEF90001E9D44 /* StrategyMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyMaker.h; sourceTree = "<group>"; };
 		80C9935E18FCEF90001E9D44 /* StrategyMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyMaker.m; sourceTree = "<group>"; };
-		80C9936218FFCB86001E9D44 /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneGenerator.h; sourceTree = "<group>"; };
 		80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneGenerator.m; sourceTree = "<group>"; };
 		80DE58DF18F6697700E6DB97 /* SKAction+BoneAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+BoneAdditions.h"; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		80C40BDF18EFFD2900FBF8C7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				80C9936218FFCB86001E9D44 /* bgMusic.mp3 */,
+				80502A621901CF1000FBAAF9 /* bgMusic.mp3 */,
 				80C40BBD18EFEEEE00FBF8C7 /* Spaceship.png */,
 				80C40BBF18EFEEEE00FBF8C7 /* Images.xcassets */,
 			);
@@ -406,7 +406,7 @@
 				80C40BB618EFEEEE00FBF8C7 /* Main_iPad.storyboard in Resources */,
 				80C40BB318EFEEEE00FBF8C7 /* Main_iPhone.storyboard in Resources */,
 				80C40BAA18EFEEEE00FBF8C7 /* InfoPlist.strings in Resources */,
-				80C9936318FFCB86001E9D44 /* bgMusic.mp3 in Resources */,
+				80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
