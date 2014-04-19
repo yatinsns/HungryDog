@@ -216,7 +216,7 @@ PowerGeneratorDelegate>
 - (void)checkCollisions {
   [self enumerateChildNodesWithName:BoneName usingBlock:^(SKNode *node, BOOL *stop){
     SKSpriteNode *bone = (SKSpriteNode *)node;
-    if (CGRectIntersectsRect(bone.frame, self.dog.frame)) {
+    if (CGPointLength(CGPointSubtract(bone.position, self.dog.position)) < 40) {
       [bone removeFromParent];
       [self.gamePlay.scoreHandler incrementScoreByValue:1];
       [self.gamePlay.energyBarHandler boost];
