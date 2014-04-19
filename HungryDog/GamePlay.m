@@ -15,16 +15,6 @@ static const CGFloat DogSpeed_iPhone = 150;
 static const CGFloat DogSpeed_iPad = 350;
 static const CGFloat DogRotationSpeed = 4 * M_PI;
 
-@interface GamePlay ()
-
-@property (nonatomic, readwrite) ScoreHandler *scoreHandler;
-@property (nonatomic, readwrite) EnergyBarHandler *energyBarHandler;
-@property (nonatomic, readwrite) BoneGenerator *boneGenerator;
-@property (nonatomic, readwrite) DogHandler *dogHandler;
-@property (nonatomic, readwrite) StrategyMaker *strategyMaker;
-
-@end
-
 @implementation GamePlay
 
 - (instancetype)init {
