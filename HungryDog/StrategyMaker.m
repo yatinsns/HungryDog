@@ -98,4 +98,8 @@ static const NSTimeInterval PatternRotationInterval = 1;
   return [self.strategyPatternCreator.strategyPatterns objectAtIndex:self.currentPatternIndex];
 }
 
+- (void)stopCatchersForInterval:(NSTimeInterval)timeInterval {
+  // FIXME (YS): Implementation missing
+}
+
 @end

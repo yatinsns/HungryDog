@@ -17,6 +17,7 @@
 #import "SKAction+BoneAdditions.h"
 #import "SKAction+DogAdditions.h"
 #import "SKAction+CatcherAdditions.h"
+#import "SKAction+PowerAdditions.h"
 #import "VectorUtils.h"
 #import "ButtonNode.h"
 
@@ -26,6 +27,7 @@ const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 const NSTimeInterval BoneAppearanceTimeInterval = 10;
+const NSTimeInterval PowerAppearanceTimeInterval = 15;
 
 static NSString *const BoneName = @"Bone";
 static NSString *const HoleName = @"Hole";
@@ -33,7 +35,14 @@ static NSString *const TunnelName1 = @"Tunnel1";
 static NSString *const TunnelName2 = @"Tunnel2";
 static NSString *const CatcherName = @"Catcher";
 
-@interface GameScene () <ScoreHandlerDelegate, EnergyBarHandlerDelegate, BoneGeneratorDelegate>
+static NSString *const EnergyBoosterPowerName = @"EnergyBooster";
+static NSString *const TimeStopperPowerName = @"TimeStopper";
+static NSString *const InvisibilityCloakPowerName = @"InvisibilityCloak";
+
+@interface GameScene () <ScoreHandlerDelegate,
+EnergyBarHandlerDelegate,
+BoneGeneratorDelegate,
+PowerGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) SKSpriteNode *dog;
@@ -54,6 +63,8 @@ static NSString *const CatcherName = @"Catcher";
 
 @property (nonatomic) ButtonNode *pauseButton;
 @property (nonatomic) BOOL isGamePaused;
+
+@property (nonatomic) BOOL isDogInvisible;
 
 @end
 
@@ -81,6 +92,7 @@ static NSString *const CatcherName = @"Catcher";
     
     _gamePlay.dogHandler.dog = _dog;
     [_gamePlay.strategyMaker setCatchers:_catchers withSize:self.size];
+    [_gamePlay.powerGenerator setDelegate:self];
     self.userInteractionEnabled = YES;
 
     [self playBackgroundMusic:@"bgMusic.mp3"];
@@ -211,6 +223,30 @@ static NSString *const CatcherName = @"Catcher";
       [self generateBone];
     }
   }];
+  
+  [self enumerateChildNodesWithName:EnergyBoosterPowerName usingBlock:^(SKNode *node, BOOL *stop){
+    SKSpriteNode *power = (SKSpriteNode *)node;
+    if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
+      [power removeFromParent];
+      [self.gamePlay.energyBarHandler boostToFull];
+    }
+  }];
+  
+  [self enumerateChildNodesWithName:TimeStopperPowerName usingBlock:^(SKNode *node, BOOL *stop){
+    SKSpriteNode *power = (SKSpriteNode *)node;
+    if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
+      [power removeFromParent];
+      [self.gamePlay.strategyMaker stopCatchersForInterval:10];
+    }
+  }];
+  
+  [self enumerateChildNodesWithName:InvisibilityCloakPowerName usingBlock:^(SKNode *node, BOOL *stop){
+    SKSpriteNode *power = (SKSpriteNode *)node;
+    if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
+      [power removeFromParent];
+      [self setDogAsInvisible:@(YES)];
+    }
+  }];
 
   [self enumerateChildNodesWithName:HoleName usingBlock:^(SKNode *node, BOOL *stop) {
     SKSpriteNode *hole = (SKSpriteNode *)node;
@@ -222,14 +258,16 @@ static NSString *const CatcherName = @"Catcher";
     [self endGame];
   }
 
-  [self enumerateChildNodesWithName:CatcherName usingBlock:^(SKNode *node, BOOL *stop) {
-    SKSpriteNode *catcher = (SKSpriteNode *)node;
-    if (CGPointLength(CGPointSubtract(catcher.position, self.dog.position)) < 40) {
-      self.shouldEndGame = YES;
+  if (!self.isDogInvisible) {
+    [self enumerateChildNodesWithName:CatcherName usingBlock:^(SKNode *node, BOOL *stop) {
+      SKSpriteNode *catcher = (SKSpriteNode *)node;
+      if (CGPointLength(CGPointSubtract(catcher.position, self.dog.position)) < 40) {
+        self.shouldEndGame = YES;
+      }
+    }];
+    if (self.shouldEndGame) {
+      [self endGame];
     }
-  }];
-  if (self.shouldEndGame) {
-    [self endGame];
   }
 }
 
@@ -273,6 +311,32 @@ static NSString *const CatcherName = @"Catcher";
   [self.gamePlay.dogHandler stop];
   position.x += 50;
   self.dog.position = position;
+}
+
+- (void)addPowerWithType:(PowerType)powerType {
+  SKSpriteNode *node = [self.spritesProvider powerWithType:powerType];
+  node.position = [self.spritesOrganizer randomPositionForPowerAwayFromLocation:self.dog.position];
+  node.zPosition = -1;
+  node.name = [self nodeNameForPowerType:powerType];
+  [node runAction:[SKAction powerActionForTimeInterval:PowerAppearanceTimeInterval]];
+  [self addChild:node];
+}
+
+- (NSString *)nodeNameForPowerType:(PowerType)powerType {
+  switch (powerType) {
+    case PowerTypeEnergyBooster:
+      return EnergyBoosterPowerName;
+      
+    case PowerTypeTimeStopper:
+      return TimeStopperPowerName;
+      
+    case PowerTypeInvisibiltyCloak:
+      return InvisibilityCloakPowerName;
+      
+    default:
+      break;
+  }
+  return nil;
 }
 
 #pragma mark - Overridden methods
@@ -382,6 +446,39 @@ static NSString *const CatcherName = @"Catcher";
   _backgroundMusicPlayer.numberOfLoops = -1;
   [_backgroundMusicPlayer prepareToPlay];
   [_backgroundMusicPlayer play];
+}
+
+#pragma mark - Power
+
+- (void)setDogAsInvisible:(NSNumber *)isInvisible {
+  if ([isInvisible boolValue]) {
+    self.isDogInvisible = YES;
+    self.dog.alpha = 0.3;
+    [self performSelector:@selector(toggleDogInvisibility:) withObject:@(1) afterDelay:8];
+  } else {
+    self.isDogInvisible = NO;
+    self.dog.alpha = 1.0;
+  }
+}
+
+- (void)toggleDogInvisibility:(NSNumber *)turn {
+  if (self.dog.alpha < 1.0) {
+    self.dog.alpha = 1.0;
+  } else {
+    self.dog.alpha = 0.3;
+  }
+  if ([turn intValue] < 10) {
+    [self performSelector:@selector(toggleDogInvisibility:) withObject:@([turn intValue] + 1) afterDelay:0.5];
+  } else {
+    [self setDogAsInvisible:@(NO)];
+  }
+}
+
+#pragma mark - PowerGeneratorDelegate
+
+- (void)powerGenerator:(PowerGenerator *)powerGenerator
+didGeneratePowerOfType:(PowerType)powerType {
+  [self addPowerWithType:powerType];
 }
 
 @end

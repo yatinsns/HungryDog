@@ -19,4 +19,6 @@
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
+- (void)stopCatchersForInterval:(NSTimeInterval)timeInterval;
+
 @end

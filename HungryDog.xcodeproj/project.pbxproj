@@ -10,6 +10,7 @@
 		8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */; };
 		802F9C0718F7295300747E7C /* DogHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 802F9C0618F7295300747E7C /* DogHandler.m */; };
 		80387F2E1902F8C600FA98CE /* PowerGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80387F2D1902F8C600FA98CE /* PowerGenerator.m */; };
+		80387F311903011C00FA98CE /* SKAction+PowerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80387F301903011C00FA98CE /* SKAction+PowerAdditions.m */; };
 		80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80502A621901CF1000FBAAF9 /* bgMusic.mp3 */; };
 		80502A661902AA4F00FBAAF9 /* ButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 80502A651902AA4F00FBAAF9 /* ButtonNode.m */; };
 		80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80686F0518F5C9B000DB415E /* EnergyBarHandler.m */; };
@@ -68,6 +69,9 @@
 		802F9C0618F7295300747E7C /* DogHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogHandler.m; sourceTree = "<group>"; };
 		80387F2C1902F8C600FA98CE /* PowerGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerGenerator.h; sourceTree = "<group>"; };
 		80387F2D1902F8C600FA98CE /* PowerGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerGenerator.m; sourceTree = "<group>"; };
+		80387F2F1903011C00FA98CE /* SKAction+PowerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+PowerAdditions.h"; sourceTree = "<group>"; };
+		80387F301903011C00FA98CE /* SKAction+PowerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+PowerAdditions.m"; sourceTree = "<group>"; };
+		80387F32190302D500FA98CE /* PowerType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerType.h; sourceTree = "<group>"; };
 		80502A621901CF1000FBAAF9 /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		80502A641902AA4F00FBAAF9 /* ButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonNode.h; sourceTree = "<group>"; };
 		80502A651902AA4F00FBAAF9 /* ButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonNode.m; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				80C40C0118F4717C00FBF8C7 /* GamePlay.m */,
 				80387F2C1902F8C600FA98CE /* PowerGenerator.h */,
 				80387F2D1902F8C600FA98CE /* PowerGenerator.m */,
+				80387F32190302D500FA98CE /* PowerType.h */,
 				80C40BFC18F46F8400FBF8C7 /* ScoreHandler.h */,
 				80C40BFD18F46F8500FBF8C7 /* ScoreHandler.m */,
 				80C9935D18FCEF90001E9D44 /* StrategyMaker.h */,
@@ -331,6 +336,8 @@
 				8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */,
 				80C9935A18FC4EDD001E9D44 /* SKAction+CatcherAdditions.h */,
 				80C9935B18FC4EDD001E9D44 /* SKAction+CatcherAdditions.m */,
+				80387F2F1903011C00FA98CE /* SKAction+PowerAdditions.h */,
+				80387F301903011C00FA98CE /* SKAction+PowerAdditions.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -438,6 +445,7 @@
 				80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */,
 				802F9C0718F7295300747E7C /* DogHandler.m in Sources */,
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
+				80387F311903011C00FA98CE /* SKAction+PowerAdditions.m in Sources */,
 				80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */,
 				80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */,
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,

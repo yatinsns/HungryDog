@@ -151,4 +151,44 @@ const CGFloat PauseButtonHeight = 44;
   return node;
 }
 
+- (SKSpriteNode *)powerWithType:(PowerType)powerType {
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:[self imageNameForPowerType:powerType]];
+  node.size = [self sizeForPowerType:powerType];
+  return node;
+}
+
+- (NSString *)imageNameForPowerType:(PowerType)powerType {
+  switch (powerType) {
+    case PowerTypeEnergyBooster:
+      return @"Gift.png";
+      break;
+    case PowerTypeTimeStopper:
+      return @"Timer.png";
+      break;
+    case PowerTypeInvisibiltyCloak:
+      return @"Witch.png";
+      break;
+    default:
+      break;
+  }
+  return nil;
+}
+
+- (CGSize)sizeForPowerType:(PowerType)powerType {
+  switch (powerType) {
+    case PowerTypeEnergyBooster:
+      return CGSizeMake(50, 48);
+      break;
+    case PowerTypeInvisibiltyCloak:
+      return CGSizeMake(50, 50);
+      break;
+    case PowerTypeTimeStopper:
+      return CGSizeMake(50, 62);
+      break;
+    default:
+      break;
+  }
+  return CGSizeZero;
+}
+
 @end

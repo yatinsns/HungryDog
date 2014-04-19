@@ -7,12 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSUInteger, PowerType) {
-  PowerTypeEnergyBooster,
-  PowerTypeTimeStopper,
-  PowerTypeInvisibiltyCloak
-};
+#import "PowerType.h"
 
 @protocol PowerGeneratorDelegate;
 

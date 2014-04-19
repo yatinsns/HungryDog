@@ -28,4 +28,6 @@
 
 - (CGPoint)positionForPauseButton;
 
+- (CGPoint)randomPositionForPowerAwayFromLocation:(CGPoint)location;
+
 @end

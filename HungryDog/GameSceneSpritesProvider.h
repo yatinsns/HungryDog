@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 #import "ButtonNode.h"
+#import "PowerType.h"
 
 @interface GameSceneSpritesProvider : NSObject
 
@@ -29,5 +30,7 @@
 - (SKSpriteNode *)tunnel;
 
 - (ButtonNode *)pauseButtonWithPausedState:(BOOL)pausedState;
+
+- (SKSpriteNode *)powerWithType:(PowerType)powerType;
 
 @end

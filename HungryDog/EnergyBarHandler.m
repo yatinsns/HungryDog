@@ -29,7 +29,16 @@ static const CGFloat StatusValueBoost = 15;
 }
 
 - (void)boost {
-  self.statusValue = (self.statusValue + StatusValueBoost);
+  [self updateStatusValueToValue:(self.statusValue + StatusValueBoost)];
+  
+}
+
+- (void)boostToFull {
+  [self updateStatusValueToValue:StatusValueMax];
+}
+
+- (void)updateStatusValueToValue:(CGFloat)value {
+  self.statusValue = value;
   if (self.statusValue > StatusValueMax) {
     self.statusValue = StatusValueMax;
   }

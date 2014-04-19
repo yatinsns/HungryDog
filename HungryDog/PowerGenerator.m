@@ -8,7 +8,7 @@
 
 #import "PowerGenerator.h"
 
-const NSTimeInterval PowerInterval = 30;
+const NSTimeInterval PowerInterval = 40;
 
 @interface PowerGenerator ()
 

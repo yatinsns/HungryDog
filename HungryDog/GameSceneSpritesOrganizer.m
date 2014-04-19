@@ -80,4 +80,13 @@ const CGFloat MinimumDistanceForBone = 100;
   return CGPointMake(self.size.width - 80, self.size.height - 30);
 }
 
+- (CGPoint)randomPositionForPowerAwayFromLocation:(CGPoint)location {
+  CGPoint randomPoint;
+  do {
+    randomPoint = CGPointMake(arc4random_uniform(self.size.width),
+                              arc4random_uniform(self.size.height));
+  } while (CGPointLength(CGPointSubtract(randomPoint, location)) < MinimumDistanceForBone);
+  return randomPoint;
+}
+
 @end

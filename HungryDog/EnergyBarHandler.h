@@ -44,6 +44,11 @@
  */
 - (void)boost;
 
+/**
+ Boosts energy to the maximum amount.
+ */
+- (void)boostToFull;
+
 @end
 
 @protocol EnergyBarHandlerDelegate <NSObject>
