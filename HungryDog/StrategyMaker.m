@@ -10,6 +10,7 @@
 #import "CatcherHandler.h"
 #import "UIUtils.h"
 #import "StrategyPatternCreator.h"
+#import <SpriteKit/SpriteKit.h>
 
 static const CGFloat CatcherSpeed_iPhone = 75;
 static const CGFloat CatcherSpeed_iPad = 200;
@@ -61,6 +62,11 @@ static const NSTimeInterval PatternRotationInterval = 1;
     index ++;
   }
 
+  [self scheduleTimer];
+}
+
+- (void)scheduleTimer {
+  [self.timer invalidate];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:20
                                                 target:self
                                               selector:@selector(changePattern)
@@ -99,7 +105,11 @@ static const NSTimeInterval PatternRotationInterval = 1;
 }
 
 - (void)stopCatchersForInterval:(NSTimeInterval)timeInterval {
-  // FIXME (YS): Implementation missing
+  for (CatcherHandler *catcherHandler in self.array) {
+    [catcherHandler.catcher removeAllActions];
+  }
+  [self.timer invalidate];
+  [self performSelector:@selector(scheduleTimer) withObject:nil afterDelay:13];
 }
 
 @end
