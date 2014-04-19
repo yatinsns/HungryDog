@@ -49,8 +49,8 @@
              [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, 0)],
              [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, height)],
              [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, 0)]],
-           @[[NSValue valueWithCGPoint:CGPointMake(midWidth - 50, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, height)],
-             [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, height)],
+           @[[NSValue valueWithCGPoint:CGPointMake(midWidth - 50, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 50, 0)],
+             [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, height)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 50, 0)],
              [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth + 100, height)],
              [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, 0)], [NSValue valueWithCGPoint:CGPointMake(midWidth - 100, height)]]
            ];
