@@ -29,6 +29,7 @@ static const CGFloat DogRotationSpeed = 4 * M_PI;
                                       rotationSpeed:DogRotationSpeed];
 
     _strategyMaker = [[StrategyMaker alloc] init];
+    _powerGenerator = [[PowerGenerator alloc] init];
   }
   return self;
 }
