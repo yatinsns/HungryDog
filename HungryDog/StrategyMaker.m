@@ -55,13 +55,16 @@ static const NSTimeInterval PatternRotationInterval = 1;
                                                                       size:size];
     catcherHandler.catcher = catcher;
     catcherHandler.mode = CatcherModePattern;
-    catcherHandler.movementPattern = [pattern.movementPatterns objectAtIndex:index];
     catcherHandler.patternRotationInterval = PatternRotationInterval;
     catcherHandler.patternMovementInterval = PatternMovementInterval;
     [self.array addObject:catcherHandler];
     index ++;
   }
+  [self setPattern];
+}
 
+- (void)setPattern {
+  [self changePattern];
   [self scheduleTimer];
 }
 
@@ -109,7 +112,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
     [catcherHandler.catcher removeAllActions];
   }
   [self.timer invalidate];
-  [self performSelector:@selector(scheduleTimer) withObject:nil afterDelay:13];
+  [self performSelector:@selector(setPattern) withObject:nil afterDelay:10];
 }
 
 @end
