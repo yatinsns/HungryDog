@@ -112,7 +112,13 @@ static const NSTimeInterval PatternRotationInterval = 1;
     [catcherHandler.catcher removeAllActions];
   }
   [self.timer invalidate];
-  [self performSelector:@selector(setPattern) withObject:nil afterDelay:10];
+  [self.delegate strategyMakerDidStopCatchers:self];
+  [self performSelector:@selector(startCatchers) withObject:nil afterDelay:timeInterval];
+}
+
+- (void)startCatchers {
+  [self setPattern];
+  [self.delegate strategyMakerDidStartCatchers:self];
 }
 
 @end

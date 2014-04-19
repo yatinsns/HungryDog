@@ -42,7 +42,8 @@ static NSString *const InvisibilityCloakPowerName = @"InvisibilityCloak";
 @interface GameScene () <ScoreHandlerDelegate,
 EnergyBarHandlerDelegate,
 BoneGeneratorDelegate,
-PowerGeneratorDelegate>
+PowerGeneratorDelegate,
+StrategyMakerDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) SKSpriteNode *dog;
@@ -92,6 +93,7 @@ PowerGeneratorDelegate>
     
     _gamePlay.dogHandler.dog = _dog;
     [_gamePlay.strategyMaker setCatchers:_catchers withSize:self.size];
+    [_gamePlay.strategyMaker setDelegate:self];
     [_gamePlay.powerGenerator setDelegate:self];
     self.userInteractionEnabled = YES;
 
@@ -137,7 +139,7 @@ PowerGeneratorDelegate>
 - (void)addPauseButton {
   ButtonNode *node = [self.spritesProvider pauseButtonWithPausedState:self.isGamePaused];
   node.position = [self.spritesOrganizer positionForPauseButton];
-  node.zPosition = -1;
+  node.zPosition = -2;
   [node setTouchUpInsideTarget:self action:@selector(pauseButtonTapped)];
   [self addChild:node];
   self.pauseButton = node;
@@ -147,7 +149,7 @@ PowerGeneratorDelegate>
   self.scoreLabel = [self.spritesProvider score];
   self.scoreLabel.text = [NSString stringWithScore:score];
   self.scoreLabel.position = [self.spritesOrganizer positionForScoreLabel:_scoreLabel];
-  self.scoreLabel.zPosition = -1;
+  self.scoreLabel.zPosition = -2;
 }
 
 - (void)addEnergyBarWithStatus:(NSUInteger)status {
@@ -157,13 +159,14 @@ PowerGeneratorDelegate>
                                                           status:status];
   self.energyBarSprite.anchorPoint = CGPointZero;
   self.energyBarSprite.position = [self.spritesOrganizer positionForEnergyBar];
-  self.energyBarSprite.zPosition = -1;
+  self.energyBarSprite.zPosition = -2;
 }
 
 - (void)addBone {
   SKSpriteNode *node = [self.spritesProvider bone];
   node.position = [self.spritesOrganizer randomPositionForBoneAwayFromLocation:self.dog.position];
   node.name = BoneName;
+  node.zPosition = -1;
   [self addChild:node];
   __block typeof (self) weakSelf = self;
   [node runAction:[SKAction boneActionForTimeInterval:BoneAppearanceTimeInterval] completion:^{
@@ -278,7 +281,7 @@ PowerGeneratorDelegate>
   SKSpriteNode *node = [self.spritesProvider hole];
   node.name = HoleName;
   node.position = [self.spritesOrganizer positionForHole];
-  node.zPosition = -1;
+  node.zPosition = -2;
   [self addChild:node];
 }
 
@@ -286,26 +289,26 @@ PowerGeneratorDelegate>
   SKSpriteNode *node1 = [self.spritesProvider tunnel];
   node1.name = TunnelName1;
   node1.position = CGPointMake(node1.size.width / 2, node1.size.height / 2);
-  node1.zPosition = -1;
+  node1.zPosition = -2;
   [self addChild:node1];
 
   SKSpriteNode *node2 = [self.spritesProvider tunnel];
   node2.name = TunnelName2;
   node2.position = CGPointMake(node2.size.width / 2, self.size.height - node2.size.height / 2);
-  node2.zPosition = -1;
+  node2.zPosition = -2;
   [self addChild:node2];
 
   SKSpriteNode *node3 = [self.spritesProvider tunnel];
   node3.name = TunnelName1;
   node3.position = CGPointMake(self.size.width - node3.size.width / 2, node3.size.height / 2);
-  node3.zPosition = -1;
+  node3.zPosition = -2;
   node3.zRotation = M_PI;
   [self addChild:node3];
 
   SKSpriteNode *node4 = [self.spritesProvider tunnel];
   node4.name = TunnelName2;
   node4.position = CGPointMake(self.size.width - node4.size.width / 2, self.size.height - node4.size.height / 2);
-  node4.zPosition = -1;
+  node4.zPosition = -2;
   node4.zRotation = M_PI;
   [self addChild:node4];
 }
@@ -492,6 +495,16 @@ didGeneratePowerOfType:(PowerType)powerType {
   SKAction *action = [SKAction scaleTo:0.0 duration:1.5];
   [node runAction:action];
   [self addChild:node];
+}
+
+#pragma mark - StrategyMakerDelegate
+
+- (void)strategyMakerDidStopCatchers:(StrategyMaker *)strategyMaker {
+  self.isDogInvisible = YES;
+}
+
+- (void)strategyMakerDidStartCatchers:(StrategyMaker *)strategyMaker {
+  self.isDogInvisible = NO;
 }
 
 @end

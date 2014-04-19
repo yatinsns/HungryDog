@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol StrategyMakerDelegate;
+
 /**
  This class handles strategy of catchers within single gameplay.
  */
 @interface StrategyMaker : NSObject
+
+@property (nonatomic, weak) id<StrategyMakerDelegate> delegate;
 
 - (void)setCatchers:(NSArray *)catchers withSize:(CGSize)size;
 
@@ -20,5 +24,14 @@
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 - (void)stopCatchersForInterval:(NSTimeInterval)timeInterval;
+
+@end
+
+
+@protocol StrategyMakerDelegate <NSObject>
+
+- (void)strategyMakerDidStopCatchers:(StrategyMaker *)strategyMaker;
+
+- (void)strategyMakerDidStartCatchers:(StrategyMaker *)strategyMaker;
 
 @end
