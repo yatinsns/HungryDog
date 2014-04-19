@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
+#import "ButtonNode.h"
 
 @interface GameSceneSpritesProvider : NSObject
 
@@ -26,5 +27,7 @@
 - (SKSpriteNode *)hole;
 
 - (SKSpriteNode *)tunnel;
+
+- (ButtonNode *)pauseButtonWithPausedState:(BOOL)pausedState;
 
 @end

@@ -26,4 +26,6 @@
 
 - (CGPoint)positionForHole;
 
+- (CGPoint)positionForPauseButton;
+
 @end

@@ -34,6 +34,9 @@ const CGFloat TunnelWidth_iPad = 100;
 const CGFloat TunnelHeight_iPhone = 50;
 const CGFloat TunnelHeight_iPad = 100;
 
+const CGFloat PauseButtonWidth = 44;
+const CGFloat PauseButtonHeight = 44;
+
 @implementation GameSceneSpritesProvider
 
 - (SKLabelNode *)score {
@@ -131,6 +134,20 @@ const CGFloat TunnelHeight_iPad = 100;
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Tunnel"];
   node.size = CGSizeMake(ValueForDevice(TunnelWidth_iPhone, TunnelWidth_iPad),
                          ValueForDevice(TunnelHeight_iPhone, TunnelHeight_iPad));
+  return node;
+}
+
+- (ButtonNode *)pauseButtonWithPausedState:(BOOL)pausedState {
+  NSString *normal = nil, *selected = nil;
+  if (pausedState) {
+    normal = @"play.png";
+    selected = @"pause.png";
+  } else {
+    normal = @"pause.png";
+    selected = @"play.png";
+  }
+  ButtonNode *node = [[ButtonNode alloc] initWithImageNamedNormal:normal selected:selected];
+  node.size = CGSizeMake(PauseButtonWidth, PauseButtonHeight);
   return node;
 }
 

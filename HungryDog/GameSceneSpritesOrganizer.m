@@ -76,4 +76,8 @@ const CGFloat MinimumDistanceForBone = 100;
   return CGPointMake(self.size.width / 2, self.size.height / 2);
 }
 
+- (CGPoint)positionForPauseButton {
+  return CGPointMake(self.size.width - 80, self.size.height - 30);
+}
+
 @end

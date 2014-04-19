@@ -24,10 +24,6 @@
                                              selector:@selector(applicationWillResignActive:)
                                                  name:UIApplicationWillResignActiveNotification
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationDidBecomeActive:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
   }
   return self;
 }
@@ -93,10 +89,6 @@
 }
 
 #pragma mark - UIApplication notifications
-
-- (void)applicationDidBecomeActive:(NSNotification *)notification {
-  [self pauseGameScene:NO];
-}
 
 - (void)applicationWillResignActive:(NSNotification *)notification {
   [self pauseGameScene:YES];

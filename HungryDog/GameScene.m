@@ -18,6 +18,7 @@
 #import "SKAction+DogAdditions.h"
 #import "SKAction+CatcherAdditions.h"
 #import "VectorUtils.h"
+#import "ButtonNode.h"
 
 @import AVFoundation;
 
@@ -51,6 +52,9 @@ static NSString *const CatcherName = @"Catcher";
 @property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 @property (nonatomic) BOOL isResumed;
 
+@property (nonatomic) ButtonNode *pauseButton;
+@property (nonatomic) BOOL isGamePaused;
+
 @end
 
 @implementation GameScene
@@ -66,6 +70,7 @@ static NSString *const CatcherName = @"Catcher";
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] initWithSize:size];
     
+    [self addPauseButton];
     [self addScoreLabelWithScore:_gamePlay.scoreHandler.currentScore];
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
@@ -84,6 +89,14 @@ static NSString *const CatcherName = @"Catcher";
 }
 
 - (void)pauseScene:(BOOL)pause {
+  if (pause == self.isGamePaused) {
+    return;
+  }
+  [self __pauseScene:pause];
+}
+
+- (void)__pauseScene:(BOOL)pause {
+  self.isGamePaused = pause;
   self.paused = pause;
   if (pause) {
     [self.backgroundMusicPlayer pause];
@@ -93,7 +106,30 @@ static NSString *const CatcherName = @"Catcher";
   }
 }
 
+- (void)setIsGamePaused:(BOOL)isGamePaused {
+  _isGamePaused = isGamePaused;
+  [self addPauseButton];
+}
+
+- (void)pauseButtonTapped {
+  [self __pauseScene:!self.isGamePaused];
+}
+
+- (void)setPauseButton:(ButtonNode *)pauseButton {
+  [_pauseButton removeFromParent];
+  _pauseButton = pauseButton;
+}
+
 #pragma mark - Sprites
+
+- (void)addPauseButton {
+  ButtonNode *node = [self.spritesProvider pauseButtonWithPausedState:self.isGamePaused];
+  node.position = [self.spritesOrganizer positionForPauseButton];
+  node.zPosition = -1;
+  [node setTouchUpInsideTarget:self action:@selector(pauseButtonTapped)];
+  [self addChild:node];
+  self.pauseButton = node;
+}
 
 - (void)addScoreLabelWithScore:(NSUInteger)score {
   self.scoreLabel = [self.spritesProvider score];
