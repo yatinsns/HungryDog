@@ -99,7 +99,7 @@ static NSString *const CatcherName = @"Catcher";
   self.isGamePaused = pause;
   self.paused = pause;
   if (pause) {
-    [self.backgroundMusicPlayer pause];
+    [self.backgroundMusicPlayer stop];
   } else {
     [self.backgroundMusicPlayer play];
     self.isResumed = YES;
