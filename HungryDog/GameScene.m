@@ -226,7 +226,7 @@ PowerGeneratorDelegate>
   
   [self enumerateChildNodesWithName:EnergyBoosterPowerName usingBlock:^(SKNode *node, BOOL *stop){
     SKSpriteNode *power = (SKSpriteNode *)node;
-    if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
+    if (CGPointLength(CGPointSubtract(power.position, self.dog.position)) < (power.size.width / 2)) {
       [power removeFromParent];
       [self.gamePlay.energyBarHandler boostToFull];
       [self showNotificationWithText:@"Energy boosted"];
@@ -235,7 +235,7 @@ PowerGeneratorDelegate>
   
   [self enumerateChildNodesWithName:TimeStopperPowerName usingBlock:^(SKNode *node, BOOL *stop){
     SKSpriteNode *power = (SKSpriteNode *)node;
-    if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
+    if (CGPointLength(CGPointSubtract(power.position, self.dog.position)) < (power.size.width / 2)) {
       [power removeFromParent];
       [self.gamePlay.strategyMaker stopCatchersForInterval:10];
       [self showNotificationWithText:@"Time stopped"];
@@ -244,7 +244,7 @@ PowerGeneratorDelegate>
   
   [self enumerateChildNodesWithName:InvisibilityCloakPowerName usingBlock:^(SKNode *node, BOOL *stop){
     SKSpriteNode *power = (SKSpriteNode *)node;
-    if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
+    if (CGPointLength(CGPointSubtract(power.position, self.dog.position)) < (power.size.width / 2)) {
       [power removeFromParent];
       [self setDogAsInvisible:@(YES)];
       [self showNotificationWithText:@"Invisible Now"];
@@ -253,7 +253,7 @@ PowerGeneratorDelegate>
 
   [self enumerateChildNodesWithName:HoleName usingBlock:^(SKNode *node, BOOL *stop) {
     SKSpriteNode *hole = (SKSpriteNode *)node;
-    if (CGPointLength(CGPointSubtract(hole.position, self.dog.position)) < 40) {
+    if (CGPointLength(CGPointSubtract(hole.position, self.dog.position)) < 35) {
       self.shouldEndGame = YES;
     }
   }];
