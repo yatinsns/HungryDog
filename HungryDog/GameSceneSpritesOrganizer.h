@@ -30,4 +30,6 @@
 
 - (CGPoint)randomPositionForPowerAwayFromLocation:(CGPoint)location;
 
+- (CGPoint)positionForNotification;
+
 @end

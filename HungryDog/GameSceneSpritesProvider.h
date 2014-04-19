@@ -33,4 +33,6 @@
 
 - (SKSpriteNode *)powerWithType:(PowerType)powerType;
 
+- (SKLabelNode *)notificationWithText:(NSString *)text;
+
 @end

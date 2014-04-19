@@ -89,4 +89,8 @@ const CGFloat MinimumDistanceForBone = 100;
   return randomPoint;
 }
 
+- (CGPoint)positionForNotification {
+  return CGPointMake(self.size.width / 2, self.size.height / 2);
+}
+
 @end

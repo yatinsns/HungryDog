@@ -191,4 +191,14 @@ const CGFloat PauseButtonHeight = 44;
   return CGSizeZero;
 }
 
+- (SKLabelNode *)notificationWithText:(NSString *)text {
+  SKLabelNode *node = [SKLabelNode labelNodeWithFontNamed:AppFontName
+                                                 fontSize:70
+                                                fontColor:[SKColor whiteColor]];
+  node.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  node.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+  node.text = text;
+  return node;
+}
+
 @end

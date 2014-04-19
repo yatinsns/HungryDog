@@ -229,6 +229,7 @@ PowerGeneratorDelegate>
     if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
       [power removeFromParent];
       [self.gamePlay.energyBarHandler boostToFull];
+      [self showNotificationWithText:@"Energy boosted"];
     }
   }];
   
@@ -237,6 +238,7 @@ PowerGeneratorDelegate>
     if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
       [power removeFromParent];
       [self.gamePlay.strategyMaker stopCatchersForInterval:10];
+      [self showNotificationWithText:@"Time stopped"];
     }
   }];
   
@@ -245,6 +247,7 @@ PowerGeneratorDelegate>
     if (CGRectIntersectsRect(power.frame, self.dog.frame)) {
       [power removeFromParent];
       [self setDogAsInvisible:@(YES)];
+      [self showNotificationWithText:@"Invisible Now"];
     }
   }];
 
@@ -479,6 +482,16 @@ PowerGeneratorDelegate>
 - (void)powerGenerator:(PowerGenerator *)powerGenerator
 didGeneratePowerOfType:(PowerType)powerType {
   [self addPowerWithType:powerType];
+}
+
+#pragma mark - In-app notification
+
+- (void)showNotificationWithText:(NSString *)text {
+  SKLabelNode *node = [self.spritesProvider notificationWithText:text];
+  node.position = [self.spritesOrganizer positionForNotification];
+  SKAction *action = [SKAction scaleTo:0.0 duration:1.5];
+  [node runAction:action];
+  [self addChild:node];
 }
 
 @end
