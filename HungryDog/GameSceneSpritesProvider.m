@@ -201,4 +201,10 @@ const CGFloat PauseButtonHeight = 44;
   return node;
 }
 
+- (SKSpriteNode *)poop {
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Poop1.png"];
+  node.size = CGSizeMake(35, 43);
+  return node;
+}
+
 @end

@@ -35,4 +35,6 @@
 
 - (SKLabelNode *)notificationWithText:(NSString *)text;
 
+- (SKSpriteNode *)poop;
+
 @end

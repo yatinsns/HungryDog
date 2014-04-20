@@ -21,6 +21,7 @@
 		80B269991901572C00CBAC55 /* StrategyPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B269981901572C00CBAC55 /* StrategyPattern.m */; };
 		80B2699C1901586B00CBAC55 /* StrategyPatternCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */; };
 		80C0C5B41903B116003FD590 /* PoopGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C0C5B31903B116003FD590 /* PoopGenerator.m */; };
+		80C0C5B71904576F003FD590 /* SKAction+PoopAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C0C5B61904576F003FD590 /* SKAction+PoopAdditions.m */; };
 		80C40B9E18EFEEEE00FBF8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */; };
 		80C40BA018EFEEEE00FBF8C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */; };
 		80C40BA218EFEEEE00FBF8C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40BA118EFEEEE00FBF8C7 /* UIKit.framework */; };
@@ -95,6 +96,8 @@
 		80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyPatternCreator.m; sourceTree = "<group>"; };
 		80C0C5B21903B116003FD590 /* PoopGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoopGenerator.h; sourceTree = "<group>"; };
 		80C0C5B31903B116003FD590 /* PoopGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoopGenerator.m; sourceTree = "<group>"; };
+		80C0C5B51904576F003FD590 /* SKAction+PoopAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+PoopAdditions.h"; sourceTree = "<group>"; };
+		80C0C5B61904576F003FD590 /* SKAction+PoopAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+PoopAdditions.m"; sourceTree = "<group>"; };
 		80C40B9A18EFEEEE00FBF8C7 /* HungryDog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryDog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -353,6 +356,8 @@
 				80387F301903011C00FA98CE /* SKAction+PowerAdditions.m */,
 				80387F361903986100FA98CE /* SKAction+HoleAdditions.h */,
 				80387F371903986100FA98CE /* SKAction+HoleAdditions.m */,
+				80C0C5B51904576F003FD590 /* SKAction+PoopAdditions.h */,
+				80C0C5B61904576F003FD590 /* SKAction+PoopAdditions.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				80B2699C1901586B00CBAC55 /* StrategyPatternCreator.m in Sources */,
 				80387F2E1902F8C600FA98CE /* PowerGenerator.m in Sources */,
 				80502A661902AA4F00FBAAF9 /* ButtonNode.m in Sources */,
+				80C0C5B71904576F003FD590 /* SKAction+PoopAdditions.m in Sources */,
 				80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */,
 				80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,

@@ -19,6 +19,7 @@
 #import "SKAction+CatcherAdditions.h"
 #import "SKAction+PowerAdditions.h"
 #import "SKAction+HoleAdditions.h"
+#import "SKAction+PoopAdditions.h"
 #import "VectorUtils.h"
 #import "ButtonNode.h"
 
@@ -29,6 +30,7 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 
 const NSTimeInterval BoneAppearanceTimeInterval = 10;
 const NSTimeInterval PowerAppearanceTimeInterval = 15;
+const NSTimeInterval PoopAppearanceTimeInterval = 15;
 
 const NSUInteger NumberOfHolesMax = 4;
 const NSTimeInterval HoleAdditionInterval = 80;
@@ -387,6 +389,14 @@ PoopGeneratorDelegate>
   [self.gamePlay.poopGenerator poop];
 }
 
+- (void)addPoop {
+  SKSpriteNode *node = [self.spritesProvider poop];
+  node.position = self.dog.position;
+  node.zPosition = -4;
+  [node runAction:[SKAction poopActionForTimeInterval:PoopAppearanceTimeInterval]];
+  [self addChild:node];
+}
+
 #pragma mark - Overridden methods
 
 - (void)update:(NSTimeInterval)currentTime {
@@ -573,6 +583,7 @@ didGeneratePowerOfType:(PowerType)powerType {
 
 - (void)poopGeneratorDidPoop:(PoopGenerator *)poopGenerator {
   [self showNotificationWithText:@"POOP"];
+  [self addPoop];
 }
 
 @end
