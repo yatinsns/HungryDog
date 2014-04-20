@@ -24,7 +24,6 @@ static const NSTimeInterval PatternRotationInterval = 1;
 @property (nonatomic) NSMutableArray *array;
 @property (nonatomic) StrategyPatternCreator *strategyPatternCreator;
 
-@property (nonatomic) NSTimer *timer;
 @property (nonatomic) NSUInteger currentPatternIndex;
 
 @property (nonatomic) CGPoint dogPosition;
@@ -42,8 +41,11 @@ static const NSTimeInterval PatternRotationInterval = 1;
   return self;
 }
 
-- (void)dealloc {
-  [_timer invalidate];
+- (void)updateWithGameDuration:(NSTimeInterval)gameDuration {
+//  if ((NSUInteger)(floor((gameDuration / PowerInterval))) != self.lastIndex) {
+//    self.lastIndex ++;
+//    [self generatePower];
+//  }
 }
 
 - (void)setCatchers:(NSArray *)catchers withSize:(CGSize)size {
@@ -65,20 +67,6 @@ static const NSTimeInterval PatternRotationInterval = 1;
 }
 
 - (void)setPattern {
-  [self changePattern];
-  [self scheduleTimer];
-}
-
-- (void)scheduleTimer {
-  [self.timer invalidate];
-  self.timer = [NSTimer scheduledTimerWithTimeInterval:20
-                                                target:self
-                                              selector:@selector(changePattern)
-                                              userInfo:nil
-                                               repeats:YES];
-}
-
-- (void)changePattern {
   StrategyPattern *pattern = [self randomStrategyPattern];
   NSUInteger index = 0;
   for (CatcherHandler *catcherHandler in self.array) {
@@ -110,7 +98,6 @@ static const NSTimeInterval PatternRotationInterval = 1;
   for (CatcherHandler *catcherHandler in self.array) {
     catcherHandler.shouldStop = YES;
   }
-  [self.timer invalidate];
   [self.delegate strategyMakerDidStopCatchers:self];
   [self performSelector:@selector(startCatchers) withObject:nil afterDelay:timeInterval];
 }

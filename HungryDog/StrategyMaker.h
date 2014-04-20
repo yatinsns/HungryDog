@@ -25,6 +25,8 @@
 
 - (void)stopCatchersForInterval:(NSTimeInterval)timeInterval;
 
+- (void)updateWithGameDuration:(NSTimeInterval)gameDuration;
+
 @end
 
 

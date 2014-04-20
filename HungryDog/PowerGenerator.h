@@ -18,6 +18,8 @@
 
 @property (nonatomic, weak) id<PowerGeneratorDelegate> delegate;
 
+- (void)updateWithGameDuration:(NSTimeInterval)gameDuration;
+
 @end
 
 

@@ -14,6 +14,8 @@
 
 @property (nonatomic, weak) id<HoleGeneratorDelegate> delegate;
 
+- (void)updateWithGameDuration:(NSTimeInterval)gameDuration;
+
 - (void)generateHole;
 
 @end

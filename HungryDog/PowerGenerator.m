@@ -12,26 +12,17 @@ const NSTimeInterval PowerInterval = 40;
 
 @interface PowerGenerator ()
 
-@property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSUInteger lastIndex;
 
 @end
 
 @implementation PowerGenerator
 
-- (instancetype)init {
-  self = [super init];
-  if (self) {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:PowerInterval
-                                              target:self
-                                            selector:@selector(generatePower)
-                                            userInfo:nil
-                                             repeats:YES];
+- (void)updateWithGameDuration:(NSTimeInterval)gameDuration {
+  if ((NSUInteger)(floor((gameDuration / PowerInterval))) > self.lastIndex) {
+    self.lastIndex ++;
+    [self generatePower];
   }
-  return self;
-}
-
-- (void)dealloc {
-  [_timer invalidate];
 }
 
 - (void)generatePower {

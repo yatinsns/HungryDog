@@ -32,9 +32,6 @@ const NSTimeInterval BoneAppearanceTimeInterval = 10;
 const NSTimeInterval PowerAppearanceTimeInterval = 15;
 const NSTimeInterval PoopAppearanceTimeInterval = 15;
 
-const NSUInteger NumberOfHolesMax = 4;
-const NSTimeInterval HoleAdditionInterval = 80;
-
 static NSString *const BoneName = @"Bone";
 static NSString *const HoleName = @"Hole";
 static NSString *const TunnelName1 = @"Tunnel1";
@@ -74,9 +71,6 @@ PoopGeneratorDelegate>
 @property (nonatomic) BOOL isGamePaused;
 
 @property (nonatomic) BOOL isDogInvisible;
-
-@property (nonatomic) NSUInteger numberOfHoles;
-
 @property (nonatomic) ButtonNode *poopButton;
 
 @end
@@ -90,8 +84,6 @@ PoopGeneratorDelegate>
     _gamePlay.energyBarHandler.delegate = self;
     _gamePlay.boneGenerator.delegate = self;
 
-    _numberOfHoles = 1;
-
     self.backgroundColor = [SKColor blackColor];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] initWithSize:size];
@@ -101,7 +93,6 @@ PoopGeneratorDelegate>
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
     [self addDog];
-    [self addHole];
     [self addTunnels];
     [self addCatchers];
     [self addPoopButton];
@@ -413,12 +404,6 @@ PoopGeneratorDelegate>
     [self.gamePlay.strategyMaker updateDogLocation:self.dog.position];
     [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
     self.gamePlay.duration += self.dt;
-    if (self.numberOfHoles < NumberOfHolesMax) {
-      if ((NSUInteger)(floorf(self.gamePlay.duration / HoleAdditionInterval) + 1) != self.numberOfHoles) {
-        self.numberOfHoles ++;
-        [self addHole];
-      }
-    }
   } else if (self.isResumed) {
     self.isResumed = NO;
   }
