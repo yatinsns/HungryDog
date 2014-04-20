@@ -48,7 +48,8 @@ EnergyBarHandlerDelegate,
 BoneGeneratorDelegate,
 PowerGeneratorDelegate,
 StrategyMakerDelegate,
-HoleGeneratorDelegate>
+HoleGeneratorDelegate,
+PoopGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) SKSpriteNode *dog;
@@ -106,6 +107,7 @@ HoleGeneratorDelegate>
     [_gamePlay.strategyMaker setDelegate:self];
     [_gamePlay.powerGenerator setDelegate:self];
     [_gamePlay.holeGenerator setDelegate:self];
+    [_gamePlay.poopGenerator setDelegate:self];
     self.userInteractionEnabled = YES;
 
     [self playBackgroundMusic:@"bgMusic.mp3"];
@@ -542,5 +544,18 @@ didGeneratePowerOfType:(PowerType)powerType {
   [self addHole];
 }
 
+#pragma mark - PoopGeneratorDelegate
+
+- (void)poopGeneratorShouldEnablePoop:(PoopGenerator *)poopGenerator {
+  // FIXME (YS): Enable poop button.
+}
+
+- (void)poopGeneratorShouldDisablePoop:(PoopGenerator *)poopGenerator {
+  // FIXME (YS): Disable poop button.
+}
+
+- (void)poopGeneratorDidPoop:(PoopGenerator *)poopGenerator {
+  // FIXME (YS): Time to poop.
+}
 
 @end
