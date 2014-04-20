@@ -177,13 +177,13 @@ const CGFloat PauseButtonHeight = 44;
 - (CGSize)sizeForPowerType:(PowerType)powerType {
   switch (powerType) {
     case PowerTypeEnergyBooster:
-      return CGSizeMake(50, 48);
+      return CGSizeMake(40, 38);
       break;
     case PowerTypeInvisibiltyCloak:
-      return CGSizeMake(50, 50);
+      return CGSizeMake(40, 40);
       break;
     case PowerTypeTimeStopper:
-      return CGSizeMake(50, 62);
+      return CGSizeMake(32, 40);
       break;
     default:
       break;
