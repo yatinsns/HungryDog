@@ -30,6 +30,9 @@ const CGFloat EnergyBarStrokeWidth_iPad = 3;
 const NSTimeInterval BoneAppearanceTimeInterval = 10;
 const NSTimeInterval PowerAppearanceTimeInterval = 15;
 
+const NSUInteger NumberOfHolesMax = 4;
+const NSTimeInterval HoleAdditionInterval = 80;
+
 static NSString *const BoneName = @"Bone";
 static NSString *const HoleName = @"Hole";
 static NSString *const TunnelName1 = @"Tunnel1";
@@ -69,6 +72,9 @@ HoleGeneratorDelegate>
 
 @property (nonatomic) BOOL isDogInvisible;
 
+@property (nonatomic) NSTimeInterval gamePlayDuration;
+@property (nonatomic) NSUInteger numberOfHoles;
+
 @end
 
 @implementation GameScene
@@ -79,6 +85,8 @@ HoleGeneratorDelegate>
     _gamePlay.scoreHandler.delegate = self;
     _gamePlay.energyBarHandler.delegate = self;
     _gamePlay.boneGenerator.delegate = self;
+
+    _numberOfHoles = 1;
 
     self.backgroundColor = [SKColor blackColor];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
@@ -377,6 +385,13 @@ HoleGeneratorDelegate>
     [self.gamePlay.strategyMaker updateDogLocation:self.dog.position
                                               size:self.size];
     [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
+    self.gamePlayDuration += self.dt;
+    if (self.numberOfHoles < NumberOfHolesMax) {
+      if ((NSUInteger)(floorf(self.gamePlayDuration / HoleAdditionInterval) + 1) != self.numberOfHoles) {
+        self.numberOfHoles ++;
+        [self addHole];
+      }
+    }
   } else if (self.isResumed) {
     self.isResumed = NO;
   }
