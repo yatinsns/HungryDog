@@ -14,6 +14,7 @@
 #import "StrategyMaker.h"
 #import "PowerGenerator.h"
 #import "HoleGenerator.h"
+#import "PoopGenerator.h"
 
 /**
  This class represents a game play within the app.
@@ -27,5 +28,6 @@
 @property (nonatomic, readonly) StrategyMaker *strategyMaker;
 @property (nonatomic, readonly) PowerGenerator *powerGenerator;
 @property (nonatomic, readonly) HoleGenerator *holeGenerator;
+@property (nonatomic, readonly) PoopGenerator *poopGenerator;
 
 @end

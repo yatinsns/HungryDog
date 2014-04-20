@@ -15,6 +15,8 @@ static const CGFloat DogSpeed_iPhone = 150;
 static const CGFloat DogSpeed_iPad = 350;
 static const CGFloat DogRotationSpeed = 4 * M_PI;
 
+static const CGFloat PoopIntakeThreshold = 5;
+
 @implementation GamePlay
 
 - (instancetype)init {
@@ -31,6 +33,7 @@ static const CGFloat DogRotationSpeed = 4 * M_PI;
     _strategyMaker = [[StrategyMaker alloc] init];
     _powerGenerator = [[PowerGenerator alloc] init];
     _holeGenerator = [[HoleGenerator alloc] init];
+    _poopGenerator = [[PoopGenerator alloc] initWithIntakeThreshold:PoopIntakeThreshold];
   }
   return self;
 }

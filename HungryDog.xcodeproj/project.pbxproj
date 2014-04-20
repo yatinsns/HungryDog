@@ -20,6 +20,7 @@
 		80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699519014FD900CBAC55 /* CatcherMovementPattern.m */; };
 		80B269991901572C00CBAC55 /* StrategyPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B269981901572C00CBAC55 /* StrategyPattern.m */; };
 		80B2699C1901586B00CBAC55 /* StrategyPatternCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */; };
+		80C0C5B41903B116003FD590 /* PoopGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C0C5B31903B116003FD590 /* PoopGenerator.m */; };
 		80C40B9E18EFEEEE00FBF8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */; };
 		80C40BA018EFEEEE00FBF8C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */; };
 		80C40BA218EFEEEE00FBF8C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40BA118EFEEEE00FBF8C7 /* UIKit.framework */; };
@@ -92,6 +93,8 @@
 		80B269981901572C00CBAC55 /* StrategyPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyPattern.m; sourceTree = "<group>"; };
 		80B2699A1901586B00CBAC55 /* StrategyPatternCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyPatternCreator.h; sourceTree = "<group>"; };
 		80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyPatternCreator.m; sourceTree = "<group>"; };
+		80C0C5B21903B116003FD590 /* PoopGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoopGenerator.h; sourceTree = "<group>"; };
+		80C0C5B31903B116003FD590 /* PoopGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoopGenerator.m; sourceTree = "<group>"; };
 		80C40B9A18EFEEEE00FBF8C7 /* HungryDog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryDog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -320,6 +323,8 @@
 				80C40C0118F4717C00FBF8C7 /* GamePlay.m */,
 				80387F33190396BE00FA98CE /* HoleGenerator.h */,
 				80387F34190396BE00FA98CE /* HoleGenerator.m */,
+				80C0C5B21903B116003FD590 /* PoopGenerator.h */,
+				80C0C5B31903B116003FD590 /* PoopGenerator.m */,
 				80387F2C1902F8C600FA98CE /* PowerGenerator.h */,
 				80387F2D1902F8C600FA98CE /* PowerGenerator.m */,
 				80387F32190302D500FA98CE /* PowerType.h */,
@@ -468,6 +473,7 @@
 				80C40BEB18F17B1900FBF8C7 /* UIConstants.m in Sources */,
 				80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */,
 				80C9935918FC4236001E9D44 /* CatcherHandler.m in Sources */,
+				80C0C5B41903B116003FD590 /* PoopGenerator.m in Sources */,
 				80C40BB018EFEEEE00FBF8C7 /* AppDelegate.m in Sources */,
 				80387F35190396BE00FA98CE /* HoleGenerator.m in Sources */,
 				80C40BAC18EFEEEE00FBF8C7 /* main.m in Sources */,
