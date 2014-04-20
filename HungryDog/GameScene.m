@@ -375,7 +375,7 @@ PoopGeneratorDelegate>
 
 - (void)addPoopButton {
   ButtonNode *node = self.poopButton = [[ButtonNode alloc] initWithImageNamedNormal:@"Poop-enable.png"
-                                                                           selected:@"Poop-enable.png"
+                                                                           selected:@"Poop-selected.png"
                                                                            disabled:@"Poop-disable.png"];
   node.size = CGSizeMake(44, 44);
   node.position = CGPointMake(self.size.width - 25, self.size.height - 80);
@@ -548,7 +548,7 @@ didGeneratePowerOfType:(PowerType)powerType {
 }
 
 #pragma mark - StrategyMakerDelegate
-  
+
 - (void)strategyMakerDidStopCatchers:(StrategyMaker *)strategyMaker {
   self.isDogInvisible = YES;
 }
