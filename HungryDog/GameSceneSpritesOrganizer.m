@@ -73,7 +73,6 @@ const CGFloat MinimumDistanceForBone = 100;
 }
 
 - (CGPoint)randomPositionForHoleAwayFromLocations:(NSArray *)locations {
-  NSLog(@"@@@@ called");
   CGPoint randomPoint;
   BOOL hasFound;
   do {
@@ -81,16 +80,12 @@ const CGFloat MinimumDistanceForBone = 100;
     randomPoint = CGPointMake(arc4random_uniform(self.size.width),
                               arc4random_uniform(self.size.height));
     for (NSValue *location in locations) {
-      NSLog(@"++++ %@", NSStringFromCGPoint([location CGPointValue]));
       if (CGPointLength(CGPointSubtract(randomPoint, [location CGPointValue])) > MinimumDistanceForBone) {
         hasFound = hasFound && YES;
-        NSLog(@"greater");
       } else {
         hasFound = NO;
-        NSLog(@"lesser");
       }
     }
-    NSLog(@"<<<< %@", NSStringFromCGPoint(randomPoint));
   } while (!hasFound);
   return randomPoint;
 }
