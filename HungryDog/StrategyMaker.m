@@ -19,13 +19,15 @@ static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 static const NSTimeInterval PatternMovementInterval = 3;
 static const NSTimeInterval PatternRotationInterval = 1;
 
-@interface StrategyMaker ()
+@interface StrategyMaker () <CatcherHandlerDelegate>
 
 @property (nonatomic) NSMutableArray *array;
 @property (nonatomic) StrategyPatternCreator *strategyPatternCreator;
 
 @property (nonatomic) NSTimer *timer;
 @property (nonatomic) NSUInteger currentPatternIndex;
+
+@property (nonatomic) CGPoint dogPosition;
 
 @end
 
@@ -46,7 +48,6 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 - (void)setCatchers:(NSArray *)catchers withSize:(CGSize)size {
   [self.strategyPatternCreator createForSize:size];
-  StrategyPattern *pattern = [self randomStrategyPattern];
   CGFloat catcherSpeed = ValueForDevice(CatcherSpeed_iPhone, CatcherSpeed_iPad);
   NSUInteger index = 0;
   for (SKSpriteNode *catcher in catchers) {
@@ -54,7 +55,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
                                                              rotationSpeed:CatcherRotationSpeed
                                                                       size:size];
     catcherHandler.catcher = catcher;
-    catcherHandler.mode = CatcherModePattern;
+    catcherHandler.mode = CatcherModeRandom;
     catcherHandler.patternRotationInterval = PatternRotationInterval;
     catcherHandler.patternMovementInterval = PatternMovementInterval;
     [self.array addObject:catcherHandler];
@@ -86,10 +87,8 @@ static const NSTimeInterval PatternRotationInterval = 1;
   }
 }
 
-- (void)updateDogLocation:(CGPoint)location size:(CGSize)size {
-  for (CatcherHandler *catcherHandler in self.array) {
-    [catcherHandler moveTowardsLocation:location];
-  }
+- (void)updateDogLocation:(CGPoint)location {
+  self.dogPosition = location;
 }
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
@@ -109,7 +108,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 - (void)stopCatchersForInterval:(NSTimeInterval)timeInterval {
   for (CatcherHandler *catcherHandler in self.array) {
-    [catcherHandler.catcher removeAllActions];
+    catcherHandler.shouldStop = YES;
   }
   [self.timer invalidate];
   [self.delegate strategyMakerDidStopCatchers:self];
@@ -117,8 +116,17 @@ static const NSTimeInterval PatternRotationInterval = 1;
 }
 
 - (void)startCatchers {
+  for (CatcherHandler *catcherHandler in self.array) {
+    catcherHandler.shouldStop = NO;
+  }
   [self setPattern];
   [self.delegate strategyMakerDidStartCatchers:self];
+}
+
+#pragma mark - CatcherHandlerDelegate
+
+- (CGPoint)dogPositionForCatcherHandler:(CatcherHandler *)catcherHandler {
+  return self.dogPosition;
 }
 
 @end

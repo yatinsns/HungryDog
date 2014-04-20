@@ -11,6 +11,8 @@
 
 @class CatcherMovementPattern;
 
+@protocol CatcherHandlerDelegate;
+
 @class SKSpriteNode;
 
 /**
@@ -48,6 +50,10 @@
  */
 @property (nonatomic) NSTimeInterval patternMovementInterval;
 
+@property (nonatomic) BOOL shouldStop;
+
+@property (nonatomic, weak) id<CatcherHandlerDelegate> delegate;
+
 /**
  Designated initializer.
  */
@@ -60,9 +66,10 @@
  */
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
-/**
- Move catcher towards `location`.
- */
-- (void)moveTowardsLocation:(CGPoint)location;
+@end
+
+@protocol CatcherHandlerDelegate <NSObject>
+
+- (CGPoint)dogPositionForCatcherHandler:(CatcherHandler *)catcherHandler;
 
 @end

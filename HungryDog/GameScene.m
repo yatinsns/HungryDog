@@ -226,7 +226,6 @@ PoopGeneratorDelegate>
 
     node.name = CatcherName;
     [self addChild:node];
-    [node runAction:[SKAction catcherTextureAction]];
     [array addObject:node];
   }
   _catchers = array;
@@ -402,8 +401,7 @@ PoopGeneratorDelegate>
     [self.gamePlay.energyBarHandler updateForTimeInterval:self.dt];
     [self.gamePlay.dogHandler updateForTimeInterval:self.dt];
 
-    [self.gamePlay.strategyMaker updateDogLocation:self.dog.position
-                                              size:self.size];
+    [self.gamePlay.strategyMaker updateDogLocation:self.dog.position];
     [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
     self.gamePlayDuration += self.dt;
     if (self.numberOfHoles < NumberOfHolesMax) {

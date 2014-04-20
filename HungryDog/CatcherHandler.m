@@ -22,7 +22,6 @@
 @property (nonatomic) CGPoint velocity;
 
 @property (nonatomic) CGSize size;
-@property (nonatomic) BOOL shouldUpdateLastTouchLocation;
 @property (nonatomic) BOOL isPatternInitiated;
 
 @end
@@ -38,20 +37,30 @@
     _speed = speed;
     _rotationSpeed = rotationSpeed;
     _size = size;
-    _shouldUpdateLastTouchLocation = YES;
   }
   return self;
 }
 
+- (void)setCatcher:(SKSpriteNode *)catcher {
+  _catcher = catcher;
+  [self addMovementAnimation];
+}
+
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
-  if (self.mode != CatcherModePattern) {
-    [self moveSprite:self.catcher velocity:self.velocity timeInterval:timeInterval];
-    [self boundsCheckPlayer];
-    [self rotateSprite:self.catcher
-                toFace:self.velocity
-   rotateRadiansPerSec:self.rotationSpeed
-          timeInterval:timeInterval];
-  } else {
+  if (self.mode == CatcherModeRandom) {
+    if (!self.shouldStop) {
+      // FIXME (YS): Probable bug
+      if (CGPointEqualToPoint(self.velocity, CGPointZero)) {
+        [self moveToRandomLocation];
+      }
+      [self moveSprite:self.catcher velocity:self.velocity timeInterval:timeInterval];
+      [self boundsCheckPlayer];
+      [self rotateSprite:self.catcher
+                  toFace:self.velocity
+     rotateRadiansPerSec:self.rotationSpeed
+            timeInterval:timeInterval];
+    }
+  } else if (self.mode == CatcherModePattern){
     if (!self.isPatternInitiated) {
       [self initiatePatternMovement];
       self.isPatternInitiated = YES;
@@ -68,14 +77,10 @@
 }
 
 - (void)moveTowardsLocation:(CGPoint)location {
+  self.lastTouchLocation = location;
   CGPoint offset = CGPointSubtract(location, self.catcher.position);
-  if (self.shouldUpdateLastTouchLocation || CGPointLength(offset) < self.radarRadius) {
-    self.lastTouchLocation = location;
-    CGPoint offset = CGPointSubtract(location, self.catcher.position);
-    CGPoint direction = CGPointNormalize(offset);
-    self.velocity = CGPointMultiplyScalar(direction, self.speed);
-    self.shouldUpdateLastTouchLocation = NO;
-  }
+  CGPoint direction = CGPointNormalize(offset);
+  self.velocity = CGPointMultiplyScalar(direction, self.speed);
 }
 
 - (void)rotateSprite:(SKSpriteNode *)sprite
@@ -90,6 +95,11 @@
     rotationAngle = ABS(shortestAngle);
   }
   sprite.zRotation += ScalarSign(shortestAngle) * rotationAngle;
+}
+
+- (void)moveToRandomLocation {
+  [self moveTowardsLocation:CGPointMake(arc4random_uniform(self.size.width),
+                                        arc4random_uniform(self.size.height))];
 }
 
 - (void)boundsCheckPlayer {
@@ -118,9 +128,7 @@
 
   if (isOnCorner) {
     self.catcher.position = newPosition;
-    self.shouldUpdateLastTouchLocation = YES;
-    [self moveTowardsLocation:CGPointMake(arc4random_uniform(self.size.width),
-                                          arc4random_uniform(self.size.height))];
+    [self moveToRandomLocation];
   }
 }
 
@@ -131,9 +139,12 @@
   self.isPatternInitiated = NO;
 }
 
+- (void)addMovementAnimation {
+  [self.catcher runAction:[SKAction catcherTextureAction]];
+}
+
 - (void)initiatePatternMovement {
   [self.catcher removeAllActions];
-  [self.catcher runAction:[SKAction catcherTextureAction]];
   CGPoint initialOffset = CGPointSubtract(self.movementPattern.startPosition,
                                           self.catcher.position);
   CGFloat rotation = ScalarShortestAngleBetween(self.catcher.zRotation,
@@ -162,6 +173,15 @@
       [self.catcher runAction:finalAction];
     }];
   }];
+}
+
+- (void)setShouldStop:(BOOL)shouldStop {
+  _shouldStop = shouldStop;
+  if (!shouldStop) {
+    [self addMovementAnimation];
+  } else {
+    [self.catcher removeAllActions];
+  }
 }
 
 @end

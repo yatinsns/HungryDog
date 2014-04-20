@@ -19,7 +19,7 @@
 
 - (void)setCatchers:(NSArray *)catchers withSize:(CGSize)size;
 
-- (void)updateDogLocation:(CGPoint)location size:(CGSize)size;
+- (void)updateDogLocation:(CGPoint)location;
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
