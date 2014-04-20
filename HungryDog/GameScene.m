@@ -288,6 +288,7 @@ HoleGeneratorDelegate>
   SKSpriteNode *node = [self.spritesProvider hole];
   node.name = HoleName;
   [node setScale:0.0];
+  node.zPosition = -3;
   NSMutableArray *locations = [NSMutableArray array];
   [locations addObject:[NSValue valueWithCGPoint:self.dog.position]];
   [self enumerateChildNodesWithName:HoleName usingBlock:^(SKNode *node, BOOL *stop) {
