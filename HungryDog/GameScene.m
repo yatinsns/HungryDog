@@ -341,6 +341,7 @@ HoleGeneratorDelegate>
   node.position = [self.spritesOrganizer randomPositionForPowerAwayFromLocation:self.dog.position];
   node.zPosition = -1;
   node.name = [self nodeNameForPowerType:powerType];
+  [node setScale:0.0];
   [node runAction:[SKAction powerActionForTimeInterval:PowerAppearanceTimeInterval]];
   [self addChild:node];
 }
