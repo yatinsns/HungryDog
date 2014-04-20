@@ -18,6 +18,7 @@
 #import "SKAction+DogAdditions.h"
 #import "SKAction+CatcherAdditions.h"
 #import "SKAction+PowerAdditions.h"
+#import "SKAction+HoleAdditions.h"
 #import "VectorUtils.h"
 #import "ButtonNode.h"
 
@@ -43,7 +44,8 @@ static NSString *const InvisibilityCloakPowerName = @"InvisibilityCloak";
 EnergyBarHandlerDelegate,
 BoneGeneratorDelegate,
 PowerGeneratorDelegate,
-StrategyMakerDelegate>
+StrategyMakerDelegate,
+HoleGeneratorDelegate>
 
 @property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) SKSpriteNode *dog;
@@ -95,11 +97,16 @@ StrategyMakerDelegate>
     [_gamePlay.strategyMaker setCatchers:_catchers withSize:self.size];
     [_gamePlay.strategyMaker setDelegate:self];
     [_gamePlay.powerGenerator setDelegate:self];
+    [_gamePlay.holeGenerator setDelegate:self];
     self.userInteractionEnabled = YES;
 
     [self playBackgroundMusic:@"bgMusic.mp3"];
   }
   return self;
+}
+
+- (void)dealloc {
+  NSLog(@"#####");
 }
 
 - (void)pauseScene:(BOOL)pause {
@@ -280,8 +287,18 @@ StrategyMakerDelegate>
 - (void)addHole {
   SKSpriteNode *node = [self.spritesProvider hole];
   node.name = HoleName;
-  node.position = [self.spritesOrganizer positionForHole];
+  [node setScale:0.0];
+  NSMutableArray *locations = [NSMutableArray array];
+  [locations addObject:[NSValue valueWithCGPoint:self.dog.position]];
+  [self enumerateChildNodesWithName:HoleName usingBlock:^(SKNode *node, BOOL *stop) {
+    SKSpriteNode *hole = (SKSpriteNode *)node;
+    [locations addObject:[NSValue valueWithCGPoint:hole.position]];
+  }];
+  node.position = [self.spritesOrganizer randomPositionForHoleAwayFromLocations:locations];
   node.zPosition = -2;
+  [node runAction:[SKAction holeActionForTimeInterval:10] completion:^{
+    [self.gamePlay.holeGenerator generateHole];
+  }];
   [self addChild:node];
 }
 
@@ -506,5 +523,12 @@ didGeneratePowerOfType:(PowerType)powerType {
 - (void)strategyMakerDidStartCatchers:(StrategyMaker *)strategyMaker {
   self.isDogInvisible = NO;
 }
+
+#pragma mark - HoleGeneratorDelegate
+
+- (void)holeGeneratorDidGenerateHole:(HoleGenerator *)holeGenerator {
+  [self addHole];
+}
+
 
 @end

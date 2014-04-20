@@ -72,8 +72,27 @@ const CGFloat MinimumDistanceForBone = 100;
   return CGPointMake(200, 80);
 }
 
-- (CGPoint)positionForHole {
-  return CGPointMake(self.size.width / 2, self.size.height / 2);
+- (CGPoint)randomPositionForHoleAwayFromLocations:(NSArray *)locations {
+  NSLog(@"@@@@ called");
+  CGPoint randomPoint;
+  BOOL hasFound;
+  do {
+    hasFound = YES;
+    randomPoint = CGPointMake(arc4random_uniform(self.size.width),
+                              arc4random_uniform(self.size.height));
+    for (NSValue *location in locations) {
+      NSLog(@"++++ %@", NSStringFromCGPoint([location CGPointValue]));
+      if (CGPointLength(CGPointSubtract(randomPoint, [location CGPointValue])) > MinimumDistanceForBone) {
+        hasFound = hasFound && YES;
+        NSLog(@"greater");
+      } else {
+        hasFound = NO;
+        NSLog(@"lesser");
+      }
+    }
+    NSLog(@"<<<< %@", NSStringFromCGPoint(randomPoint));
+  } while (!hasFound);
+  return randomPoint;
 }
 
 - (CGPoint)positionForPauseButton {

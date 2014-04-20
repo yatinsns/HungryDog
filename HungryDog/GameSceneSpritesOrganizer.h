@@ -24,7 +24,7 @@
 
 - (CGPoint)initialPositionForDog;
 
-- (CGPoint)positionForHole;
+- (CGPoint)randomPositionForHoleAwayFromLocations:(NSArray *)locations;
 
 - (CGPoint)positionForPauseButton;
 

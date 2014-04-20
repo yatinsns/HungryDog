@@ -30,6 +30,7 @@ static const CGFloat DogRotationSpeed = 4 * M_PI;
 
     _strategyMaker = [[StrategyMaker alloc] init];
     _powerGenerator = [[PowerGenerator alloc] init];
+    _holeGenerator = [[HoleGenerator alloc] init];
   }
   return self;
 }
