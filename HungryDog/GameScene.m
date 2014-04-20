@@ -105,10 +105,6 @@ HoleGeneratorDelegate>
   return self;
 }
 
-- (void)dealloc {
-  NSLog(@"#####");
-}
-
 - (void)pauseScene:(BOOL)pause {
   if (pause == self.isGamePaused) {
     return;
