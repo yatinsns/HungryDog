@@ -19,8 +19,11 @@ const CGFloat EnergyBarSizeWidth_iPad = 50;
 const CGFloat EnergyBarPaddingRight_iPhone = 15;
 const CGFloat EnergyBarPaddingRight_iPad = 15;
 
-const CGFloat EnergyBarPaddingTop_iPhone = 70;
-const CGFloat EnergyBarPaddingTop_iPad = 80;
+const CGFloat EnergyBarPaddingTop_iPhone = 120;
+const CGFloat EnergyBarPaddingTop_iPad = 130;
+
+const CGFloat EnergyBarPaddingBottom_iPhone = 70;
+const CGFloat EnergyBarPaddingBottom_iPad = 80;
 
 const CGFloat MinimumDistanceForBone = 100;
 
@@ -56,16 +59,17 @@ const CGFloat MinimumDistanceForBone = 100;
 
 - (CGSize)sizeForEnergyBar {
   CGFloat paddingTop = ValueForDevice(EnergyBarPaddingTop_iPhone, EnergyBarPaddingTop_iPad);
+  CGFloat paddingBottom = ValueForDevice(EnergyBarPaddingBottom_iPhone, EnergyBarPaddingBottom_iPad);
   CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
-  CGFloat energyBarHeight = self.size.height - 2 * paddingTop;
+  CGFloat energyBarHeight = self.size.height - paddingTop - paddingBottom;
   return CGSizeMake(energyBarWidth, energyBarHeight);
 }
 
 - (CGPoint)positionForEnergyBar {
-  CGFloat paddingTop = ValueForDevice(EnergyBarPaddingTop_iPhone, EnergyBarPaddingTop_iPad);
+  CGFloat paddingBottom = ValueForDevice(EnergyBarPaddingBottom_iPhone, EnergyBarPaddingBottom_iPad);
   CGFloat paddingRight = ValueForDevice(EnergyBarPaddingRight_iPhone, EnergyBarPaddingRight_iPad);
   CGFloat energyBarWidth = ValueForDevice(EnergyBarSizeWidth_iPhone, EnergyBarSizeWidth_iPad);
-  return CGPointMake(self.size.width - energyBarWidth - paddingRight, paddingTop);
+  return CGPointMake(self.size.width - energyBarWidth - paddingRight, paddingBottom);
 }
 
 - (CGPoint)initialPositionForDog {

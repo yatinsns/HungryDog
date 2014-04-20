@@ -76,6 +76,8 @@ PoopGeneratorDelegate>
 @property (nonatomic) NSTimeInterval gamePlayDuration;
 @property (nonatomic) NSUInteger numberOfHoles;
 
+@property (nonatomic) ButtonNode *poopButton;
+
 @end
 
 @implementation GameScene
@@ -101,6 +103,7 @@ PoopGeneratorDelegate>
     [self addHole];
     [self addTunnels];
     [self addCatchers];
+    [self addPoopButton];
     
     _gamePlay.dogHandler.dog = _dog;
     [_gamePlay.strategyMaker setCatchers:_catchers withSize:self.size];
@@ -237,6 +240,7 @@ PoopGeneratorDelegate>
       [self.gamePlay.scoreHandler incrementScoreByValue:1];
       [self.gamePlay.energyBarHandler boost];
       [self generateBone];
+      [self.gamePlay.poopGenerator intake];
     }
   }];
   
@@ -367,6 +371,21 @@ PoopGeneratorDelegate>
       break;
   }
   return nil;
+}
+
+- (void)addPoopButton {
+  ButtonNode *node = self.poopButton = [[ButtonNode alloc] initWithImageNamedNormal:@"Poop-enable.png"
+                                                                           selected:@"Poop-enable.png"
+                                                                           disabled:@"Poop-disable.png"];
+  node.size = CGSizeMake(44, 44);
+  node.position = CGPointMake(self.size.width - 25, self.size.height - 80);
+  node.isEnabled = NO;
+  [node setTouchUpInsideTarget:self action:@selector(poopButtonTapped)];
+  [self addChild:node];
+}
+
+- (void)poopButtonTapped {
+  [self.gamePlay.poopGenerator poop];
 }
 
 #pragma mark - Overridden methods
@@ -529,7 +548,7 @@ didGeneratePowerOfType:(PowerType)powerType {
 }
 
 #pragma mark - StrategyMakerDelegate
-
+  
 - (void)strategyMakerDidStopCatchers:(StrategyMaker *)strategyMaker {
   self.isDogInvisible = YES;
 }
@@ -547,15 +566,15 @@ didGeneratePowerOfType:(PowerType)powerType {
 #pragma mark - PoopGeneratorDelegate
 
 - (void)poopGeneratorShouldEnablePoop:(PoopGenerator *)poopGenerator {
-  // FIXME (YS): Enable poop button.
+  self.poopButton.isEnabled = YES;
 }
 
 - (void)poopGeneratorShouldDisablePoop:(PoopGenerator *)poopGenerator {
-  // FIXME (YS): Disable poop button.
+  self.poopButton.isEnabled = NO;
 }
 
 - (void)poopGeneratorDidPoop:(PoopGenerator *)poopGenerator {
-  // FIXME (YS): Time to poop.
+  [self showNotificationWithText:@"POOP"];
 }
 
 @end
