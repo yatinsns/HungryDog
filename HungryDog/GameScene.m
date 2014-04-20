@@ -300,7 +300,6 @@ HoleGeneratorDelegate>
     [locations addObject:[NSValue valueWithCGPoint:hole.position]];
   }];
   node.position = [self.spritesOrganizer randomPositionForHoleAwayFromLocations:locations];
-  node.zPosition = -2;
   [node runAction:[SKAction holeActionForTimeInterval:10] completion:^{
     [self.gamePlay.holeGenerator generateHole];
   }];
