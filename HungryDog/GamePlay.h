@@ -30,4 +30,6 @@
 @property (nonatomic, readonly) HoleGenerator *holeGenerator;
 @property (nonatomic, readonly) PoopGenerator *poopGenerator;
 
+@property (nonatomic) NSTimeInterval duration;
+
 @end

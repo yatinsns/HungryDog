@@ -75,7 +75,6 @@ PoopGeneratorDelegate>
 
 @property (nonatomic) BOOL isDogInvisible;
 
-@property (nonatomic) NSTimeInterval gamePlayDuration;
 @property (nonatomic) NSUInteger numberOfHoles;
 
 @property (nonatomic) ButtonNode *poopButton;
@@ -413,9 +412,9 @@ PoopGeneratorDelegate>
 
     [self.gamePlay.strategyMaker updateDogLocation:self.dog.position];
     [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
-    self.gamePlayDuration += self.dt;
+    self.gamePlay.duration += self.dt;
     if (self.numberOfHoles < NumberOfHolesMax) {
-      if ((NSUInteger)(floorf(self.gamePlayDuration / HoleAdditionInterval) + 1) != self.numberOfHoles) {
+      if ((NSUInteger)(floorf(self.gamePlay.duration / HoleAdditionInterval) + 1) != self.numberOfHoles) {
         self.numberOfHoles ++;
         [self addHole];
       }
