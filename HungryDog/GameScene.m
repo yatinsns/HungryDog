@@ -307,26 +307,26 @@ PoopGeneratorDelegate>
   SKSpriteNode *node1 = [self.spritesProvider tunnel];
   node1.name = TunnelName1;
   node1.position = CGPointMake(node1.size.width / 2, node1.size.height / 2);
-  node1.zPosition = -2;
+  node1.zPosition = 2;
   [self addChild:node1];
 
   SKSpriteNode *node2 = [self.spritesProvider tunnel];
   node2.name = TunnelName2;
   node2.position = CGPointMake(node2.size.width / 2, self.size.height - node2.size.height / 2);
-  node2.zPosition = -2;
+  node2.zPosition = 2;
   [self addChild:node2];
 
   SKSpriteNode *node3 = [self.spritesProvider tunnel];
   node3.name = TunnelName1;
   node3.position = CGPointMake(self.size.width - node3.size.width / 2, node3.size.height / 2);
-  node3.zPosition = -2;
+  node3.zPosition = 2;
   node3.zRotation = M_PI;
   [self addChild:node3];
 
   SKSpriteNode *node4 = [self.spritesProvider tunnel];
   node4.name = TunnelName2;
   node4.position = CGPointMake(self.size.width - node4.size.width / 2, self.size.height - node4.size.height / 2);
-  node4.zPosition = -2;
+  node4.zPosition = 2;
   node4.zRotation = M_PI;
   [self addChild:node4];
 }
