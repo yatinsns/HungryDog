@@ -331,12 +331,6 @@ PoopGeneratorDelegate>
   [self addChild:node4];
 }
 
-- (void)moveDogToPosition:(CGPoint)position {
-  [self.gamePlay.dogHandler stop];
-  position.x += 50;
-  self.dog.position = position;
-}
-
 - (void)addPowerWithType:(PowerType)powerType {
   SKSpriteNode *node = [self.spritesProvider powerWithType:powerType];
   node.position = [self.spritesOrganizer randomPositionForPowerAwayFromLocation:self.dog.position];
@@ -466,21 +460,17 @@ PoopGeneratorDelegate>
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  [self cancelTouches];
+  [self handleTouches:touches];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-  [self cancelTouches];
+  [self handleTouches:touches];
 }
 
 - (void)handleTouches:(NSSet *)touches {
   UITouch *touch = [touches anyObject];
   CGPoint touchLocation = [touch locationInNode:self.scene];
   [self.gamePlay.dogHandler moveTowardsLocation:touchLocation];
-}
-
-- (void)cancelTouches {
-  [self.gamePlay.dogHandler stop];
 }
 
 #pragma mark - Music

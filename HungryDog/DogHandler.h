@@ -36,9 +36,4 @@
  */
 - (void)moveTowardsLocation:(CGPoint)location;
 
-/**
- Stop the dog.
- */
-- (void)stop;
-
 @end
