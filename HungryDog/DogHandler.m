@@ -38,9 +38,12 @@
   }
   CGPoint offset = CGPointSubtract(self.lastTouchLocation, self.dog.position);
   CGFloat length = CGPointLength(offset);
+  CGFloat accleration = (length * sqrt(length)) / 500;
   if (length >= (self.speed * timeInterval)) {
     [self boundsCheckPlayer];
-    [self moveSprite:self.dog velocity:self.velocity timeInterval:timeInterval];
+    [self moveSprite:self.dog
+            velocity:CGPointMultiplyScalar(self.velocity, accleration)
+        timeInterval:timeInterval];
     [self rotateSprite:self.dog
                 toFace:self.velocity
    rotateRadiansPerSec:self.rotationSpeed
