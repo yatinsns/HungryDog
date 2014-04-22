@@ -36,24 +36,17 @@
   if (timeInterval == 0) {
     return;
   }
-  if (![self isLastTouchLocationNil]) {
-    CGPoint offset = CGPointSubtract(self.lastTouchLocation, self.dog.position);
-    CGFloat length = CGPointLength(offset);
-    if (length >= (self.speed * timeInterval)) {
-      [self moveSprite:self.dog velocity:self.velocity timeInterval:timeInterval];
-      [self rotateSprite:self.dog
-                  toFace:self.velocity
-     rotateRadiansPerSec:self.rotationSpeed
-            timeInterval:timeInterval];
-    } else {
-      self.velocity = CGPointZero;
-    }
-  } else {
-    // No need to stop as it won't be rotated if shortestAngle is zero.
+  CGPoint offset = CGPointSubtract(self.lastTouchLocation, self.dog.position);
+  CGFloat length = CGPointLength(offset);
+  if (length >= (self.speed * timeInterval)) {
+    [self boundsCheckPlayer];
+    [self moveSprite:self.dog velocity:self.velocity timeInterval:timeInterval];
     [self rotateSprite:self.dog
                 toFace:self.velocity
    rotateRadiansPerSec:self.rotationSpeed
           timeInterval:timeInterval];
+  } else {
+    self.velocity = CGPointZero;
   }
 }
 
@@ -86,20 +79,34 @@
   sprite.zRotation += ScalarSign(shortestAngle) * rotationAngle;
 }
 
-- (void)stop {
-  self.lastTouchLocation = [self lastTouchLocationNilValue];
-}
+- (void)boundsCheckPlayer {
+  BOOL isOnCorner = NO;
+  CGPoint newPosition = self.dog.position;
+  CGPoint bottomLeft = CGPointZero;
+  CGPoint topRight = CGPointMake(560,
+                                 320);
 
-- (CGPoint)lastTouchLocationNilValue {
-  return CGPointMake(NSNotFound, NSNotFound);
-}
-
-- (BOOL)isLastTouchLocationNil {
-  if (self.lastTouchLocation.x == NSNotFound
-      && self.lastTouchLocation.y == NSNotFound) {
-    return YES;
+  if (newPosition.x <= bottomLeft.x) {
+    newPosition.x = bottomLeft.x;
+    isOnCorner = YES;
   }
-  return NO;
+  if (newPosition.x >= topRight.x) {
+    newPosition.x = topRight.x;
+    isOnCorner = YES;
+  }
+  if (newPosition.y <= bottomLeft.y) {
+    newPosition.y = bottomLeft.y;
+    isOnCorner = YES;
+  }
+  if (newPosition.y >= topRight.y) {
+    newPosition.y = topRight.y;
+    isOnCorner = YES;
+  }
+
+  if (isOnCorner) {
+    self.dog.position = newPosition;
+    self.lastTouchLocation = newPosition;
+  }
 }
 
 @end
