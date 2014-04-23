@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SKSpriteNode;
+
 @protocol StrategyMakerDelegate;
 
 /**
@@ -17,7 +19,7 @@
 
 @property (nonatomic, weak) id<StrategyMakerDelegate> delegate;
 
-- (void)setCatchers:(NSArray *)catchers withSize:(CGSize)size;
+- (void)addCatcher:(SKSpriteNode *)catcher withSize:(CGSize)size;
 
 - (void)updateDogLocation:(CGPoint)location;
 
@@ -35,5 +37,7 @@
 - (void)strategyMakerDidStopCatchers:(StrategyMaker *)strategyMaker;
 
 - (void)strategyMakerDidStartCatchers:(StrategyMaker *)strategyMaker;
+
+- (void)strategyMakerDidGenerateCatcher:(StrategyMaker *)strategyMaker;
 
 @end

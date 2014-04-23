@@ -34,8 +34,6 @@ const NSTimeInterval PoopAppearanceTimeInterval = 15;
 
 static NSString *const BoneName = @"Bone";
 static NSString *const HoleName = @"Hole";
-static NSString *const TunnelName1 = @"Tunnel1";
-static NSString *const TunnelName2 = @"Tunnel2";
 static NSString *const CatcherName = @"Catcher";
 
 static NSString *const EnergyBoosterPowerName = @"EnergyBooster";
@@ -93,12 +91,9 @@ PoopGeneratorDelegate>
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
     [self addDog];
-    [self addTunnels];
-    [self addCatchers];
     [self addPoopButton];
     
     _gamePlay.dogHandler.dog = _dog;
-    [_gamePlay.strategyMaker setCatchers:_catchers withSize:self.size];
     [_gamePlay.strategyMaker setDelegate:self];
     [_gamePlay.powerGenerator setDelegate:self];
     [_gamePlay.holeGenerator setDelegate:self];
@@ -202,25 +197,16 @@ PoopGeneratorDelegate>
   [node runAction:[SKAction dogTextureAction]];
 }
 
-- (void)addCatchers {
-  NSMutableArray *array = [NSMutableArray array];
-  for (int i = 0; i < 4; i++) {
-    SKSpriteNode *node = [self.spritesProvider catcher];
-    if (i == 0) {
-    node.position = CGPointMake(0, 0);
-    } else if (i == 1) {
-      node.position = CGPointMake(self.size.width, 0);
-    } else if (i == 2) {
-      node.position = CGPointMake(0, self.size.height);
-    } else {
-      node.position = CGPointMake(self.size.width, self.size.height);
-    }
-
-    node.name = CatcherName;
-    [self addChild:node];
-    [array addObject:node];
-  }
-  _catchers = array;
+- (void)addCatcher {
+  SKSpriteNode *node = [self.spritesProvider catcher];
+  node.position = CGPointMake(0, 0);
+  node.name = CatcherName;
+  [node setScale:0.0];
+  [self addChild:node];
+  SKAction *action = [SKAction scaleTo:1.0 duration:1];
+  [node runAction:action completion:^{
+    [self.gamePlay.strategyMaker addCatcher:node withSize:self.size];
+  }];
 }
 
 - (void)checkCollisions {
@@ -301,34 +287,6 @@ PoopGeneratorDelegate>
     [self.gamePlay.holeGenerator generateHole];
   }];
   [self addChild:node];
-}
-
-- (void)addTunnels {
-  SKSpriteNode *node1 = [self.spritesProvider tunnel];
-  node1.name = TunnelName1;
-  node1.position = CGPointMake(node1.size.width / 2, node1.size.height / 2);
-  node1.zPosition = 2;
-  [self addChild:node1];
-
-  SKSpriteNode *node2 = [self.spritesProvider tunnel];
-  node2.name = TunnelName2;
-  node2.position = CGPointMake(node2.size.width / 2, self.size.height - node2.size.height / 2);
-  node2.zPosition = 2;
-  [self addChild:node2];
-
-  SKSpriteNode *node3 = [self.spritesProvider tunnel];
-  node3.name = TunnelName1;
-  node3.position = CGPointMake(self.size.width - node3.size.width / 2, node3.size.height / 2);
-  node3.zPosition = 2;
-  node3.zRotation = M_PI;
-  [self addChild:node3];
-
-  SKSpriteNode *node4 = [self.spritesProvider tunnel];
-  node4.name = TunnelName2;
-  node4.position = CGPointMake(self.size.width - node4.size.width / 2, self.size.height - node4.size.height / 2);
-  node4.zPosition = 2;
-  node4.zRotation = M_PI;
-  [self addChild:node4];
 }
 
 - (void)addPowerWithType:(PowerType)powerType {
@@ -537,6 +495,10 @@ didGeneratePowerOfType:(PowerType)powerType {
 
 - (void)strategyMakerDidStartCatchers:(StrategyMaker *)strategyMaker {
   self.isDogInvisible = NO;
+}
+
+- (void)strategyMakerDidGenerateCatcher:(StrategyMaker *)strategyMaker {
+  [self addCatcher];
 }
 
 #pragma mark - HoleGeneratorDelegate
