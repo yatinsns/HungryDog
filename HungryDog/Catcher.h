@@ -15,6 +15,7 @@
 @property (nonatomic, weak) CatcherHandler *catcherHandler;
 
 @property (nonatomic) BOOL enableCatching;
+@property (nonatomic) BOOL isMoving;
 
 @property (nonatomic) CGFloat movementSpeed;
 @property (nonatomic) CGFloat rotationSpeed;

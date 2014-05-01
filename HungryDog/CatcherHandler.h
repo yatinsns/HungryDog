@@ -36,7 +36,6 @@
  */
 @property (nonatomic) CatcherMode mode;
 
-@property (nonatomic, readonly) BOOL hasStopped;
 @property (nonatomic) BOOL shouldLeave;
 
 // Pattern mode
@@ -52,16 +51,6 @@
  Designated initializer.
  */
 - (instancetype)initWithCatcher:(Catcher *)catcher;
-
-/**
- Movement methods.
- */
-- (void)start;
-
-/**
- Movement methods.
- */
-- (void)stop;
 
 @end
 

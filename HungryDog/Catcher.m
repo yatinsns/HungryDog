@@ -13,16 +13,24 @@
 
 @implementation Catcher
 
+- (void)setIsMoving:(BOOL)isMoving {
+  _isMoving = isMoving;
+  [self removeAllActions];
+  if (isMoving) {
+    [self runAction:[SKAction catcherTextureAction]];
+  }
+}
+
 - (void)start {
-  [self runAction:[SKAction catcherTextureAction]];
+  self.isMoving = YES;
 }
 
 - (void)stop {
-  [self removeAllActions];
+  self.isMoving = NO;
 }
 
 - (void)startMovementPattern:(CatcherMovementPattern *)movementPattern {
-  [self stop];
+  [self start];
   CGPoint initialOffset = CGPointSubtract(movementPattern.startPosition,
                                           self.position);
   CGFloat rotation = ScalarShortestAngleBetween(self.zRotation,

@@ -64,7 +64,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
   CatcherHandler *catcherHandler = [[CatcherHandler alloc] initWithCatcher:catcher];
   catcherHandler.delegate = self;
   catcherHandler.mode = CatcherModeRandom;
-  [catcherHandler start];
+  [catcher start];
 
   [self.array addObject:catcherHandler];
 }
@@ -95,7 +95,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 - (void)stopCatchersForInterval:(NSTimeInterval)timeInterval {
   for (CatcherHandler *catcherHandler in self.array) {
-    [catcherHandler stop];
+    [catcherHandler.catcher stop];
   }
   [self.delegate strategyMakerDidStopCatchers:self];
   [self performSelector:@selector(startCatchers) withObject:nil afterDelay:timeInterval];
@@ -103,7 +103,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 - (void)startCatchers {
   for (CatcherHandler *catcherHandler in self.array) {
-    [catcherHandler start];
+    [catcherHandler.catcher start];
   }
   [self.delegate strategyMakerDidStartCatchers:self];
 }
@@ -116,6 +116,10 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 - (CGSize)screenSizeForCatcherHandler:(CatcherHandler *)catcherHandler {
   return [self.delegate screenSizeForStrategyMaker:self];
+}
+
+- (void)catcherHasLeftForCatcherHandler:(CatcherHandler *)catcherHandler {
+  // FIXME (YS): Remove catcher handler from list.
 }
 
 @end
