@@ -116,8 +116,8 @@ const CGFloat PauseButtonHeight = 44;
   return node;
 }
 
-- (SKSpriteNode *)catcher {
-  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"zombie1.png"];
+- (Catcher *)catcher {
+  Catcher *node = [Catcher spriteNodeWithImageNamed:@"zombie1.png"];
   node.size = CGSizeMake(ValueForDevice(DogWidth_iPhone, DogWidth_iPad),
                          ValueForDevice(DogHeight_iPhone, DogHeight_iPad));
   return node;

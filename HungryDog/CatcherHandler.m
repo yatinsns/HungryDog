@@ -11,39 +11,27 @@
 #import "VectorUtils.h"
 #import "CatcherMovementPattern.h"
 #import "SKAction+CatcherAdditions.h"
+#import "Catcher.h"
 
 @interface CatcherHandler ()
 
 @property (nonatomic) CGPoint lastTouchLocation;
-
-@property (nonatomic) CGFloat speed;
-@property (nonatomic) CGFloat initialSpeed;
-@property (nonatomic) CGFloat rotationSpeed;
 @property (nonatomic) CGPoint velocity;
 
-@property (nonatomic) CGSize size;
 @property (nonatomic) BOOL isPatternInitiated;
+
+@property (nonatomic) BOOL shouldStop;
 
 @end
 
 @implementation CatcherHandler
 
-- (instancetype)initWithSpeed:(CGFloat)speed
-                rotationSpeed:(CGFloat)rotationSpeed
-                         size:(CGSize)size {
+- (instancetype)initWithCatcher:(Catcher *)catcher {
   self = [super init];
   if (self) {
-    _initialSpeed = speed;
-    _speed = speed;
-    _rotationSpeed = rotationSpeed;
-    _size = size;
+    _catcher = catcher;
   }
   return self;
-}
-
-- (void)setCatcher:(SKSpriteNode *)catcher {
-  _catcher = catcher;
-  [self addMovementAnimation];
 }
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
@@ -57,12 +45,12 @@
       [self boundsCheckPlayer];
       [self rotateSprite:self.catcher
                   toFace:self.velocity
-     rotateRadiansPerSec:self.rotationSpeed
+     rotateRadiansPerSec:self.catcher.rotationSpeed
             timeInterval:timeInterval];
     }
   } else if (self.mode == CatcherModePattern){
     if (!self.isPatternInitiated) {
-      [self initiatePatternMovement];
+      [self.catcher startMovementPattern:self.movementPattern];
       self.isPatternInitiated = YES;
     }
   }
@@ -80,7 +68,7 @@
   self.lastTouchLocation = location;
   CGPoint offset = CGPointSubtract(location, self.catcher.position);
   CGPoint direction = CGPointNormalize(offset);
-  self.velocity = CGPointMultiplyScalar(direction, self.speed);
+  self.velocity = CGPointMultiplyScalar(direction, self.catcher.movementSpeed);
 }
 
 - (void)rotateSprite:(SKSpriteNode *)sprite
@@ -98,16 +86,17 @@
 }
 
 - (void)moveToRandomLocation {
-  [self moveTowardsLocation:CGPointMake(arc4random_uniform(self.size.width),
-                                        arc4random_uniform(self.size.height))];
+  CGSize size = [self.delegate screenSizeForCatcherHandler:self];
+  [self moveTowardsLocation:CGPointMake(arc4random_uniform(size.width),
+                                        arc4random_uniform(size.height))];
 }
 
 - (void)boundsCheckPlayer {
   BOOL isOnCorner = NO;
   CGPoint newPosition = self.catcher.position;
   CGPoint bottomLeft = CGPointZero;
-  CGPoint topRight = CGPointMake(self.size.width,
-                                 self.size.height);
+  CGSize size = [self.delegate screenSizeForCatcherHandler:self];
+  CGPoint topRight = CGPointMake(size.width, size.height);
 
   if (newPosition.x <= bottomLeft.x) {
     newPosition.x = bottomLeft.x;
@@ -139,49 +128,36 @@
   self.isPatternInitiated = NO;
 }
 
-- (void)addMovementAnimation {
-  [self.catcher runAction:[SKAction catcherTextureAction]];
-}
-
-- (void)initiatePatternMovement {
-  [self.catcher removeAllActions];
-  CGPoint initialOffset = CGPointSubtract(self.movementPattern.startPosition,
-                                          self.catcher.position);
-  CGFloat rotation = ScalarShortestAngleBetween(self.catcher.zRotation,
-                                                  CGPointToAngle(initialOffset));
-  SKAction *rotateAction = [SKAction rotateByAngle:rotation
-                                          duration:self.patternRotationInterval];
-  SKAction *initialMoveAction = [SKAction moveTo:self.movementPattern.startPosition
-                                        duration:self.patternMovementInterval];
-
-  [self.catcher runAction:[SKAction sequence:@[rotateAction, initialMoveAction]] completion:^{
-    CGPoint offset = CGPointSubtract(self.movementPattern.endPosition, self.movementPattern.startPosition);
-    CGFloat rotation = ScalarShortestAngleBetween(self.catcher.zRotation, CGPointToAngle(offset));
-    SKAction *rotateAction = [SKAction rotateByAngle:rotation duration:self.patternRotationInterval];
-    [self.catcher runAction:rotateAction completion:^{
-      SKAction *actionMove = [SKAction moveTo:self.movementPattern.endPosition
-                                     duration:self.patternMovementInterval];
-      CGPoint offset = CGPointSubtract(self.movementPattern.startPosition, self.movementPattern.endPosition);
-      CGFloat rotation = ScalarShortestAngleBetween(CGPointToAngle(offset), self.catcher.zRotation);
-      SKAction *rotateAction = [SKAction rotateByAngle:rotation
-                                              duration:self.patternRotationInterval];
-      SKAction *reverseActionMove = [SKAction moveTo:self.movementPattern.startPosition
-                                            duration:self.patternMovementInterval];
-      SKAction *reverseRotateAction = [rotateAction reversedAction];
-      SKAction *sequence = [SKAction sequence:@[actionMove, rotateAction, reverseActionMove, reverseRotateAction]];
-      SKAction *finalAction = [SKAction repeatActionForever:sequence];
-      [self.catcher runAction:finalAction];
-    }];
-  }];
-}
-
 - (void)setShouldStop:(BOOL)shouldStop {
   _shouldStop = shouldStop;
-  if (!shouldStop) {
-    [self addMovementAnimation];
+  if (shouldStop) {
+    [self.catcher stop];
   } else {
-    [self.catcher removeAllActions];
+    [self.catcher start];
   }
+}
+
+#pragma mark - Movement methods
+
+- (void)start {
+  self.shouldStop = NO;
+  [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                           selector:@selector(start)
+                                             object:nil];
+}
+
+- (void)stop {
+  self.shouldStop = YES;
+  [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                           selector:@selector(start)
+                                             object:nil];
+}
+
+- (void)stopForTimeInterval:(NSTimeInterval)timeInterval {
+  [self stop];
+  [self performSelector:@selector(start)
+             withObject:nil
+             afterDelay:timeInterval];
 }
 
 @end

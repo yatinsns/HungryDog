@@ -11,9 +11,10 @@
 #import "UIUtils.h"
 #import "StrategyPatternCreator.h"
 #import <SpriteKit/SpriteKit.h>
+#import "Catcher.h"
 
-static const CGFloat CatcherSpeed_iPhone = 75;
-static const CGFloat CatcherSpeed_iPad = 200;
+static const CGFloat CatcherMovementSpeed_iPhone = 75;
+static const CGFloat CatcherMovementSpeed_iPad = 200;
 static const CGFloat CatcherRotationSpeed = 4 * M_PI;
 
 static const NSTimeInterval PatternMovementInterval = 3;
@@ -25,8 +26,6 @@ static const NSTimeInterval PatternRotationInterval = 1;
 @property (nonatomic) StrategyPatternCreator *strategyPatternCreator;
 
 @property (nonatomic) NSUInteger currentPatternIndex;
-
-@property (nonatomic) CGPoint dogPosition;
 
 @property (nonatomic) NSUInteger numberOfCatchers;
 
@@ -44,27 +43,29 @@ static const NSTimeInterval PatternRotationInterval = 1;
 }
 
 - (void)updateWithGameDuration:(NSTimeInterval)gameDuration {
-  if (self.numberOfCatchers < 10) {
-    if ((NSUInteger)(floor((gameDuration / 5))) != self.numberOfCatchers) {
+  if (self.numberOfCatchers < 1) {
+    if ((NSUInteger)(floor((gameDuration / 2))) != self.numberOfCatchers) {
       self.numberOfCatchers ++;
       [self.delegate strategyMakerDidGenerateCatcher:self];
     }
   }
 }
 
-- (void)addCatcher:(SKSpriteNode *)catcher withSize:(CGSize)size {
+- (void)addCatcher:(Catcher *)catcher {
   if ([self.strategyPatternCreator.strategyPatterns count] == 0) {
-    [self.strategyPatternCreator createForSize:size];
+    [self.strategyPatternCreator createForSize:[self.delegate screenSizeForStrategyMaker:self]];
   }
 
-  CGFloat catcherSpeed = ValueForDevice(CatcherSpeed_iPhone, CatcherSpeed_iPad);
-  CatcherHandler *catcherHandler = [[CatcherHandler alloc] initWithSpeed:catcherSpeed
-                                                           rotationSpeed:CatcherRotationSpeed
-                                                                    size:size];
-  catcherHandler.catcher = catcher;
+  CGFloat catcherMovementSpeed = ValueForDevice(CatcherMovementSpeed_iPhone, CatcherMovementSpeed_iPad);
+  catcher.movementSpeed = catcherMovementSpeed;
+  catcher.rotationSpeed = CatcherRotationSpeed;
+  catcher.patternRotationInterval = PatternRotationInterval;
+  catcher.patternMovementInterval = PatternMovementInterval;
+  CatcherHandler *catcherHandler = [[CatcherHandler alloc] initWithCatcher:catcher];
+  catcherHandler.delegate = self;
   catcherHandler.mode = CatcherModeRandom;
-  catcherHandler.patternRotationInterval = PatternRotationInterval;
-  catcherHandler.patternMovementInterval = PatternMovementInterval;
+  [catcherHandler start];
+
   [self.array addObject:catcherHandler];
 }
 
@@ -75,10 +76,6 @@ static const NSTimeInterval PatternRotationInterval = 1;
     catcherHandler.movementPattern = [pattern.movementPatterns objectAtIndex:index];
     index ++;
   }
-}
-
-- (void)updateDogLocation:(CGPoint)location {
-  self.dogPosition = location;
 }
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
@@ -98,7 +95,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 - (void)stopCatchersForInterval:(NSTimeInterval)timeInterval {
   for (CatcherHandler *catcherHandler in self.array) {
-    catcherHandler.shouldStop = YES;
+    [catcherHandler stop];
   }
   [self.delegate strategyMakerDidStopCatchers:self];
   [self performSelector:@selector(startCatchers) withObject:nil afterDelay:timeInterval];
@@ -106,7 +103,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 - (void)startCatchers {
   for (CatcherHandler *catcherHandler in self.array) {
-    catcherHandler.shouldStop = NO;
+    [catcherHandler start];
   }
   [self.delegate strategyMakerDidStartCatchers:self];
 }
@@ -114,7 +111,11 @@ static const NSTimeInterval PatternRotationInterval = 1;
 #pragma mark - CatcherHandlerDelegate
 
 - (CGPoint)dogPositionForCatcherHandler:(CatcherHandler *)catcherHandler {
-  return self.dogPosition;
+  return [self.delegate dogPositionForStrategyMaker:self];
+}
+
+- (CGSize)screenSizeForCatcherHandler:(CatcherHandler *)catcherHandler {
+  return [self.delegate screenSizeForStrategyMaker:self];
 }
 
 @end

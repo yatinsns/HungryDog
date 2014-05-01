@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "ButtonNode.h"
 #import "PowerType.h"
+#import "Catcher.h"
 
 @interface GameSceneSpritesProvider : NSObject
 
@@ -23,7 +24,7 @@
 
 - (SKSpriteNode *)dog;
 
-- (SKSpriteNode *)catcher;
+- (Catcher *)catcher;
 
 - (SKSpriteNode *)hole;
 

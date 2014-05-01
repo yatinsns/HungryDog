@@ -198,14 +198,14 @@ PoopGeneratorDelegate>
 }
 
 - (void)addCatcher {
-  SKSpriteNode *node = [self.spritesProvider catcher];
+  Catcher *node = [self.spritesProvider catcher];
   node.position = CGPointMake(0, 0);
   node.name = CatcherName;
   [node setScale:0.0];
   [self addChild:node];
   SKAction *action = [SKAction scaleTo:1.0 duration:1];
   [node runAction:action completion:^{
-    [self.gamePlay.strategyMaker addCatcher:node withSize:self.size];
+    [self.gamePlay.strategyMaker addCatcher:node];
   }];
 }
 
@@ -352,8 +352,6 @@ PoopGeneratorDelegate>
   if (!self.isPaused && !self.isResumed) {
     [self.gamePlay.energyBarHandler updateForTimeInterval:self.dt];
     [self.gamePlay.dogHandler updateForTimeInterval:self.dt];
-
-    [self.gamePlay.strategyMaker updateDogLocation:self.dog.position];
     [self.gamePlay.strategyMaker updateForTimeInterval:self.dt];
     self.gamePlay.duration += self.dt;
   } else if (self.isResumed) {
@@ -499,6 +497,14 @@ didGeneratePowerOfType:(PowerType)powerType {
 
 - (void)strategyMakerDidGenerateCatcher:(StrategyMaker *)strategyMaker {
   [self addCatcher];
+}
+
+- (CGSize)screenSizeForStrategyMaker:(StrategyMaker *)strategyMaker {
+  return self.size;
+}
+
+- (CGPoint)dogPositionForStrategyMaker:(StrategyMaker *)strategyMaker {
+  return self.dog.position;
 }
 
 #pragma mark - HoleGeneratorDelegate

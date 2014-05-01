@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CatcherMode.h"
 
-@class CatcherMovementPattern;
+@class CatcherMovementPattern, Catcher;
 
 @protocol CatcherHandlerDelegate;
 
@@ -21,55 +21,60 @@
 @interface CatcherHandler : NSObject
 
 /**
+ Delegate.
+ */
+@property (nonatomic, weak) id<CatcherHandlerDelegate> delegate;
+
+/**
  This property represents the catcher to be moved.
  */
-@property (nonatomic) SKSpriteNode *catcher;
+@property (nonatomic, readonly) Catcher *catcher;
 
 /**
  This property represents the mode of the catcher.
  */
 @property (nonatomic) CatcherMode mode;
 
-/**
- This property represents the radius of radar to follow dog.
- */
-@property (nonatomic) CGFloat radarRadius;
+// Pattern mode
 
 /**
  This property represents pattern of movement.
  */
 @property (nonatomic) CatcherMovementPattern *movementPattern;
 
-/**
- This property represents rotation interval within pattern of movement.
- */
-@property (nonatomic) NSTimeInterval patternRotationInterval;
-
-/**
- This property represents movement interval within pattern of movement.
- */
-@property (nonatomic) NSTimeInterval patternMovementInterval;
-
-@property (nonatomic) BOOL shouldStop;
-
-@property (nonatomic, weak) id<CatcherHandlerDelegate> delegate;
+// Methods
 
 /**
  Designated initializer.
  */
-- (instancetype)initWithSpeed:(CGFloat)speed
-                rotationSpeed:(CGFloat)rotationSpeed
-                         size:(CGSize)size;
+- (instancetype)initWithCatcher:(Catcher *)catcher;
 
 /**
  Update movement of catcher for `timeInterval`.
  */
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
+/**
+ Movement methods.
+ */
+- (void)start;
+
+/**
+ Movement methods.
+ */
+- (void)stop;
+
+/**
+ Movement methods.
+ */
+- (void)stopForTimeInterval:(NSTimeInterval)timeInterval;
+
 @end
 
 @protocol CatcherHandlerDelegate <NSObject>
 
 - (CGPoint)dogPositionForCatcherHandler:(CatcherHandler *)catcherHandler;
+
+- (CGSize)screenSizeForCatcherHandler:(CatcherHandler *)catcherHandler;
 
 @end
