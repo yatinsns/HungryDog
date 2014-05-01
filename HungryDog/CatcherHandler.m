@@ -34,7 +34,7 @@
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
   if (self.mode == CatcherModeRandom) {
-    if (!self.catcher.isMoving) {
+    if (self.catcher.isMoving) {
       // FIXME (YS): Probable bug
       if (CGPointEqualToPoint(self.velocity, CGPointZero)) {
         [self moveToRandomLocation];
