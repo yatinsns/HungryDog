@@ -90,7 +90,7 @@
 }
 
 - (void)checkBounds {
-  if (self.shouldLeave) {
+  if (self.catcher.shouldLeave) {
     [self checkIfCatcherHasLeft];
     return;
   }

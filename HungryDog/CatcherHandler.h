@@ -36,8 +36,6 @@
  */
 @property (nonatomic) CatcherMode mode;
 
-@property (nonatomic) BOOL shouldLeave;
-
 // Pattern mode
 
 /**
