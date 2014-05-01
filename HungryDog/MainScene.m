@@ -10,6 +10,7 @@
 #import "SKLabelNode+HungryDogAdditions.h"
 #import "UIConstants.h"
 #import "UIUtils.h"
+#import "BackgroundMusicPlayer.h"
 
 const CGFloat NameLabelFontSize_iPhone = 30;
 const CGFloat NameLabelFontSize_iPad = 80;
@@ -52,6 +53,7 @@ NSString *const PlayName = @"Play";
     [self addPlayLabelWithSuffix:suffix];
     [self addDog];
     self.userInteractionEnabled = YES;
+    [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"menuMusic.mp3"];
   }
   return self;
 }

@@ -21,8 +21,7 @@
 #import "SKAction+PoopAdditions.h"
 #import "VectorUtils.h"
 #import "ButtonNode.h"
-
-@import AVFoundation;
+#import "BackgroundMusicPlayer.h"
 
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
@@ -61,7 +60,6 @@ PoopGeneratorDelegate>
 @property (nonatomic) SKSpriteNode *energyBarSprite;
 @property (nonatomic) BOOL shouldEndGame;
 
-@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 @property (nonatomic) BOOL isResumed;
 
 @property (nonatomic) ButtonNode *pauseButton;
@@ -99,7 +97,7 @@ PoopGeneratorDelegate>
     [_gamePlay.poopGenerator setDelegate:self];
     self.userInteractionEnabled = YES;
 
-    [self playBackgroundMusic:@"bgMusic.mp3"];
+    [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"bgMusic.mp3"];
   }
   return self;
 }
@@ -115,9 +113,9 @@ PoopGeneratorDelegate>
   self.isGamePaused = pause;
   self.paused = pause;
   if (pause) {
-    [self.backgroundMusicPlayer stop];
+    [[BackgroundMusicPlayer sharedPlayer] stop];
   } else {
-    [self.backgroundMusicPlayer play];
+    [[BackgroundMusicPlayer sharedPlayer] play];
     self.isResumed = YES;
   }
 }
@@ -428,19 +426,6 @@ PoopGeneratorDelegate>
     CGPoint touchLocation = [touch locationInNode:self.scene];
     [self.gamePlay.dogHandler moveTowardsLocation:touchLocation];
   }
-}
-
-#pragma mark - Music
-
-- (void)playBackgroundMusic:(NSString *)filename {
-  NSError *error;
-  NSURL *backgroundMusicURL =
-  [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
-  _backgroundMusicPlayer = [[AVAudioPlayer alloc]
-                            initWithContentsOfURL:backgroundMusicURL error:&error];
-  _backgroundMusicPlayer.numberOfLoops = -1;
-  [_backgroundMusicPlayer prepareToPlay];
-  [_backgroundMusicPlayer play];
 }
 
 #pragma mark - Power

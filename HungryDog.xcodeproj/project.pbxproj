@@ -14,6 +14,8 @@
 		80387F311903011C00FA98CE /* SKAction+PowerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80387F301903011C00FA98CE /* SKAction+PowerAdditions.m */; };
 		80387F35190396BE00FA98CE /* HoleGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80387F34190396BE00FA98CE /* HoleGenerator.m */; };
 		80387F381903986100FA98CE /* SKAction+HoleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80387F371903986100FA98CE /* SKAction+HoleAdditions.m */; };
+		804372D41912977300980B0B /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 804372D31912977300980B0B /* menuMusic.mp3 */; };
+		804372D7191297D700980B0B /* BackgroundMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 804372D6191297D700980B0B /* BackgroundMusicPlayer.m */; };
 		80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80502A621901CF1000FBAAF9 /* bgMusic.mp3 */; };
 		80502A661902AA4F00FBAAF9 /* ButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 80502A651902AA4F00FBAAF9 /* ButtonNode.m */; };
 		80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80686F0518F5C9B000DB415E /* EnergyBarHandler.m */; };
@@ -83,6 +85,9 @@
 		80387F34190396BE00FA98CE /* HoleGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoleGenerator.m; sourceTree = "<group>"; };
 		80387F361903986100FA98CE /* SKAction+HoleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+HoleAdditions.h"; sourceTree = "<group>"; };
 		80387F371903986100FA98CE /* SKAction+HoleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+HoleAdditions.m"; sourceTree = "<group>"; };
+		804372D31912977300980B0B /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
+		804372D5191297D700980B0B /* BackgroundMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundMusicPlayer.h; sourceTree = "<group>"; };
+		804372D6191297D700980B0B /* BackgroundMusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundMusicPlayer.m; sourceTree = "<group>"; };
 		80502A621901CF1000FBAAF9 /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		80502A641902AA4F00FBAAF9 /* ButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonNode.h; sourceTree = "<group>"; };
 		80502A651902AA4F00FBAAF9 /* ButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonNode.m; sourceTree = "<group>"; };
@@ -239,6 +244,8 @@
 				80C40C0418F47C5200FBF8C7 /* NSString+ScoreAdditions.m */,
 				80502A641902AA4F00FBAAF9 /* ButtonNode.h */,
 				80502A651902AA4F00FBAAF9 /* ButtonNode.m */,
+				804372D5191297D700980B0B /* BackgroundMusicPlayer.h */,
+				804372D6191297D700980B0B /* BackgroundMusicPlayer.m */,
 			);
 			path = HungryDog;
 			sourceTree = "<group>";
@@ -317,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				80502A621901CF1000FBAAF9 /* bgMusic.mp3 */,
+				804372D31912977300980B0B /* menuMusic.mp3 */,
 				80C40BBD18EFEEEE00FBF8C7 /* Spaceship.png */,
 				80C40BBF18EFEEEE00FBF8C7 /* Images.xcassets */,
 			);
@@ -461,6 +469,7 @@
 				80C40BB318EFEEEE00FBF8C7 /* Main_iPhone.storyboard in Resources */,
 				80C40BAA18EFEEEE00FBF8C7 /* InfoPlist.strings in Resources */,
 				80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */,
+				804372D41912977300980B0B /* menuMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804372D7191297D700980B0B /* BackgroundMusicPlayer.m in Sources */,
 				80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */,
 				802F9C0718F7295300747E7C /* DogHandler.m in Sources */,
 				80C40BB918EFEEEE00FBF8C7 /* ViewController.m in Sources */,
