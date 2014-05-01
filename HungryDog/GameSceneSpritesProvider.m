@@ -34,8 +34,8 @@ const CGFloat TunnelWidth_iPad = 100;
 const CGFloat TunnelHeight_iPhone = 50;
 const CGFloat TunnelHeight_iPad = 100;
 
-const CGFloat PauseButtonWidth = 44;
-const CGFloat PauseButtonHeight = 44;
+const CGFloat PauseButtonWidth = 50;
+const CGFloat PauseButtonHeight = 50;
 
 @implementation GameSceneSpritesProvider
 
@@ -45,7 +45,7 @@ const CGFloat PauseButtonHeight = 44;
                                                  fontSize:fontSize
                                                 fontColor:[SKColor whiteColor]];
   node.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-  node.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+  node.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
   return node;
 }
 

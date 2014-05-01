@@ -11,7 +11,7 @@
 #import "UIUtils.h"
 #import "VectorUtils.h"
 
-const CGFloat ScoreLabelPaddingRight = 80;
+const CGFloat ScoreLabelPaddingRight = 15;
 
 const CGFloat EnergyBarSizeWidth_iPhone = 20;
 const CGFloat EnergyBarSizeWidth_iPad = 50;
@@ -22,8 +22,8 @@ const CGFloat EnergyBarPaddingRight_iPad = 15;
 const CGFloat EnergyBarPaddingTop_iPhone = 120;
 const CGFloat EnergyBarPaddingTop_iPad = 130;
 
-const CGFloat EnergyBarPaddingBottom_iPhone = 70;
-const CGFloat EnergyBarPaddingBottom_iPad = 80;
+const CGFloat EnergyBarPaddingBottom_iPhone = 20;
+const CGFloat EnergyBarPaddingBottom_iPad = 30;
 
 const CGFloat MinimumDistanceForBone = 100;
 
@@ -53,8 +53,8 @@ const CGFloat MinimumDistanceForBone = 100;
 }
 
 - (CGPoint)positionForScoreLabel:(SKLabelNode *)scoreLabel {
-  return CGPointMake(self.size.width - ScoreLabelPaddingRight,
-                     scoreLabel.frame.size.height);
+  return CGPointMake(ScoreLabelPaddingRight,
+                     self.size.height - scoreLabel.frame.size.height);
 }
 
 - (CGSize)sizeForEnergyBar {
@@ -95,7 +95,7 @@ const CGFloat MinimumDistanceForBone = 100;
 }
 
 - (CGPoint)positionForPauseButton {
-  return CGPointMake(self.size.width - 80, self.size.height - 30);
+  return CGPointMake(self.size.width - 25, self.size.height - 30);
 }
 
 - (CGPoint)randomPositionForPowerAwayFromLocation:(CGPoint)location {
