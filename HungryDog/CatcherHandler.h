@@ -37,6 +37,7 @@
 @property (nonatomic) CatcherMode mode;
 
 @property (nonatomic, readonly) BOOL hasStopped;
+@property (nonatomic) BOOL shouldLeave;
 
 // Pattern mode
 
@@ -69,5 +70,7 @@
 - (CGPoint)dogPositionForCatcherHandler:(CatcherHandler *)catcherHandler;
 
 - (CGSize)screenSizeForCatcherHandler:(CatcherHandler *)catcherHandler;
+
+- (void)catcherHasLeftForCatcherHandler:(CatcherHandler *)catcherHandler;
 
 @end

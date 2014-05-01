@@ -42,11 +42,11 @@
         [self moveToRandomLocation];
       }
       [self moveSprite:self.catcher velocity:self.velocity timeInterval:timeInterval];
-      [self boundsCheckPlayer];
       [self rotateSprite:self.catcher
                   toFace:self.velocity
      rotateRadiansPerSec:self.catcher.rotationSpeed
             timeInterval:timeInterval];
+      [self checkBounds];
     }
   } else if (self.mode == CatcherModePattern){
     if (!self.isPatternInitiated) {
@@ -91,7 +91,12 @@
                                         arc4random_uniform(size.height))];
 }
 
-- (void)boundsCheckPlayer {
+- (void)checkBounds {
+  if (self.shouldLeave) {
+    [self checkIfCatcherHasLeft];
+    return;
+  }
+
   BOOL isOnCorner = NO;
   CGPoint newPosition = self.catcher.position;
   CGPoint bottomLeft = CGPointZero;
@@ -118,6 +123,18 @@
   if (isOnCorner) {
     self.catcher.position = newPosition;
     [self moveToRandomLocation];
+  }
+}
+
+- (void)checkIfCatcherHasLeft {
+  CGFloat margin = 50;
+  CGSize size = [self.delegate screenSizeForCatcherHandler:self];
+  CGRect extendedBounds = CGRectMake(-margin,
+                                     -margin,
+                                     size.width + 2 * margin,
+                                     size.height + 2 * margin);
+  if (CGRectContainsPoint(extendedBounds, self.catcher.position)) {
+    [self.delegate catcherHasLeftForCatcherHandler:self];
   }
 }
 
