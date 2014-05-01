@@ -19,8 +19,7 @@
 @property (nonatomic) CGPoint velocity;
 
 @property (nonatomic) BOOL isPatternInitiated;
-
-@property (nonatomic) BOOL shouldStop;
+@property (nonatomic, readwrite) BOOL hasStopped;
 
 @end
 
@@ -37,7 +36,7 @@
 
 - (void)updateForTimeInterval:(NSTimeInterval)timeInterval {
   if (self.mode == CatcherModeRandom) {
-    if (!self.shouldStop) {
+    if (!self.hasStopped) {
       // FIXME (YS): Probable bug
       if (CGPointEqualToPoint(self.velocity, CGPointZero)) {
         [self moveToRandomLocation];
@@ -129,9 +128,9 @@
   self.isPatternInitiated = NO;
 }
 
-- (void)setShouldStop:(BOOL)shouldStop {
-  _shouldStop = shouldStop;
-  if (shouldStop) {
+- (void)setHasStopped:(BOOL)hasStopped {
+  _hasStopped = hasStopped;
+  if (hasStopped) {
     [self.catcher stop];
   } else {
     [self.catcher start];
@@ -141,14 +140,14 @@
 #pragma mark - Movement methods
 
 - (void)start {
-  self.shouldStop = NO;
+  self.hasStopped = NO;
   [NSObject cancelPreviousPerformRequestsWithTarget:self
                                            selector:@selector(start)
                                              object:nil];
 }
 
 - (void)stop {
-  self.shouldStop = YES;
+  self.hasStopped = YES;
   [NSObject cancelPreviousPerformRequestsWithTarget:self
                                            selector:@selector(start)
                                              object:nil];

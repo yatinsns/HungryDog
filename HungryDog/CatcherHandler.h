@@ -36,6 +36,8 @@
  */
 @property (nonatomic) CatcherMode mode;
 
+@property (nonatomic, readonly) BOOL hasStopped;
+
 // Pattern mode
 
 /**
