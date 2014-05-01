@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NodeGenerator.h"
+#import "NodeUpdater.h"
 
 @class SKSpriteNode, Catcher;
 
@@ -15,17 +17,13 @@
 /**
  This class handles strategy of catchers within single gameplay.
  */
-@interface StrategyMaker : NSObject
+@interface StrategyMaker : NSObject <NodeGenerator, NodeUpdater>
 
 @property (nonatomic, weak) id<StrategyMakerDelegate> delegate;
 
 - (void)addCatcher:(Catcher *)catcher;
 
-- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
-
 - (void)stopCatchersForInterval:(NSTimeInterval)timeInterval;
-
-- (void)updateWithGameDuration:(NSTimeInterval)gameDuration;
 
 @end
 

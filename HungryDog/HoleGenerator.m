@@ -23,7 +23,7 @@ const NSTimeInterval HoleAdditionInterval = 70;
   [self.delegate holeGeneratorDidGenerateHole:self];
 }
 
-- (void)updateWithGameDuration:(NSTimeInterval)gameDuration {
+- (void)generateForGameDuration:(NSTimeInterval)gameDuration {
   if (self.numberOfHoles < NumberOfHolesMax) {
     if ((NSUInteger)(floorf(gameDuration / HoleAdditionInterval)) > self.numberOfHoles) {
       self.numberOfHoles ++;

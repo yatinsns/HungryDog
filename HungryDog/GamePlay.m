@@ -40,9 +40,9 @@ static const CGFloat PoopIntakeThreshold = 5;
 
 - (void)setDuration:(NSTimeInterval)duration {
   _duration = duration;
-  [self.powerGenerator updateWithGameDuration:_duration];
-  [self.strategyMaker updateWithGameDuration:_duration];
-  [self.holeGenerator updateWithGameDuration:_duration];
+  [self.powerGenerator generateForGameDuration:_duration];
+  [self.strategyMaker generateForGameDuration:_duration];
+  [self.holeGenerator generateForGameDuration:_duration];
 }
 
 @end

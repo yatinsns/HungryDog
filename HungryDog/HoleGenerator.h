@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NodeGenerator.h"
 
 @protocol HoleGeneratorDelegate;
 
-@interface HoleGenerator : NSObject
+@interface HoleGenerator : NSObject <NodeGenerator>
 
 @property (nonatomic, weak) id<HoleGeneratorDelegate> delegate;
-
-- (void)updateWithGameDuration:(NSTimeInterval)gameDuration;
 
 - (void)generateHole;
 

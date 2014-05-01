@@ -88,6 +88,8 @@
 		80502A651902AA4F00FBAAF9 /* ButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonNode.m; sourceTree = "<group>"; };
 		80686F0418F5C9B000DB415E /* EnergyBarHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyBarHandler.h; sourceTree = "<group>"; };
 		80686F0518F5C9B000DB415E /* EnergyBarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyBarHandler.m; sourceTree = "<group>"; };
+		80701FAB19124FEA00A8BEB0 /* NodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeGenerator.h; sourceTree = "<group>"; };
+		80701FAC1912519700A8BEB0 /* NodeUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeUpdater.h; sourceTree = "<group>"; };
 		80A7CD6B18F49473006357D7 /* GameSceneSpritesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneSpritesProvider.h; sourceTree = "<group>"; };
 		80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneSpritesProvider.m; sourceTree = "<group>"; };
 		80B2699319014F4A00CBAC55 /* CatcherMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatcherMode.h; sourceTree = "<group>"; };
@@ -352,6 +354,8 @@
 				80B269981901572C00CBAC55 /* StrategyPattern.m */,
 				80B2699A1901586B00CBAC55 /* StrategyPatternCreator.h */,
 				80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */,
+				80701FAB19124FEA00A8BEB0 /* NodeGenerator.h */,
+				80701FAC1912519700A8BEB0 /* NodeUpdater.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";

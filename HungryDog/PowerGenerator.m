@@ -18,7 +18,7 @@ const NSTimeInterval PowerInterval = 40;
 
 @implementation PowerGenerator
 
-- (void)updateWithGameDuration:(NSTimeInterval)gameDuration {
+- (void)generateForGameDuration:(NSTimeInterval)gameDuration {
   if ((NSUInteger)(floor((gameDuration / PowerInterval))) > self.lastIndex) {
     self.lastIndex ++;
     [self generatePower];

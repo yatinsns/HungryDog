@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NodeUpdater.h"
 
 @class SKSpriteNode;
 
 /**
  This class handles movement of dog.
  */
-@interface DogHandler : NSObject
+@interface DogHandler : NSObject <NodeUpdater>
 
 /**
  This property represents the dog to be moved.
@@ -25,11 +26,6 @@
  */
 - (instancetype)initWithSpeed:(CGFloat)speed
                 rotationSpeed:(CGFloat)rotationSpeed;
-
-/**
- Update movement of dog for `timeInterval`.
- */
-- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 /**
  Move dog towards `location`.

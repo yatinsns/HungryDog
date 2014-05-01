@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CatcherMode.h"
+#import "NodeUpdater.h"
 
 @class CatcherMovementPattern, Catcher;
 
@@ -18,7 +19,7 @@
 /**
  This class handles catcher within a single gameplay.
  */
-@interface CatcherHandler : NSObject
+@interface CatcherHandler : NSObject <NodeUpdater>
 
 /**
  Delegate.
@@ -48,11 +49,6 @@
  Designated initializer.
  */
 - (instancetype)initWithCatcher:(Catcher *)catcher;
-
-/**
- Update movement of catcher for `timeInterval`.
- */
-- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 /**
  Movement methods.

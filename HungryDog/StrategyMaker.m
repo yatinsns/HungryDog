@@ -42,7 +42,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
   return self;
 }
 
-- (void)updateWithGameDuration:(NSTimeInterval)gameDuration {
+- (void)generateForGameDuration:(NSTimeInterval)gameDuration {
   if (self.numberOfCatchers < 1) {
     if ((NSUInteger)(floor((gameDuration / 2))) != self.numberOfCatchers) {
       self.numberOfCatchers ++;

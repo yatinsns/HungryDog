@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NodeUpdater.h"
 
 @protocol EnergyBarHandlerDelegate;
 
 /**
  This class handles energy bar depletion for a single gameplay.
  */
-@interface EnergyBarHandler : NSObject
+@interface EnergyBarHandler : NSObject <NodeUpdater>
 
 /**
  This denotes energy depletion rate per millisecond.
@@ -33,11 +34,6 @@
  Denotes percentage of energy left. Value can be between 0 to 100 only.
  */
 - (NSUInteger)status;
-
-/**
- Updates status for `timeInterval`.
- */
-- (void)updateForTimeInterval:(NSTimeInterval)timeInterval;
 
 /**
  Boosts energy by a fixed amount.
