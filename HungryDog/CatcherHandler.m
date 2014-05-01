@@ -10,7 +10,6 @@
 #import <SpriteKit/SpriteKit.h>
 #import "VectorUtils.h"
 #import "CatcherMovementPattern.h"
-#import "SKAction+CatcherAdditions.h"
 #import "Catcher.h"
 
 @interface CatcherHandler ()

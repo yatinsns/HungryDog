@@ -16,7 +16,6 @@
 #import "GameSceneSpritesOrganizer.h"
 #import "SKAction+BoneAdditions.h"
 #import "SKAction+DogAdditions.h"
-#import "SKAction+CatcherAdditions.h"
 #import "SKAction+PowerAdditions.h"
 #import "SKAction+HoleAdditions.h"
 #import "SKAction+PoopAdditions.h"
