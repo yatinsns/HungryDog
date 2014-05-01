@@ -423,9 +423,11 @@ PoopGeneratorDelegate>
 }
 
 - (void)handleTouches:(NSSet *)touches {
-  UITouch *touch = [touches anyObject];
-  CGPoint touchLocation = [touch locationInNode:self.scene];
-  [self.gamePlay.dogHandler moveTowardsLocation:touchLocation];
+  if (!self.isGamePaused) {
+    UITouch *touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInNode:self.scene];
+    [self.gamePlay.dogHandler moveTowardsLocation:touchLocation];
+  }
 }
 
 #pragma mark - Music
