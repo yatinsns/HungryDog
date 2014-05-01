@@ -30,6 +30,7 @@
   self = [super init];
   if (self) {
     _catcher = catcher;
+    _catcher.catcherHandler = self;
   }
   return self;
 }

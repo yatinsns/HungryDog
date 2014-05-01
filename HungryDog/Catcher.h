@@ -8,9 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@class CatcherMovementPattern;
+@class CatcherMovementPattern, CatcherHandler;
 
 @interface Catcher : SKSpriteNode
+
+@property (nonatomic, weak) CatcherHandler *catcherHandler;
 
 @property (nonatomic) BOOL enableCatching;
 
