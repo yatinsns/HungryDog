@@ -141,23 +141,10 @@
 
 - (void)start {
   self.hasStopped = NO;
-  [NSObject cancelPreviousPerformRequestsWithTarget:self
-                                           selector:@selector(start)
-                                             object:nil];
 }
 
 - (void)stop {
   self.hasStopped = YES;
-  [NSObject cancelPreviousPerformRequestsWithTarget:self
-                                           selector:@selector(start)
-                                             object:nil];
-}
-
-- (void)stopForTimeInterval:(NSTimeInterval)timeInterval {
-  [self stop];
-  [self performSelector:@selector(start)
-             withObject:nil
-             afterDelay:timeInterval];
 }
 
 @end

@@ -62,11 +62,6 @@
  */
 - (void)stop;
 
-/**
- Movement methods.
- */
-- (void)stopForTimeInterval:(NSTimeInterval)timeInterval;
-
 @end
 
 @protocol CatcherHandlerDelegate <NSObject>
