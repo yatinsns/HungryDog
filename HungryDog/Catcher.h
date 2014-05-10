@@ -25,6 +25,8 @@
 @property (nonatomic) NSTimeInterval patternRotationInterval;
 @property (nonatomic) NSTimeInterval patternMovementInterval;
 
+@property (nonatomic) NSUInteger aggressiveness;
+
 - (void)start;
 
 - (void)stop;

@@ -29,6 +29,9 @@ static const NSTimeInterval PatternRotationInterval = 1;
 
 @property (nonatomic) NSUInteger numberOfCatchers;
 
+@property (nonatomic) NSTimeInterval gameDurationMarker;
+@property (nonatomic) NSUInteger gameDurationMarkerIndex;
+
 @end
 
 @implementation StrategyMaker
@@ -43,10 +46,25 @@ static const NSTimeInterval PatternRotationInterval = 1;
 }
 
 - (void)generateForGameDuration:(NSTimeInterval)gameDuration {
-  if (self.numberOfCatchers < 1) {
+  if (self.numberOfCatchers < 4) {
     if ((NSUInteger)(floor((gameDuration / 2))) != self.numberOfCatchers) {
       self.numberOfCatchers ++;
       [self.delegate strategyMakerDidGenerateCatcher:self];
+    }
+  } else {
+    if (self.gameDurationMarker == 0) {
+      self.gameDurationMarker = gameDuration;
+      return;
+    }
+
+    NSTimeInterval diff = gameDuration - self.gameDurationMarker;
+    if ((NSUInteger)(floor((diff / 10))) > self.gameDurationMarker) {
+      for (CatcherHandler *catcherHandler in self.array) {
+        catcherHandler.catcher.movementSpeed += arc4random_uniform(10) + 5;
+        catcherHandler.catcher.radarRadius += arc4random_uniform(10) + 5;
+        catcherHandler.catcher.aggressiveness += arc4random_uniform(10) + 5;
+      }
+      self.gameDurationMarker = (NSUInteger)(floor((diff / 10)));
     }
   }
 }
@@ -61,6 +79,7 @@ static const NSTimeInterval PatternRotationInterval = 1;
   catcher.rotationSpeed = CatcherRotationSpeed;
   catcher.patternRotationInterval = PatternRotationInterval;
   catcher.patternMovementInterval = PatternMovementInterval;
+  catcher.aggressiveness = 10;
   CatcherHandler *catcherHandler = [[CatcherHandler alloc] initWithCatcher:catcher];
   catcherHandler.delegate = self;
   catcherHandler.mode = CatcherModeRandom;
