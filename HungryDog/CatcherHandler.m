@@ -45,6 +45,12 @@
      rotateRadiansPerSec:self.catcher.rotationSpeed
             timeInterval:timeInterval];
       [self checkBounds];
+      
+      CGPoint dogPosition = [self.delegate dogPositionForCatcherHandler:self];
+      CGPoint offset = CGPointSubtract(self.catcher.position, dogPosition);
+      if (CGPointLength(offset) < self.catcher.radarRadius) {
+        [self moveTowardsLocation:dogPosition];
+      }
     }
   } else if (self.mode == CatcherModePattern){
     if (!self.isPatternInitiated) {
