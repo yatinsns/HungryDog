@@ -79,7 +79,10 @@ PoopGeneratorDelegate>
     _gamePlay.energyBarHandler.delegate = self;
     _gamePlay.boneGenerator.delegate = self;
 
-    self.backgroundColor = [SKColor blackColor];
+    SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"park.png"];
+    backgroundNode.size = size;
+    backgroundNode.anchorPoint = CGPointZero;
+    [self addChild:backgroundNode];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] initWithSize:size];
     
