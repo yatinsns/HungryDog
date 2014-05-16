@@ -54,6 +54,9 @@
 		80C9935918FC4236001E9D44 /* CatcherHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C9935818FC4236001E9D44 /* CatcherHandler.m */; };
 		80C9935C18FC4EDD001E9D44 /* SKAction+CatcherAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C9935B18FC4EDD001E9D44 /* SKAction+CatcherAdditions.m */; };
 		80C9935F18FCEF90001E9D44 /* StrategyMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C9935E18FCEF90001E9D44 /* StrategyMaker.m */; };
+		80CF3F291925E8750075E169 /* InAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF3F281925E8750075E169 /* InAppManager.m */; };
+		80CF3F2C1925E8880075E169 /* InAppObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF3F2B1925E8880075E169 /* InAppObserver.m */; };
+		80CF3F2E1925E8C00075E169 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CF3F2D1925E8C00075E169 /* StoreKit.framework */; };
 		80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */; };
 		80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */; };
 		80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E318F676A700E6DB97 /* GameSceneSpritesOrganizer.m */; };
@@ -154,6 +157,11 @@
 		80C9935B18FC4EDD001E9D44 /* SKAction+CatcherAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+CatcherAdditions.m"; sourceTree = "<group>"; };
 		80C9935D18FCEF90001E9D44 /* StrategyMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyMaker.h; sourceTree = "<group>"; };
 		80C9935E18FCEF90001E9D44 /* StrategyMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyMaker.m; sourceTree = "<group>"; };
+		80CF3F271925E8740075E169 /* InAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppManager.h; sourceTree = "<group>"; };
+		80CF3F281925E8750075E169 /* InAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppManager.m; sourceTree = "<group>"; };
+		80CF3F2A1925E8880075E169 /* InAppObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppObserver.h; sourceTree = "<group>"; };
+		80CF3F2B1925E8880075E169 /* InAppObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppObserver.m; sourceTree = "<group>"; };
+		80CF3F2D1925E8C00075E169 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneGenerator.h; sourceTree = "<group>"; };
 		80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneGenerator.m; sourceTree = "<group>"; };
 		80DE58DF18F6697700E6DB97 /* SKAction+BoneAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+BoneAdditions.h"; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CF3F2E1925E8C00075E169 /* StoreKit.framework in Frameworks */,
 				80C40BA018EFEEEE00FBF8C7 /* CoreGraphics.framework in Frameworks */,
 				80C40BA218EFEEEE00FBF8C7 /* UIKit.framework in Frameworks */,
 				80C40BA418EFEEEE00FBF8C7 /* SpriteKit.framework in Frameworks */,
@@ -218,6 +227,7 @@
 		80C40B9C18EFEEEE00FBF8C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80CF3F2D1925E8C00075E169 /* StoreKit.framework */,
 				80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */,
 				80C40B9F18EFEEEE00FBF8C7 /* CoreGraphics.framework */,
 				80C40BA118EFEEEE00FBF8C7 /* UIKit.framework */,
@@ -230,6 +240,7 @@
 		80C40BA518EFEEEE00FBF8C7 /* HungryDog */ = {
 			isa = PBXGroup;
 			children = (
+				80CF3F261925E8100075E169 /* InApp Purchase */,
 				80C40BFF18F4714C00FBF8C7 /* Model */,
 				80C40BDC18EFFCB000FBF8C7 /* UI */,
 				80C40BDF18EFFD2900FBF8C7 /* Resources */,
@@ -368,6 +379,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		80CF3F261925E8100075E169 /* InApp Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				80CF3F271925E8740075E169 /* InAppManager.h */,
+				80CF3F281925E8750075E169 /* InAppManager.m */,
+				80CF3F2A1925E8880075E169 /* InAppObserver.h */,
+				80CF3F2B1925E8880075E169 /* InAppObserver.m */,
+			);
+			name = "InApp Purchase";
+			sourceTree = "<group>";
+		};
 		80DE58DE18F6693200E6DB97 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +518,7 @@
 				80C40BF118F18AE000FBF8C7 /* GameScene.m in Sources */,
 				80C40C0518F47C5200FBF8C7 /* NSString+ScoreAdditions.m in Sources */,
 				80C40BE218F1612B00FBF8C7 /* VectorUtils.m in Sources */,
+				80CF3F291925E8750075E169 /* InAppManager.m in Sources */,
 				80C40BE818F1782800FBF8C7 /* SKLabelNode+HungryDogAdditions.m in Sources */,
 				80C9935F18FCEF90001E9D44 /* StrategyMaker.m in Sources */,
 				80387F381903986100FA98CE /* SKAction+HoleAdditions.m in Sources */,
@@ -513,6 +536,7 @@
 				80387F2E1902F8C600FA98CE /* PowerGenerator.m in Sources */,
 				80502A661902AA4F00FBAAF9 /* ButtonNode.m in Sources */,
 				80C0C5B71904576F003FD590 /* SKAction+PoopAdditions.m in Sources */,
+				80CF3F2C1925E8880075E169 /* InAppObserver.m in Sources */,
 				80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */,
 				80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
