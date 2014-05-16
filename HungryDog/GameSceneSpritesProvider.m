@@ -19,10 +19,15 @@ const CGFloat BoneHeight_iPad = 56;
 const CGFloat ScoreLabelFontSize_iPhone = 20;
 const CGFloat ScoreLabelFontSize_iPad = 40;
 
-const CGFloat DogWidth_iPhone = 75;
+const CGFloat DogWidth_iPhone = 100;
 const CGFloat DogWidth_iPad = 150;
-const CGFloat DogHeight_iPhone = 37;
+const CGFloat DogHeight_iPhone = 38;
 const CGFloat DogHeight_iPad = 74;
+
+const CGFloat CatcherWidth_iPhone = 75;
+const CGFloat CatcherWidth_iPad = 150;
+const CGFloat CatcherHeight_iPhone = 37;
+const CGFloat CatcherHeight_iPad = 74;
 
 const CGFloat HoleWidth_iPhone = 75;
 const CGFloat HoleWidth_iPad = 150;
@@ -110,7 +115,7 @@ const CGFloat PauseButtonHeight = 50;
 }
 
 - (SKSpriteNode *)dog {
-  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Dog-main.png"];
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"dog_tail_3.png"];
   node.size = CGSizeMake(ValueForDevice(DogWidth_iPhone, DogWidth_iPad),
                          ValueForDevice(DogHeight_iPhone, DogHeight_iPad));
   return node;
@@ -118,8 +123,8 @@ const CGFloat PauseButtonHeight = 50;
 
 - (Catcher *)catcher {
   Catcher *node = [Catcher spriteNodeWithImageNamed:@"zombie1.png"];
-  node.size = CGSizeMake(ValueForDevice(DogWidth_iPhone, DogWidth_iPad),
-                         ValueForDevice(DogHeight_iPhone, DogHeight_iPad));
+  node.size = CGSizeMake(ValueForDevice(CatcherWidth_iPhone, CatcherWidth_iPad),
+                         ValueForDevice(CatcherHeight_iPhone, CatcherHeight_iPhone));
   return node;
 }
 

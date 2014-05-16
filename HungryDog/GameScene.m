@@ -82,6 +82,7 @@ PoopGeneratorDelegate>
     SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"park.png"];
     backgroundNode.size = size;
     backgroundNode.anchorPoint = CGPointZero;
+    backgroundNode.zPosition = -10;
     [self addChild:backgroundNode];
     _spritesProvider = [[GameSceneSpritesProvider alloc] init];
     _spritesOrganizer = [[GameSceneSpritesOrganizer alloc] initWithSize:size];
