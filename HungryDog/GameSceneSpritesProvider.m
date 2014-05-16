@@ -11,10 +11,10 @@
 #import "UIConstants.h"
 #import "SKLabelNode+HungryDogAdditions.h"
 
-const CGFloat BoneWidth_iPhone = 50;
-const CGFloat BoneWidth_iPad = 100;
-const CGFloat BoneHeight_iPhone = 28;
-const CGFloat BoneHeight_iPad = 56;
+const CGFloat BoneWidth_iPhone = 40;
+const CGFloat BoneWidth_iPad = 80;
+const CGFloat BoneHeight_iPhone = 40;
+const CGFloat BoneHeight_iPad = 80;
 
 const CGFloat ScoreLabelFontSize_iPhone = 20;
 const CGFloat ScoreLabelFontSize_iPad = 40;
@@ -39,8 +39,8 @@ const CGFloat TunnelWidth_iPad = 100;
 const CGFloat TunnelHeight_iPhone = 50;
 const CGFloat TunnelHeight_iPad = 100;
 
-const CGFloat PauseButtonWidth = 50;
-const CGFloat PauseButtonHeight = 50;
+const CGFloat PauseButtonWidth = 44;
+const CGFloat PauseButtonHeight = 44;
 
 @implementation GameSceneSpritesProvider
 
@@ -168,10 +168,10 @@ const CGFloat PauseButtonHeight = 50;
       return @"Gift.png";
       break;
     case PowerTypeTimeStopper:
-      return @"Timer.png";
+      return @"Gift.png";
       break;
     case PowerTypeInvisibiltyCloak:
-      return @"Witch.png";
+      return @"Gift.png";
       break;
     default:
       break;
@@ -182,13 +182,13 @@ const CGFloat PauseButtonHeight = 50;
 - (CGSize)sizeForPowerType:(PowerType)powerType {
   switch (powerType) {
     case PowerTypeEnergyBooster:
-      return CGSizeMake(40, 38);
+      return CGSizeMake(40, 40);
       break;
     case PowerTypeInvisibiltyCloak:
       return CGSizeMake(40, 40);
       break;
     case PowerTypeTimeStopper:
-      return CGSizeMake(32, 40);
+      return CGSizeMake(40, 40);
       break;
     default:
       break;
