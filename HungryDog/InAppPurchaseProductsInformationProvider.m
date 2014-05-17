@@ -17,6 +17,7 @@ void __InitiateProductsDictionary() {
   dictionary[@"HDBones3500"] = @(InAppPurchaseProductDollar3);
   dictionary[@"HDBones6000"] = @(InAppPurchaseProductDollar5);
   dictionary[@"HDBones13000"] = @(InAppPurchaseProductDollar10);
+  dictionary[@"HDNoAds"] = @(InAppPurchaseProductNoAds);
   productsDictionary = [NSDictionary dictionaryWithDictionary:dictionary];
 }
 

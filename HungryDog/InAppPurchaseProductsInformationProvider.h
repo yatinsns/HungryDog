@@ -13,7 +13,8 @@ typedef NS_ENUM(NSUInteger, InAppPurchaseProduct) {
   InAppPurchaseProductDollar2 = 2200,
   InAppPurchaseProductDollar3 = 3500,
   InAppPurchaseProductDollar5 = 6000,
-  InAppPurchaseProductDollar10 = 13000
+  InAppPurchaseProductDollar10 = 13000,
+  InAppPurchaseProductNoAds
 };
 
 InAppPurchaseProduct InAppPurchaseProductForProductID(NSString *productID);
