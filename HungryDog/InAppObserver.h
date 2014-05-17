@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <StoreKit/StoreKit.h>
 
-@interface InAppObserver : NSObject
+/**
+ This class observes in app purchases.
+ */
+@interface InAppObserver : NSObject <SKPaymentTransactionObserver>
 
 @end

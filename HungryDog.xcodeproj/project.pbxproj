@@ -57,6 +57,7 @@
 		80CF3F291925E8750075E169 /* InAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF3F281925E8750075E169 /* InAppManager.m */; };
 		80CF3F2C1925E8880075E169 /* InAppObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF3F2B1925E8880075E169 /* InAppObserver.m */; };
 		80CF3F2E1925E8C00075E169 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CF3F2D1925E8C00075E169 /* StoreKit.framework */; };
+		80CF3F331925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CF3F321925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.m */; };
 		80DE58DD18F5FBA400E6DB97 /* BoneGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */; };
 		80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E018F6697700E6DB97 /* SKAction+BoneAdditions.m */; };
 		80DE58E418F676A700E6DB97 /* GameSceneSpritesOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE58E318F676A700E6DB97 /* GameSceneSpritesOrganizer.m */; };
@@ -162,6 +163,8 @@
 		80CF3F2A1925E8880075E169 /* InAppObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppObserver.h; sourceTree = "<group>"; };
 		80CF3F2B1925E8880075E169 /* InAppObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppObserver.m; sourceTree = "<group>"; };
 		80CF3F2D1925E8C00075E169 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		80CF3F311925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchaseProductsInformationProvider.h; sourceTree = "<group>"; };
+		80CF3F321925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppPurchaseProductsInformationProvider.m; sourceTree = "<group>"; };
 		80DE58DB18F5FBA400E6DB97 /* BoneGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneGenerator.h; sourceTree = "<group>"; };
 		80DE58DC18F5FBA400E6DB97 /* BoneGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneGenerator.m; sourceTree = "<group>"; };
 		80DE58DF18F6697700E6DB97 /* SKAction+BoneAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+BoneAdditions.h"; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				80CF3F281925E8750075E169 /* InAppManager.m */,
 				80CF3F2A1925E8880075E169 /* InAppObserver.h */,
 				80CF3F2B1925E8880075E169 /* InAppObserver.m */,
+				80CF3F311925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.h */,
+				80CF3F321925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.m */,
 			);
 			name = "InApp Purchase";
 			sourceTree = "<group>";
@@ -542,6 +547,7 @@
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
 				8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */,
 				80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */,
+				80CF3F331925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.m in Sources */,
 				80B269991901572C00CBAC55 /* StrategyPattern.m in Sources */,
 				80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */,
 				80C40BFE18F46F8500FBF8C7 /* ScoreHandler.m in Sources */,
