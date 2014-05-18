@@ -11,6 +11,7 @@
 #import "UIConstants.h"
 #import "UIUtils.h"
 #import "BackgroundMusicPlayer.h"
+#import "BoneManager.h"
 
 const CGFloat NameLabelFontSize_iPhone = 30;
 const CGFloat NameLabelFontSize_iPad = 80;
@@ -52,6 +53,7 @@ NSString *const PlayName = @"Play";
     [self addNameLabel];
     [self addPlayLabelWithSuffix:suffix];
     [self addDog];
+    [self addTotalBonesLabel];
     self.userInteractionEnabled = YES;
     [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"menuMusic.mp3"];
   }
@@ -94,6 +96,19 @@ NSString *const PlayName = @"Play";
                                     self.nameLabel.position.y - centerOffsetY);
   _playLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   [self addChild:_playLabel];
+}
+
+- (void)addTotalBonesLabel {
+  CGFloat fontSize = ValueForDevice(PlayLabelFontSize_iPhone, PlayLabelFontSize_iPad);
+  SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:AppFontName
+                                                  fontSize:fontSize
+                                                 fontColor:[SKColor yellowColor]];
+  NSString *text = [NSString stringWithFormat:@"Total bones: %@", @([[BoneManager sharedManager] currentNumberOfBones])];
+  label.text = text;
+  label.position = CGPointMake(self.nameLabel.position.x,
+                               fontSize);
+  label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  [self addChild:label];
 }
 
 - (void)addDog {
