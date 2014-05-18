@@ -10,6 +10,7 @@
 #import "MainScene.h"
 #import "GameScene.h"
 #import "GamePlay.h"
+#import "BoneManager.h"
 
 @interface ViewController () <MainSceneDelegate, GameSceneDelegate>
 
@@ -80,9 +81,11 @@
 #pragma mark - GameSceneDelegate methods
 
 - (void)gameSceneDidEndGame:(GameScene *)gameScene {
+  NSUInteger lastScore = gameScene.gamePlay.scoreHandler.currentScore;
+  [[BoneManager sharedManager] boostByNumberOfBones:lastScore];
   SKView * skView = (SKView *)self.view;
   MainScene *scene = [[MainScene  alloc] initWithSize:skView.bounds.size
-                                            lastScore:gameScene.gamePlay.scoreHandler.currentScore];
+                                            lastScore:lastScore];
   scene.delegate = self;
   SKTransition *reveal = [SKTransition fadeWithDuration:0.5];
   [skView presentScene:scene transition:reveal];
