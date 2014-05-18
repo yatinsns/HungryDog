@@ -11,8 +11,9 @@
 #import "GameScene.h"
 #import "GamePlay.h"
 #import "BoneManager.h"
+#import "InAppManager.h"
 
-@interface ViewController () <MainSceneDelegate, GameSceneDelegate>
+@interface ViewController () <MainSceneDelegate, GameSceneDelegate, InAppManagerDelegate>
 
 @end
 
@@ -21,6 +22,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if (self) {
+    [InAppManager sharedManager];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationWillResignActive:)
                                                  name:UIApplicationWillResignActiveNotification
@@ -77,6 +79,20 @@
   gameScene.scaleMode = SKSceneScaleModeAspectFill;
   [skView presentScene:gameScene];
 }
+
+- (void)mainSceneDidSelectBuyBonesOption:(MainScene *)mainScene {
+  [[InAppManager sharedManager] setDelegate:self];
+  [[InAppManager sharedManager] buyProduct:InAppPurchaseProductDollar1];
+}
+
+#pragma mark - InAppManagerDelegate methods
+
+- (void)inAppManager:(InAppManager *)inAppManager didProvideProduct:(InAppPurchaseProduct)product {
+  if (product == InAppPurchaseProductDollar1) {
+    [[BoneManager sharedManager] boostByNumberOfBones:InAppPurchaseProductDollar1];
+  }
+}
+
 
 #pragma mark - GameSceneDelegate methods
 

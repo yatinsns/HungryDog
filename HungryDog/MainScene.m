@@ -29,6 +29,7 @@ const CGFloat DogOriginX = 10;
 const CGFloat DogOriginY = 10;
 
 NSString *const PlayName = @"Play";
+NSString *const BuyBonesName = @"BuyBonesName";
 
 @interface MainScene ()
 
@@ -54,6 +55,7 @@ NSString *const PlayName = @"Play";
     [self addPlayLabelWithSuffix:suffix];
     [self addDog];
     [self addTotalBonesLabel];
+    [self addBuyBonesLabel];
     self.userInteractionEnabled = YES;
     [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"menuMusic.mp3"];
   }
@@ -111,6 +113,20 @@ NSString *const PlayName = @"Play";
   [self addChild:label];
 }
 
+- (void)addBuyBonesLabel {
+  CGFloat fontSize = ValueForDevice(PlayLabelFontSize_iPhone, PlayLabelFontSize_iPad);
+  SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:AppFontName
+                                                  fontSize:fontSize
+                                                 fontColor:[SKColor yellowColor]];
+  label.text = @"Buy bones";
+  label.name = BuyBonesName;
+  label.position = CGPointMake(self.size.width,
+                               fontSize);
+  label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+  [self addChild:label];
+}
+
 - (void)addDog {
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"HungryDog1.png"];
   node.anchorPoint = CGPointZero;
@@ -128,6 +144,8 @@ NSString *const PlayName = @"Play";
   SKNode *node = [self nodeAtPoint:touchLocation];
   if ([node.name isEqualToString:PlayName]) {
     [self handlePlayAction];
+  } else if ([node.name isEqualToString:BuyBonesName]) {
+    [self handleBuyBones];
   }
 }
 
@@ -135,6 +153,10 @@ NSString *const PlayName = @"Play";
 
 - (void)handlePlayAction {
   [self.delegate mainSceneDidSelectPlayOption:self];
+}
+
+- (void)handleBuyBones {
+  [self.delegate mainSceneDidSelectBuyBonesOption:self];
 }
 
 @end

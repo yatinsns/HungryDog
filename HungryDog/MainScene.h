@@ -26,4 +26,6 @@
 
 - (void)mainSceneDidSelectPlayOption:(MainScene *)mainScene;
 
+- (void)mainSceneDidSelectBuyBonesOption:(MainScene *)mainScene;
+
 @end
