@@ -24,6 +24,8 @@
 		80B269991901572C00CBAC55 /* StrategyPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B269981901572C00CBAC55 /* StrategyPattern.m */; };
 		80B2699C1901586B00CBAC55 /* StrategyPatternCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */; };
 		80BEEFC019293F1E00AD8E83 /* BoneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BEEFBF19293F1E00AD8E83 /* BoneManager.m */; };
+		80BEEFC4192947DD00AD8E83 /* InAppPurchaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BEEFC2192947DD00AD8E83 /* InAppPurchaseController.m */; };
+		80BEEFC5192947DD00AD8E83 /* InAppPurchaseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80BEEFC3192947DD00AD8E83 /* InAppPurchaseController.xib */; };
 		80C0C5B41903B116003FD590 /* PoopGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C0C5B31903B116003FD590 /* PoopGenerator.m */; };
 		80C0C5B71904576F003FD590 /* SKAction+PoopAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C0C5B61904576F003FD590 /* SKAction+PoopAdditions.m */; };
 		80C40B9E18EFEEEE00FBF8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C40B9D18EFEEEE00FBF8C7 /* Foundation.framework */; };
@@ -111,6 +113,9 @@
 		80B2699B1901586B00CBAC55 /* StrategyPatternCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyPatternCreator.m; sourceTree = "<group>"; };
 		80BEEFBE19293F1E00AD8E83 /* BoneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneManager.h; sourceTree = "<group>"; };
 		80BEEFBF19293F1E00AD8E83 /* BoneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneManager.m; sourceTree = "<group>"; };
+		80BEEFC1192947DD00AD8E83 /* InAppPurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchaseController.h; sourceTree = "<group>"; };
+		80BEEFC2192947DD00AD8E83 /* InAppPurchaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppPurchaseController.m; sourceTree = "<group>"; };
+		80BEEFC3192947DD00AD8E83 /* InAppPurchaseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppPurchaseController.xib; sourceTree = "<group>"; };
 		80C0C5B21903B116003FD590 /* PoopGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoopGenerator.h; sourceTree = "<group>"; };
 		80C0C5B31903B116003FD590 /* PoopGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoopGenerator.m; sourceTree = "<group>"; };
 		80C0C5B51904576F003FD590 /* SKAction+PoopAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+PoopAdditions.h"; sourceTree = "<group>"; };
@@ -333,6 +338,9 @@
 			children = (
 				80C40BB718EFEEEE00FBF8C7 /* ViewController.h */,
 				80C40BB818EFEEEE00FBF8C7 /* ViewController.m */,
+				80BEEFC1192947DD00AD8E83 /* InAppPurchaseController.h */,
+				80BEEFC2192947DD00AD8E83 /* InAppPurchaseController.m */,
+				80BEEFC3192947DD00AD8E83 /* InAppPurchaseController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -498,6 +506,7 @@
 				80C40BBE18EFEEEE00FBF8C7 /* Spaceship.png in Resources */,
 				80C40BC018EFEEEE00FBF8C7 /* Images.xcassets in Resources */,
 				80C40BB618EFEEEE00FBF8C7 /* Main_iPad.storyboard in Resources */,
+				80BEEFC5192947DD00AD8E83 /* InAppPurchaseController.xib in Resources */,
 				80C40BB318EFEEEE00FBF8C7 /* Main_iPhone.storyboard in Resources */,
 				80C40BAA18EFEEEE00FBF8C7 /* InfoPlist.strings in Resources */,
 				80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */,
@@ -520,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BEEFC4192947DD00AD8E83 /* InAppPurchaseController.m in Sources */,
 				804372D7191297D700980B0B /* BackgroundMusicPlayer.m in Sources */,
 				80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */,
 				802F9C0718F7295300747E7C /* DogHandler.m in Sources */,
