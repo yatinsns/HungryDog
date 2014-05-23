@@ -19,6 +19,7 @@
 		80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80502A621901CF1000FBAAF9 /* bgMusic.mp3 */; };
 		80502A661902AA4F00FBAAF9 /* ButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 80502A651902AA4F00FBAAF9 /* ButtonNode.m */; };
 		80686F0618F5C9B000DB415E /* EnergyBarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80686F0518F5C9B000DB415E /* EnergyBarHandler.m */; };
+		80A62F25192F362F009D1EB2 /* SoundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A62F24192F362F009D1EB2 /* SoundController.m */; };
 		80A7CD6D18F49473006357D7 /* GameSceneSpritesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */; };
 		80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B2699519014FD900CBAC55 /* CatcherMovementPattern.m */; };
 		80B269991901572C00CBAC55 /* StrategyPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B269981901572C00CBAC55 /* StrategyPattern.m */; };
@@ -102,6 +103,8 @@
 		80686F0518F5C9B000DB415E /* EnergyBarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyBarHandler.m; sourceTree = "<group>"; };
 		80701FAB19124FEA00A8BEB0 /* NodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeGenerator.h; sourceTree = "<group>"; };
 		80701FAC1912519700A8BEB0 /* NodeUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeUpdater.h; sourceTree = "<group>"; };
+		80A62F23192F362F009D1EB2 /* SoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundController.h; sourceTree = "<group>"; };
+		80A62F24192F362F009D1EB2 /* SoundController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundController.m; sourceTree = "<group>"; };
 		80A7CD6B18F49473006357D7 /* GameSceneSpritesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneSpritesProvider.h; sourceTree = "<group>"; };
 		80A7CD6C18F49473006357D7 /* GameSceneSpritesProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneSpritesProvider.m; sourceTree = "<group>"; };
 		80B2699319014F4A00CBAC55 /* CatcherMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatcherMode.h; sourceTree = "<group>"; };
@@ -216,6 +219,15 @@
 			name = Nodes;
 			sourceTree = "<group>";
 		};
+		80A62F22192F3617009D1EB2 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				80A62F23192F362F009D1EB2 /* SoundController.h */,
+				80A62F24192F362F009D1EB2 /* SoundController.m */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
 		80C40B9118EFEEEE00FBF8C7 = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +263,7 @@
 		80C40BA518EFEEEE00FBF8C7 /* HungryDog */ = {
 			isa = PBXGroup;
 			children = (
+				80A62F22192F3617009D1EB2 /* Sound */,
 				80CF3F261925E8100075E169 /* InApp Purchase */,
 				80C40BFF18F4714C00FBF8C7 /* Model */,
 				80C40BDC18EFFCB000FBF8C7 /* UI */,
@@ -562,6 +575,7 @@
 				80B2699619014FDA00CBAC55 /* CatcherMovementPattern.m in Sources */,
 				80C40BE518F1706D00FBF8C7 /* MainScene.m in Sources */,
 				8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */,
+				80A62F25192F362F009D1EB2 /* SoundController.m in Sources */,
 				80DE58E118F6697700E6DB97 /* SKAction+BoneAdditions.m in Sources */,
 				80CF3F331925EE1D0075E169 /* InAppPurchaseProductsInformationProvider.m in Sources */,
 				80B269991901572C00CBAC55 /* StrategyPattern.m in Sources */,
