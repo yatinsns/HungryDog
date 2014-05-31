@@ -12,6 +12,7 @@
 #import "UIUtils.h"
 #import "BackgroundMusicPlayer.h"
 #import "BoneManager.h"
+#import "SoundController.h"
 
 const CGFloat NameLabelFontSize_iPhone = 30;
 const CGFloat NameLabelFontSize_iPad = 80;
@@ -30,6 +31,7 @@ const CGFloat DogOriginY = 10;
 
 NSString *const PlayName = @"Play";
 NSString *const BuyBonesName = @"BuyBonesName";
+NSString *const SoundName = @"SoundName";
 
 @interface MainScene ()
 
@@ -56,6 +58,7 @@ NSString *const BuyBonesName = @"BuyBonesName";
     [self addDog];
     [self addTotalBonesLabel];
     [self addBuyBonesLabel];
+    [self addSoundLabel];
     self.userInteractionEnabled = YES;
     [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"menuMusic.mp3"];
   }
@@ -122,6 +125,26 @@ NSString *const BuyBonesName = @"BuyBonesName";
   label.name = BuyBonesName;
   label.position = CGPointMake(self.size.width,
                                fontSize);
+  label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+  [self addChild:label];
+}
+
+- (void)addSoundLabel {
+  CGFloat fontSize = ValueForDevice(PlayLabelFontSize_iPhone, PlayLabelFontSize_iPad);
+  SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:AppFontName
+                                                  fontSize:fontSize
+                                                 fontColor:[SKColor yellowColor]];
+  NSString *text = @"Sound";
+  if ([[SoundController sharedController] isMuted]) {
+    text = [text stringByAppendingString:@" Off"];
+  } else {
+    text = [text stringByAppendingString:@" On"];
+  }
+  label.text = text;
+  label.name = SoundName;
+  label.position = CGPointMake(self.size.width,
+                               self.size.height - fontSize);
   label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
   [self addChild:label];
