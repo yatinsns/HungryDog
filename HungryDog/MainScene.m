@@ -52,7 +52,12 @@ NSString *const SoundName = @"SoundName";
 
 - (id)initWithSize:(CGSize)size suffix:(NSString *)suffix {
   if (self = [super initWithSize:size]) {
-    self.backgroundColor = [SKColor blackColor];
+    SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"Menu-background.png"];
+    backgroundNode.size = CGSizeMake(568, 320);
+    backgroundNode.position = CGPointZero;
+    backgroundNode.anchorPoint = CGPointZero;
+    [self addChild:backgroundNode];
+
     [self addNameLabel];
     [self addPlayLabelWithSuffix:suffix];
     [self addDog];
