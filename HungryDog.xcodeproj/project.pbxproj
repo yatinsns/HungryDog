@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05CDF59F194D820C002E3AC3 /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 05CDF59E194D820C002E3AC3 /* ProximaNova-Black.otf */; };
 		8013DB00191220CD00F85469 /* Catcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8013DAFF191220CD00F85469 /* Catcher.m */; };
 		8018857418F71F9A00F64A0B /* SKAction+DogAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8018857318F71F9A00F64A0B /* SKAction+DogAdditions.m */; };
 		802F9C0718F7295300747E7C /* DogHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 802F9C0618F7295300747E7C /* DogHandler.m */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05CDF59E194D820C002E3AC3 /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Black.otf"; path = "../../../Downloads/ProximaNova-Black.otf"; sourceTree = "<group>"; };
 		8013DAFE191220CD00F85469 /* Catcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catcher.h; sourceTree = "<group>"; };
 		8013DAFF191220CD00F85469 /* Catcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Catcher.m; sourceTree = "<group>"; };
 		8018857218F71F9A00F64A0B /* SKAction+DogAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+DogAdditions.h"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		80C40BA618EFEEEE00FBF8C7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				05CDF59E194D820C002E3AC3 /* ProximaNova-Black.otf */,
 				80C40BA718EFEEEE00FBF8C7 /* HungryDog-Info.plist */,
 				80C40BA818EFEEEE00FBF8C7 /* InfoPlist.strings */,
 				80C40BAB18EFEEEE00FBF8C7 /* main.m */,
@@ -524,6 +527,7 @@
 				80C40BAA18EFEEEE00FBF8C7 /* InfoPlist.strings in Resources */,
 				80502A631901CF1000FBAAF9 /* bgMusic.mp3 in Resources */,
 				804372D41912977300980B0B /* menuMusic.mp3 in Resources */,
+				05CDF59F194D820C002E3AC3 /* ProximaNova-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

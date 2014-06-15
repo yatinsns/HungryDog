@@ -106,7 +106,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
 
 - (void)addTotalBonesLabel {
   CGFloat fontSize = ValueForDevice(BonesLabelFontSize_iPhone, BonesLabelFontSize_iPad);
-  SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:AppFontName
+  SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"ProximaNova-Black"
                                                   fontSize:fontSize
                                                  fontColor:[SKColor whiteColor]];
   NSString *text = [NSString stringWithFormat:@"Bones: %@", @([[BoneManager sharedManager] currentNumberOfBones])];
