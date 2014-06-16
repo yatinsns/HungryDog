@@ -38,11 +38,17 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
 - (id)initWithSize:(CGSize)size suffix:(NSString *)suffix {
   if (self = [super initWithSize:size]) {
     SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"Menu-background.png"];
-    backgroundNode.size = size;
+    backgroundNode.size = CGSizeMake(1336 / 2, 753 / 2);;
     backgroundNode.position = CGPointZero;
     backgroundNode.anchorPoint = CGPointZero;
+    backgroundNode.zPosition = -1;
     [self addChild:backgroundNode];
 
+    SKAction *move = [SKAction moveByX:-50 y:0 duration:10];
+    SKAction *reverseMove = [move reversedAction];
+    [backgroundNode runAction:[SKAction repeatActionForever:[SKAction sequence:@[move, reverseMove]]]];
+
+    [self addGrass];
     [self addPlayButton];
     [self addStoreButton];
     [self addTotalBonesLabel];
@@ -115,6 +121,18 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
                                fontSize);
   label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   [self addChild:label];
+}
+
+- (void)addGrass {
+  SKSpriteNode *grass = [SKSpriteNode spriteNodeWithImageNamed:@"Menu-grass.png"];
+  grass.size = CGSizeMake(1536 / 2, 865 / 2);
+  grass.position = CGPointZero;
+  grass.anchorPoint = CGPointZero;
+  [self addChild:grass];
+
+  SKAction *move = [SKAction moveByX:-200 y:0 duration:10];
+  SKAction *reverseMove = [move reversedAction];
+  [grass runAction:[SKAction repeatActionForever:[SKAction sequence:@[move, reverseMove]]]];
 }
 
 #pragma mark - User actions
