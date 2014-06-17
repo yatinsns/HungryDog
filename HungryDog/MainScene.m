@@ -118,9 +118,9 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
                                                  fontColor:[SKColor whiteColor]];
   NSString *text = [NSString stringWithFormat:@"Bones: %@", @([[BoneManager sharedManager] currentNumberOfBones])];
   label.text = text;
-  label.position = CGPointMake(self.size.width / 2,
-                               fontSize);
+  label.position = CGPointMake(self.size.width - 10, fontSize);
   label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
   [self addChild:label];
 }
 
