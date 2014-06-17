@@ -48,6 +48,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
     SKAction *reverseMove = [move reversedAction];
     [backgroundNode runAction:[SKAction repeatActionForever:[SKAction sequence:@[move, reverseMove]]]];
 
+    [self addLogo];
     [self addGrass];
     [self addPlayButton];
     [self addStoreButton];
@@ -70,7 +71,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
 
   // FIXME : For iPad
   node.size = CGSizeMake(180, 54);
-  node.position = CGPointMake(284, 160);
+  node.position = CGPointMake(284, 19 + 54 + 19 + 27);
 
   [node setTouchUpInsideTarget:self action:@selector(playButtonTapped)];
   [self addChild:node];
@@ -100,7 +101,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
   
   // FIXME : For iPad
   node.size = CGSizeMake(180, 54);
-  node.position = CGPointMake(284, 100);
+  node.position = CGPointMake(284, 19 + 27);
 
   [node setTouchUpInsideTarget:self action:@selector(storeButtonTapped)];
   [self addChild:node];
@@ -121,6 +122,14 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
                                fontSize);
   label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   [self addChild:label];
+}
+
+- (void)addLogo {
+  SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"Game-logo.png"];
+  logo.size = CGSizeMake(138, 138);
+  logo.position = CGPointMake(self.size.width / 2,
+                              self.size.height - (138 / 2) - 19);
+  [self addChild:logo];
 }
 
 - (void)addGrass {
