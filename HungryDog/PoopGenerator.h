@@ -27,9 +27,7 @@
 
 @protocol PoopGeneratorDelegate <NSObject>
 
-- (void)poopGeneratorShouldEnablePoop:(PoopGenerator *)poopGenerator;
-
-- (void)poopGeneratorShouldDisablePoop:(PoopGenerator *)poopGenerator;
+- (void)poopGenerator:(PoopGenerator *)poopGenerator didChangeStatus:(CGFloat)status;
 
 - (void)poopGeneratorDidPoop:(PoopGenerator *)poopGenerator;
 

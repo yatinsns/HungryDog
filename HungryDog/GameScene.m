@@ -92,7 +92,7 @@ PoopGeneratorDelegate>
     [self addEnergyBarWithStatus:_gamePlay.energyBarHandler.status];
     [self addBone];
     [self addDog];
-    [self addPoopButton];
+    [self addPoopButtonWithStatus:0];
     
     _gamePlay.dogHandler.dog = _dog;
     [_gamePlay.strategyMaker setDelegate:self];
@@ -317,15 +317,31 @@ PoopGeneratorDelegate>
   return nil;
 }
 
-- (void)addPoopButton {
-  ButtonNode *node = self.poopButton = [[ButtonNode alloc] initWithImageNamedNormal:@"Poop-enable.png"
-                                                                           selected:@"Poop-selected.png"
-                                                                           disabled:@"Poop-disable.png"];
+- (void)addPoopButtonWithStatus:(CGFloat)status {
+  NSString *imageName = nil;
+  if (status < 0.33) {
+    imageName = @"Poop-loading-0.png";
+  } else if (status < 0.66) {
+    imageName = @"Poop-loading-1.png";
+  } else if (status < 1.0) {
+    imageName = @"Poop-loading-2.png";
+  } else {
+    imageName = @"Poop-loading-3.png";
+  }
+  ButtonNode *node = [[ButtonNode alloc] initWithImageNamedNormal:imageName
+                                                         selected:imageName
+                                                         disabled:imageName];
   node.size = CGSizeMake(44, 44);
   node.position = CGPointMake(self.size.width - 25, self.size.height - 80);
   node.isEnabled = NO;
   [node setTouchUpInsideTarget:self action:@selector(poopButtonTapped)];
-  [self addChild:node];
+  self.poopButton = node;
+}
+
+- (void)setPoopButton:(ButtonNode *)poopButton {
+  [_poopButton removeFromParent];
+  _poopButton = poopButton;
+  [self addChild:_poopButton];
 }
 
 - (void)poopButtonTapped {
@@ -505,12 +521,9 @@ didGeneratePowerOfType:(PowerType)powerType {
 
 #pragma mark - PoopGeneratorDelegate
 
-- (void)poopGeneratorShouldEnablePoop:(PoopGenerator *)poopGenerator {
-  self.poopButton.isEnabled = YES;
-}
-
-- (void)poopGeneratorShouldDisablePoop:(PoopGenerator *)poopGenerator {
-  self.poopButton.isEnabled = NO;
+- (void)poopGenerator:(PoopGenerator *)poopGenerator didChangeStatus:(CGFloat)status {
+  [self addPoopButtonWithStatus:status];
+  self.poopButton.isEnabled = !(status < 1.0);
 }
 
 - (void)poopGeneratorDidPoop:(PoopGenerator *)poopGenerator {

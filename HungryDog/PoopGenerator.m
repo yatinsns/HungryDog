@@ -31,16 +31,14 @@
   if (self.intakeCount > self.intakeThreshold) {
     self.intakeCount = self.intakeThreshold;
   }
-  if (self.intakeCount == self.intakeThreshold) {
-    [self.delegate poopGeneratorShouldEnablePoop:self];
-  }
+  [self.delegate poopGenerator:self didChangeStatus:(((CGFloat)self.intakeCount) / self.intakeThreshold)];
 }
 
 - (void)poop {
   if (self.intakeCount == self.intakeThreshold) {
     [self.delegate poopGeneratorDidPoop:self];
     self.intakeCount = 0;
-    [self.delegate poopGeneratorShouldDisablePoop:self];
+    [self.delegate poopGenerator:self didChangeStatus:(self.intakeCount / self.intakeThreshold)];
   }
 }
 
