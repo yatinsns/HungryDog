@@ -14,6 +14,7 @@
 #import "BoneManager.h"
 #import "SoundController.h"
 #import "ButtonNode.h"
+#import "SoundController.h"
 
 static const CGFloat BonesLabelFontSize_iPhone = 20;
 static const CGFloat BonesLabelFontSize_iPad = 40;
@@ -22,6 +23,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
 
 @property (nonatomic) SKLabelNode *nameLabel;
 @property (nonatomic) SKLabelNode *playLabel;
+@property (nonatomic) ButtonNode *soundButton;
 
 @end
 
@@ -53,6 +55,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
     [self addPlayButton];
     [self addStoreButton];
     [self addTotalBonesLabel];
+    [self addSoundButton];
     [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"menuMusic.mp3"];
   }
   return self;
@@ -142,6 +145,37 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
   SKAction *move = [SKAction moveByX:-200 y:0 duration:10];
   SKAction *reverseMove = [move reversedAction];
   [grass runAction:[SKAction repeatActionForever:[SKAction sequence:@[move, reverseMove]]]];
+}
+
+- (void)addSoundButton {
+  BOOL isMuted = [[SoundController sharedController] isMuted];
+  NSString *imageNormalName = @"Menu-sound-on";
+  NSString *imageSelectedName = @"Menu-sound-on-pressed";
+  if (isMuted) {
+    imageNormalName = @"Menu-sound-off";
+    imageSelectedName = @"Menu-sound-off-pressed";
+  }
+  ButtonNode *node = [[ButtonNode alloc] initWithImageNamedNormal:imageNormalName
+                                                         selected:imageSelectedName];
+
+  // FIXME : For iPad
+  node.size = CGSizeMake(44, 44);
+  node.anchorPoint = CGPointZero;
+  node.position = CGPointMake(19, 19);
+
+  [node setTouchUpInsideTarget:self action:@selector(soundButtonTapped)];
+  self.soundButton = node;
+}
+
+- (void)soundButtonTapped {
+  [SoundController sharedController].muted = ![[SoundController sharedController] isMuted];
+  [self addSoundButton];
+}
+
+- (void)setSoundButton:(ButtonNode *)soundButton {
+  [_soundButton removeFromParent];
+  _soundButton = soundButton;
+  [self addChild:_soundButton];
 }
 
 #pragma mark - User actions
