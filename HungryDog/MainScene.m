@@ -53,7 +53,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
     [self addGrass];
     [self addPlayButton];
     [self addStoreButton];
-    [self addTotalBonesLabel];
+    [self addCreditsLabel];
     [self addSoundButton];
     [[SoundController sharedController] playBackgroundMusic:@"menuMusic.mp3"];
   }
@@ -113,15 +113,14 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
   [self handleBuyBones];
 }
 
-- (void)addTotalBonesLabel {
+- (void)addCreditsLabel {
   CGFloat fontSize = ValueForDevice(BonesLabelFontSize_iPhone, BonesLabelFontSize_iPad);
   SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"ProximaNova-Black"
                                                   fontSize:fontSize
                                                  fontColor:[SKColor whiteColor]];
-  NSString *text = [NSString stringWithFormat:@"Bones: %@", @([[BoneManager sharedManager] currentNumberOfBones])];
-  label.text = text;
-  label.position = CGPointMake(self.size.width - 10, fontSize);
-  label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  label.text = @"Credits";
+  label.position = CGPointMake(self.size.width - 10, 19);
+  label.verticalAlignmentMode = SKLabelVerticalAlignmentModeBaseline;
   label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
   [self addChild:label];
 }
