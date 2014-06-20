@@ -18,6 +18,8 @@
 static const CGFloat BonesLabelFontSize_iPhone = 20;
 static const CGFloat BonesLabelFontSize_iPad = 40;
 
+static NSString *const CreditsLabelName = @"Credits";
+
 @interface MainScene ()
 
 @property (nonatomic) SKLabelNode *nameLabel;
@@ -38,6 +40,8 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
 
 - (id)initWithSize:(CGSize)size suffix:(NSString *)suffix {
   if (self = [super initWithSize:size]) {
+    self.userInteractionEnabled = YES;
+
     SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"Menu-background.png"];
     backgroundNode.size = CGSizeMake(1336 / 2, 753 / 2);;
     backgroundNode.position = CGPointZero;
@@ -119,6 +123,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
                                                   fontSize:fontSize
                                                  fontColor:[SKColor whiteColor]];
   label.text = @"Credits";
+  label.name = CreditsLabelName;
   label.position = CGPointMake(self.size.width - 10, 19);
   label.verticalAlignmentMode = SKLabelVerticalAlignmentModeBaseline;
   label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
@@ -184,6 +189,42 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
 
 - (void)handleBuyBones {
   [self.delegate mainSceneDidSelectBuyBonesOption:self];
+}
+
+#pragma mark - Effects
+
+- (CIFilter *)blurFilter {
+  CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+  [filter setDefaults];
+  [filter setValue:[NSNumber numberWithFloat:15] forKey:@"inputRadius"];
+  return filter;
+}
+
+- (void)addBlur {
+  self.filter = [self blurFilter];
+  self.shouldEnableEffects = YES;
+}
+
+- (void)removeBlur {
+  self.shouldEnableEffects = NO;
+  self.filter = nil;
+}
+
+#pragma mark - Touches Handling
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  if (self.filter != nil) {
+    [self removeBlur];
+    return;
+  }
+
+  UITouch *touch = [touches anyObject];
+  CGPoint location = [touch locationInNode:self];
+  SKNode *node = [self nodeAtPoint:location];
+
+  if ([node.name isEqualToString:CreditsLabelName]) {
+    [self addBlur];
+  }
 }
 
 @end
