@@ -17,4 +17,6 @@
 
 + (SoundController *)sharedController;
 
+- (void)playBackgroundMusic:(NSString *)backgroundMusic;
+
 @end

@@ -27,15 +27,13 @@
   return musicPlayer;
 }
 
-- (void)playBackgroundMusic:(NSString *)filename {
+- (void)setBackgroundMusic:(NSString *)filename {
   NSError *error;
   NSURL *backgroundMusicURL =
   [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
   self.backgroundMusicPlayer = [[AVAudioPlayer alloc]
                             initWithContentsOfURL:backgroundMusicURL error:&error];
   self.backgroundMusicPlayer.numberOfLoops = -1;
-  [self.backgroundMusicPlayer prepareToPlay];
-  [self.backgroundMusicPlayer play];
 }
 
 - (void)play {

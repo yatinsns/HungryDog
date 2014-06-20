@@ -21,7 +21,7 @@
 #import "SKAction+PoopAdditions.h"
 #import "VectorUtils.h"
 #import "ButtonNode.h"
-#import "BackgroundMusicPlayer.h"
+#import "SoundController.h"
 
 const CGFloat EnergyBarStrokeWidth_iPhone = 1;
 const CGFloat EnergyBarStrokeWidth_iPad = 3;
@@ -101,7 +101,7 @@ PoopGeneratorDelegate>
     [_gamePlay.poopGenerator setDelegate:self];
     self.userInteractionEnabled = YES;
 
-    [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"bgMusic.mp3"];
+    [[SoundController sharedController] playBackgroundMusic:@"bgMusic.mp3"];
   }
   return self;
 }
@@ -117,9 +117,9 @@ PoopGeneratorDelegate>
   self.isGamePaused = pause;
   self.paused = pause;
   if (pause) {
-    [[BackgroundMusicPlayer sharedPlayer] stop];
+//    [[SoundController sharedController] stop];
   } else {
-    [[BackgroundMusicPlayer sharedPlayer] play];
+//    [[SoundController sharedController] play];
     self.isResumed = YES;
   }
 }

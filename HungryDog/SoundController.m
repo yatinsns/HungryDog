@@ -7,6 +7,7 @@
 //
 
 #import "SoundController.h"
+#import "BackgroundMusicPlayer.h"
 
 static NSString *const NSUserDefaultsMuteKey = @"NSUserDefaultsMuteKey";
 
@@ -23,11 +24,22 @@ static NSString *const NSUserDefaultsMuteKey = @"NSUserDefaultsMuteKey";
 
 - (void)setMuted:(BOOL)muted {
   [[NSUserDefaults standardUserDefaults] setBool:muted forKey:NSUserDefaultsMuteKey];
-  [[NSUserDefaults standardUserDefaults] synchronize];
+  if (muted) {
+    [[BackgroundMusicPlayer sharedPlayer] pause];
+  } else {
+    [[BackgroundMusicPlayer sharedPlayer] play];
+  }
 }
 
 - (BOOL)isMuted {
   return [[NSUserDefaults standardUserDefaults] boolForKey:NSUserDefaultsMuteKey];
+}
+
+- (void)playBackgroundMusic:(NSString *)backgroundMusic {
+  [[BackgroundMusicPlayer sharedPlayer] setBackgroundMusic:backgroundMusic];
+  if (!self.isMuted) {
+    [[BackgroundMusicPlayer sharedPlayer] play];
+  }
 }
 
 @end

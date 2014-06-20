@@ -12,7 +12,7 @@
 
 + (BackgroundMusicPlayer *)sharedPlayer;
 
-- (void)playBackgroundMusic:(NSString *)filename;
+- (void)setBackgroundMusic:(NSString *)filename;
 
 - (void)play;
 

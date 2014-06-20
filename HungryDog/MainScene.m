@@ -10,7 +10,6 @@
 #import "SKLabelNode+HungryDogAdditions.h"
 #import "UIConstants.h"
 #import "UIUtils.h"
-#import "BackgroundMusicPlayer.h"
 #import "BoneManager.h"
 #import "SoundController.h"
 #import "ButtonNode.h"
@@ -56,7 +55,7 @@ static const CGFloat BonesLabelFontSize_iPad = 40;
     [self addStoreButton];
     [self addTotalBonesLabel];
     [self addSoundButton];
-    [[BackgroundMusicPlayer sharedPlayer] playBackgroundMusic:@"menuMusic.mp3"];
+    [[SoundController sharedController] playBackgroundMusic:@"menuMusic.mp3"];
   }
   return self;
 }
